@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/admin', function () {
-    return view(view: 'layouts.admin');
-});
+Route::get('/admin-panel', [HomeController::class, 'index'])->name(name: 'home');
 
 Route::resource('/admin/users', 'UserController');
 
