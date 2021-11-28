@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -36,8 +36,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="admin/users"><i class="fas fa-users"></i> Usuarios</a></a>
-                        <a class="collapse-item" href="admin/routes"><i class="fas fa-map-marked-alt"></i></i> Rutas</a>
+                        <a class="collapse-item" href="{{route('users.index')}}"><i class="fas fa-users"></i> Usuarios</a></a>
+                        <a class="collapse-item" href="admin-panel/routes"><i class="fas fa-map-marked-alt"></i></i> Rutas</a>
                     </div>
                 </div>
             </li>

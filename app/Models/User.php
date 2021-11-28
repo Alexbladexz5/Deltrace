@@ -18,6 +18,12 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+
+    /**
+     * Atributos para el CRUD de Users.
+     */
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +31,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_names',
         'email',
         'password',
     ];

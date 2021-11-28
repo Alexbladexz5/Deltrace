@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 use DB;
 
 class UsersTableSeeder extends Seeder
@@ -27,5 +28,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'viserion1981@gmail.com',
             'password' => '$2y$10$Ntm8DR5yLXOi0dd4D95.XOPX2wqGgDBSptV71Tbk7OH/HzAIe.y2u'
         ]);
+
+        User::factory()->count(30)->create();
     }
 }

@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 Route::get('/admin-panel', [HomeController::class, 'index'])->name(name: 'home');
 
-Route::resource('/admin/users', 'UserController');
+Route::resource('/admin-panel/users', UserController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
