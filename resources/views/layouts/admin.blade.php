@@ -21,7 +21,7 @@
     <link href="/libs/sbadmin/css/sb-admin-2.min.css" rel="stylesheet">
 
     @stack('styles')
-    <link rel="stylesheet" href="{{asset('/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/main.css') }}">
 
 </head>
 
@@ -104,7 +104,15 @@
                     <div class="modal-body">Seleccione "Cerrar sesión" si realmente desea abandonar la sesión.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="login.html">Cerrar Sesión</a>
+                        {{-- <a class="btn btn-primary" href="{{route('logout')}}">Cerrar Sesión</a> --}}
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Cerrar Sesión') }}
+                            </x-jet-dropdown-link>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -119,8 +127,8 @@
         <script src="{{ asset('libs/sbadmin/js/sb-admin-2.min.js') }}"></script>
 
         @stack('scripts')
-        
-        <script src="{{asset('js/main.css')}}"></script>
+
+        <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>

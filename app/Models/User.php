@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use DB;
 
 class User extends Authenticatable
 {
@@ -18,6 +19,11 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    public static function getUsers(){
+        $sql = "SELECT * FROM users";
+        $result = DB::SELECT($sql);
+        return $result;
+    }
 
     /**
      * Atributos para el CRUD de Users.

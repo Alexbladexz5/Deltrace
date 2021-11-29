@@ -10,10 +10,15 @@ class UserController extends Controller
     public function index() {
         // $userList = User::all();
         // return view('user.all', ['userList'=>$userList]);
-        $users = User::get();
-
-        return view('layouts.users.index', compact('users'));
+        // $users = User::get();
+        // return view('layouts.users.index', compact('users'));
+        return view('layouts.users.index');
     }
+
+    public function getUsers(){
+        $result = User::getUsers();
+        return response()->json($result);
+    } 
 
     public function show($id) {
         $p = User::find($id);

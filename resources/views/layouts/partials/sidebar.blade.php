@@ -36,8 +36,9 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('users.index')}}"><i class="fas fa-users"></i> Usuarios</a></a>
+                        <a class="collapse-item" href="{{route('show.viewUsers')}}"><i class="fas fa-users"></i> Usuarios</a></a>
                         <a class="collapse-item" href="admin-panel/routes"><i class="fas fa-map-marked-alt"></i></i> Rutas</a>
+                        <a class="collapse-item" href="admin-panel/routes-history"><i class="fas fa-history"></i> Histórico de Rutas</a>
                     </div>
                 </div>
             </li>

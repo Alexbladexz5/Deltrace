@@ -16,11 +16,12 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
-Route::get('/admin-panel', [HomeController::class, 'index'])->name(name: 'home');
+Route::get('/admin-panel', [HomeController::class, 'index'])->name('home')->middleware('auth');;
 
-Route::resource('/admin-panel/users', UserController::class);
+Route::get('/admin-panel/users', [UserController::class, 'index'])-> name('show.viewUsers');
+Route::get('/admin-panel/getUsers', [UserController::class, 'getUsers'])-> name('show.users');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

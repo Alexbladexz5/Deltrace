@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('titulo')
-    <span>Usuarios</span>
+    <span>Rutas</span>
 
     <a href="" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#createMdl">
         <i class="fas fa-plus"></i>
@@ -32,7 +32,6 @@
             </table>
         </div>
     </div>   
-    
 @endsection
 
 @push('styles')
