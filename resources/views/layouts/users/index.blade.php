@@ -9,7 +9,12 @@
 @endsection
 
 @section('contenido')
-    <i class="fas fa-spinner"></i>
+    
+    @include('layouts.users.modals.create')
+    @include('layouts.users.modals.update')
+    @include('layouts.users.modals.delete')
+
+    <i class="fas svg-inline--fa fa-spinner fa-w-16 fa-spin fa-lg loading"></i>
     <div class="tabla-users">
 
     </div>  
@@ -18,6 +23,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{asset('libs/datatables/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/main.css')}}">
 @endpush
 
 @push('scripts')

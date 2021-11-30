@@ -12,7 +12,7 @@ function load() {
             $table = `
                 <div class="card">
                     <div class="card-body">
-                        <table id="dt-users" class="table table-striped table-bordered">
+                        <table id="dt-users" class="table table-striped table-bordered table-responsive-md dts">
                             <thead>
                                 <tr>
                                     <th class="text-center">Nombre</th>
@@ -29,6 +29,7 @@ function load() {
                 </div>
             `;
 
+            $(".loading").remove();
             $(".tabla-users").append($table);
 
             response.forEach(function (data) {
@@ -46,12 +47,29 @@ function load() {
                     <td>${data.name}</td>
                     <td>${data.last_names}</td>
                     <td>${data.email}</td>
+                    <td>
+                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                         
+                        <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
                 </tr>
                 `;
 
                 $(".data-tbody").append(tbody);
             })
 
+            if($.fn.DataTable) {
+                $('.dts').DataTable({
+                    language: {
+                        url: '/libs/datatables/spanish.json'
+                    }
+                });
+            }
+            
         },
         error: function (response) {
             console.log("No funciona");
