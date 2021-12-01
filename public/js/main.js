@@ -49,9 +49,9 @@ function load() {
                     <td>${data.email}</td>
                     <td>
                         <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl">
-                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-edit" style="color: rgb(90,92,105)"></i>
                         </a>
-                         
+                        &nbsp &nbsp &nbsp &nbsp &nbsp
                         <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl">
                             <i class="fas fa-trash-alt"></i>
                         </a>
