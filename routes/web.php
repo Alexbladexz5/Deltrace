@@ -26,8 +26,10 @@ Route::get('/admin/profile', function() {
     return view('layouts/profile');
 })->name('profile')->middleware('auth');
 
-Route::get('/admin-panel/users', [UserController::class, 'index'])-> name('show.viewUsers');
-Route::get('/admin-panel/getUsers', [UserController::class, 'getUsers'])-> name('show.users');
+Route::resource('/admin-panel/users', UserController::class);
+//Route::get('/admin-panel/users', [UserController::class, 'index'])-> name('show.viewUsers');
+Route::get('/admin-panel/getUsers', [UserController::class, 'getUsers'])-> name('users.getList');
+//Route::post('/admin-panel/users/{user}', [UserController::class, 'store']) -> name('user.store');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('layouts/admin');

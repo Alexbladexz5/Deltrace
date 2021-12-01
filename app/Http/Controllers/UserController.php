@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    // Mostrar la vista index de usuarios
     public function index() {
         // $userList = User::all();
         // return view('user.all', ['userList'=>$userList]);
@@ -23,25 +24,22 @@ class UserController extends Controller
     public function show($id) {
         $p = User::find($id);
         $data['user'] = $p;
-        return view('user.show', $data);
+        return view('users.show', $data);
     }
 
     public function create() {
-        return view('user.form');
+        return view('users.form');
     }
-
+    
     public function store(Request $r) {
-        $p = new User();
-        $p->name = $r->name;
-        $p->description = $r->description;
-        $p->price = $r->price;
-        $p->save();
-        return redirect()->route('user.index');
+        User::create($r->all());
+
+        return redirect()->route('users.index');
     }
 
     public function edit($id) {
         $user = User::find($id);
-        return view('user.form', array('user' => $user));
+        return view('users.form', array('user' => $user));
     }
 
     public function update($id, Request $r) {
@@ -50,12 +48,12 @@ class UserController extends Controller
         $p->description = $r->description;
         $p->price = $r->price;
         $p->save();
-        return redirect()->route('user.index');
+        return redirect()->route('users.index');
     }
 
     public function destroy($id) {
         $p = User::find($id);
         $p->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('users.index');
     }
 }

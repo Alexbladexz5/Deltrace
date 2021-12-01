@@ -13,7 +13,6 @@
 
 return [
     'accepted'             => 'Este campo debe ser aceptado.',
-    'accepted_if'          => 'Este campo debe ser aceptado cuando :other sea :value.',
     'active_url'           => 'Esta no es una URL válida.',
     'after'                => 'Debe ser una fecha después de :date.',
     'after_or_equal'       => 'Debe ser una fecha después o igual a :date.',
@@ -32,12 +31,9 @@ return [
     ],
     'boolean'              => 'El campo debe ser verdadero o falso.',
     'confirmed'            => 'La confirmación no coincide.',
-    'current_password'     => 'La contraseña es incorrecta.',
     'date'                 => 'Esta no es una fecha válida.',
     'date_equals'          => 'El campo debe ser una fecha igual a :date.',
     'date_format'          => 'El campo no corresponde al formato :format.',
-    'declined'             => 'Este campo debe ser rechazado.',
-    'declined_if'          => 'Este campo debe ser rechazado cuando :other sea :value.',
     'different'            => 'Este valor deben ser diferente de :other.',
     'digits'               => 'Debe tener :digits dígitos.',
     'digits_between'       => 'Debe tener entre :min y :max dígitos.',
@@ -103,7 +99,6 @@ return [
     'prohibited'           => 'Este campo está prohibido',
     'prohibited_if'        => 'Este campo está prohibido cuando :other es :value.',
     'prohibited_unless'    => 'Este campo está prohibido a menos que :other sea :values.',
-    'prohibits'            => 'Este campo prohibe que :other esté presente.',
     'regex'                => 'Este formato es inválido.',
     'relatable'            => 'Este campo no se puede asociar con este recurso.',
     'required'             => 'Este campo es requerido.',
@@ -125,11 +120,12 @@ return [
     'timezone'             => 'Debe ser de una zona horaria válida.',
     'unique'               => 'Este campo ya ha sido tomado.',
     'uploaded'             => 'Falló al subir.',
-    'url'                  => 'Debe ser una URL válida.',
+    'url'                  => 'Este formato es inválido.',
     'uuid'                 => 'Debe ser un UUID válido.',
     'custom'               => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
+    'attributes'           => [],
 ];
