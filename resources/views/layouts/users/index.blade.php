@@ -30,4 +30,21 @@
     <script src="{{asset('/libs/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    @if(!$errors->isEmpty())
+        @if($errors->has('post'))
+            <script>
+                $(function() {
+                    $('#createMdl').modal('show');
+                });
+            </script>
+        @else
+        <script>
+            $(function() {
+                $('#editMdl').modal('show');
+            });
+        </script>
+        @endif
+    @endif
+
 @endpush

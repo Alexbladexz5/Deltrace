@@ -17,8 +17,10 @@
                 <div>
                   <label for="name" class="form-fields">Nombre</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control" name="name" id="name" placeholder="-">
-                  
+                  <input type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" name="name" id="name" placeholder="-" value="{{old('name')}}">
+                  @if($errors->has('name'))
+                  <span class="text-danger">{{$errors->first('name')}}</span>
+                  @endif
                 </div>
               </div>
 
@@ -26,8 +28,10 @@
                 <div>
                   <label for="last_names" class="form-fields">Apellidos</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control" name="last_names" id="last_names" placeholder="-">
-                  
+                  <input type="text" class="form-control {{$errors->has('last_names') ? 'is-invalid' : ''}}" name="last_names" id="last_names" placeholder="-" value="{{old('last_names')}}">
+                  @if($errors->has('last_names'))
+                    <span class="text-danger">{{$errors->first('last_names')}}</span>
+                  @endif
                 </div>
               </div>
             </div>
@@ -37,7 +41,10 @@
                 <div>
                   <label for="email" class="form-fields">Email</label>
                   <label class="mandatory-field">*</label>
-                  <input type="email" class="form-control" name="email" id="email"">
+                  <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" name="email" id="email" placeholder="user@example.com" value="{{old('email')}}">
+                  @if($errors->has('email'))
+                    <span class="text-danger">{{$errors->first('email')}}</span>
+                  @endif
                 </div>
               </div>
             </div>
@@ -47,7 +54,10 @@
                 <div>
                   <label for="password" class="form-fields">Contraseña</label>
                   <label class="mandatory-field">*</label>
-                  <input type="password" class="form-control" name="password" id="password">
+                  <input type="password" class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}" name="password" id="password">
+                  @if($errors->has('password'))
+                    <span class="text-danger">{{$errors->first('password')}}</span>
+                  @endif
                 </div>
               </div>
             </div>
