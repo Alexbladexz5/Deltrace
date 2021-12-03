@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
             <x-slot name="logo">
                 
-                    <img src="{{ asset('/libs/images/deltrace-min.png') }}" class="rounded mx-auto d-block" width="20%" />
+                    <img src="{{ asset('/libs/images/deltrace.png') }}" class="rounded mx-auto d-block" width="20%" />
                 
             </x-slot>
         <x-jet-validation-errors class="mb-4" />
@@ -36,7 +36,7 @@
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('he olvidado mi contraseña') }}
+                        {{ __('He olvidado mi contraseña') }}
                     </a>
                 @endif
 

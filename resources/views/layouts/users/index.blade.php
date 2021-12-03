@@ -3,7 +3,7 @@
 @section('titulo')
     <span>Usuarios</span>
 
-    <a href="" class="btn btn-dark btn-circle" data-toggle="modal" data-target="#createMdl">
+    <a href="" class="btn btn-dark btn-circle float-right" data-toggle="modal" data-target="#createMdl">
         <i class="fas fa-plus"></i>
     </a>
 @endsection

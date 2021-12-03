@@ -66,7 +66,14 @@ function load() {
                 $('.dts').DataTable({
                     language: {
                         url: '/libs/datatables/spanish.json'
-                    }
+                    },
+                    columns: [
+                        null,
+                        null,
+                        null,
+                        { orderable: false}
+                    ]
+
                 });
             }
             

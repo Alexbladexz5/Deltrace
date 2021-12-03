@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'EmilioADMIN',
             'last_names' => 'ADMIN',
             'email' => 'viserion1981@gmail.com',
-            'password' => '$2y$10$Ntm8DR5yLXOi0dd4D95.XOPX2wqGgDBSptV71Tbk7OH/HzAIe.y2u'
+            'password' => '$2y$10$jQ0EjR3x3s5R0OOdJjaA6O6x6.kS7a32WHWgRU7aZCtpKmmFSpdxu'
         ]);
 
         User::factory()->count(30)->create();
