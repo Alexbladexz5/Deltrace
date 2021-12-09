@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -37,7 +37,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'last_names',
+        'last_name',
         'email',
         'password',
     ];

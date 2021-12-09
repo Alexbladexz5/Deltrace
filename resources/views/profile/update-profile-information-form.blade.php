@@ -15,11 +15,11 @@
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
-        <!-- last_names -->
+        <!-- last_name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="last_names" value="{{ __('Apellidos') }}" />
-            <x-jet-input id="last_names" type="text" class="mt-1 block w-full" wire:model.defer="state.last_names" autocomplete="last_names" />
-            <x-jet-input-error for="last_names" class="mt-2" />
+            <x-jet-label for="last_name" value="{{ __('Apellidos') }}" />
+            <x-jet-input id="last_name" type="text" class="mt-1 block w-full" wire:model.defer="state.last_name" autocomplete="last_name" />
+            <x-jet-input-error for="last_name" class="mt-2" />
         </div>
 
         <!-- Email -->

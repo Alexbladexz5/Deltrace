@@ -26,11 +26,11 @@
 
               <div class="col-lg-6 form-group">
                 <div>
-                  <label for="last_names" class="form-fields">Apellidos</label>
+                  <label for="last_name" class="form-fields">Apellidos</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control {{$errors->has('last_names') ? 'is-invalid' : ''}}" name="last_names" id="last_names" placeholder="Tus apellidos aquí" value="{{old('last_names')}}">
-                  @if($errors->has('last_names'))
-                    <span class="text-danger">{{$errors->first('last_names')}}</span>
+                  <input type="text" class="form-control {{$errors->has('last_name') ? 'is-invalid' : ''}}" name="last_name" id="last_name" placeholder="Tus apellidos aquí" value="{{old('last_name')}}">
+                  @if($errors->has('last_name'))
+                    <span class="text-danger">{{$errors->first('last_name')}}</span>
                   @endif
                 </div>
               </div>

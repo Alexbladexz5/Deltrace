@@ -28,6 +28,11 @@ Route::get('/admin/profile', function() {
 
 Route::resource('/admin-panel/users', UserController::class);
 //Route::get('/admin-panel/users', [UserController::class, 'index'])-> name('show.viewUsers');
+
+Route::get('/admin-panel/routes', function() {
+    return view('layouts/routes/index');
+})->name('routes')->middleware('auth');
+
 Route::get('/admin-panel/getUsers', [UserController::class, 'getUsers'])-> name('users.getList');
 //Route::post('/admin-panel/users/{user}', [UserController::class, 'store']) -> name('user.store');
 

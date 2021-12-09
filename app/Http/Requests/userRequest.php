@@ -27,7 +27,7 @@ class userRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'unique:users,name', 'max:75'],
-            'last_names' => ['required', 'string', 'unique:users,last_names', 'max:150'],
+            'last_name' => ['required', 'string', 'unique:users,last_name', 'max:150'],
             'email' => ['required', 'email:rfc,dns', 'unique:users,email'],
             'password' => ['required', 'string', 'unique:users,password', Password::min(8)
             ->letters()

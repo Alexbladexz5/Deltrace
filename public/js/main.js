@@ -45,7 +45,7 @@ function load() {
                 tbody = `
                 <tr class="text-center">
                     <td>${data.name}</td>
-                    <td>${data.last_names}</td>
+                    <td>${data.last_name}</td>
                     <td>${data.email}</td>
                     <td>
                         <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl">
