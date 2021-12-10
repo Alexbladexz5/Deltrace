@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -34,6 +35,8 @@ class UserController extends Controller
     
     public function store(UserRequest $r) {
         User::create($r->all());
+
+        Alert::success('Usuario guardado exitosamente');
 
         return redirect()->route('users.index');
     }
