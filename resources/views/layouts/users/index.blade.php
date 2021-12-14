@@ -29,7 +29,7 @@
 @push('scripts')
     <script src="{{asset('/libs/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 
     <script>
         $(document).ready(function(){

@@ -46,8 +46,8 @@ class UserController extends Controller
         return view('users.form', array('user' => $user));
     }
 
-    public function update(Request $id, Request $r) {
-        $user->fill($request->all());
+    public function update(Request $r, User $user) {
+        $user->fill($r->all());
         $user->save();
 
         alert()->success('Usuario actualizado correctamente');
@@ -55,8 +55,9 @@ class UserController extends Controller
     }
 
     public function destroy($id) {
-        $p = User::find($id);
-        $p->delete();
+        $user = User::find($id);
+        $user->delete();
+        Alert::success('Usuario borrado exitosamente');
         return redirect()->route('users.index');
     }
 }

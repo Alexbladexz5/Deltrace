@@ -83,3 +83,13 @@ function load() {
 
     })
 }
+
+function deleteUser(user){
+    $("#deleteFrm").attr('action',`/products/${product.id}`);
+
+    $("#editProductFrm #name").val(product.name);
+    $("#editProductFrm #description").val(product.description);
+    $("#editProductFrm #unit_price").val(product.unit_price);
+    $("#editProductFrm #quantity").val(product.quantity);
+    $("#editProductFrm #total_cost").val(product.total_cost);
+}
