@@ -31,6 +31,21 @@
     <script src="{{asset('/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
+    <script>
+        $(document).ready(function(){
+            $("input[name='unit_price'], input[name='quantity']").on('keyup', function () {
+                calculateTotalCost(this);
+            });
+        });
+        function editUser(user){
+            $("#editUserForm").attr('action',`/users/${user.id}`);
+            $("#editUserForm #name").val(user.name);
+            $("#editUserForm #last_name").val(user.last_name);
+            $("#editUserForm #email").val(user.email);
+            $("#editUserForm #password").val(user.password);
+        }
+    </script>
+
     @if(!$errors->isEmpty())
         @if($errors->has('post'))
             <script>

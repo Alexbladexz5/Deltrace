@@ -46,12 +46,11 @@ class UserController extends Controller
         return view('users.form', array('user' => $user));
     }
 
-    public function update($id, Request $r) {
-        $p = User::find($id);
-        $p->name = $r->name;
-        $p->description = $r->description;
-        $p->price = $r->price;
-        $p->save();
+    public function update(Request $id, Request $r) {
+        $user->fill($request->all());
+        $user->save();
+
+        alert()->success('Usuario actualizado correctamente');
         return redirect()->route('users.index');
     }
 
