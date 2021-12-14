@@ -48,10 +48,10 @@ function load() {
                     <td>${data.last_name}</td>
                     <td>${data.email}</td>
                     <td>
-                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl">
+                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editUser(${JSON.stringify(data).replace(/['"]+/g, '&quot;')})">
                             <i class="fas fa-edit" style="color: rgb(90,92,105)"></i>
                         </a>
-                        <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl">
+                        <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl" onclick="deleteUser(${JSON.stringify(data).replace(/['"]+/g, '&quot;')})">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>
@@ -82,14 +82,4 @@ function load() {
         }
 
     })
-}
-
-function deleteUser(user){
-    $("#deleteFrm").attr('action',`/products/${product.id}`);
-
-    $("#editProductFrm #name").val(product.name);
-    $("#editProductFrm #description").val(product.description);
-    $("#editProductFrm #unit_price").val(product.unit_price);
-    $("#editProductFrm #quantity").val(product.quantity);
-    $("#editProductFrm #total_cost").val(product.total_cost);
 }

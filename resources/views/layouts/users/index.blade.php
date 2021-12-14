@@ -38,11 +38,14 @@
             });
         });
         function editUser(user){
-            $("#editUserForm").attr('action',`/users/${user.id}`);
-            $("#editUserForm #name").val(user.name);
-            $("#editUserForm #last_name").val(user.last_name);
-            $("#editUserForm #email").val(user.email);
-            $("#editUserForm #password").val(user.password);
+            $("#editUserFrm").attr('action',`/admin-panel/users/${user.id}`);
+            $("#editUserFrm #name-edit").val(user.name);
+            $("#editUserFrm #last-name-edit").val(user.last_name);
+            $("#editUserFrm #email-edit").val(user.email);
+        }
+
+        function deleteUser(user){
+            $("#deleteUserFrm").attr('action',`/admin-panel/users/${user.id}`);
         }
     </script>
 

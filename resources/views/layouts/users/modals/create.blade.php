@@ -17,7 +17,7 @@
                 <div>
                   <label for="name" class="form-fields">Nombre</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" name="name" id="name" placeholder="Tu nombre aquí" value="{{old('name')}}">
+                  <input type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" name="name" id="name-create" placeholder="Tu nombre aquí" value="{{old('name')}}">
                   @if($errors->has('name'))
                   <span class="text-danger">{{$errors->first('name')}}</span>
                   @endif
@@ -28,7 +28,7 @@
                 <div>
                   <label for="last_name" class="form-fields">Apellidos</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control {{$errors->has('last_name') ? 'is-invalid' : ''}}" name="last_name" id="last_name" placeholder="Tus apellidos aquí" value="{{old('last_name')}}">
+                  <input type="text" class="form-control {{$errors->has('last_name') ? 'is-invalid' : ''}}" name="last_name" id="last-name-create" placeholder="Tus apellidos aquí" value="{{old('last_name')}}">
                   @if($errors->has('last_name'))
                     <span class="text-danger">{{$errors->first('last_name')}}</span>
                   @endif
@@ -41,7 +41,7 @@
                 <div>
                   <label for="email" class="form-fields">Email</label>
                   <label class="mandatory-field">*</label>
-                  <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" name="email" id="email" placeholder="usuario@ejemplo.com" value="{{old('email')}}">
+                  <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" name="email" id="email-create" placeholder="usuario@ejemplo.com" value="{{old('email')}}">
                   @if($errors->has('email'))
                     <span class="text-danger">{{$errors->first('email')}}</span>
                   @endif
@@ -54,7 +54,7 @@
                 <div>
                   <label for="password" class="form-fields">Contraseña</label>
                   <label class="mandatory-field">*</label>
-                  <input type="password" class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}" name="password" id="password">
+                  <input type="password" class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}" name="password" id="password-create">
                   @if($errors->has('password'))
                     <span class="text-danger">{{$errors->first('password')}}</span>
                   @endif
