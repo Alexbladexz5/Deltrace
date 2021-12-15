@@ -15,6 +15,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+/**
+ * Enrutador del panel de adminitración
+ *  */
 Route::get('/', function () {
     return view('/auth/login');
 });
@@ -26,15 +29,13 @@ Route::get('/admin/profile', function() {
     return view('layouts/profile');
 })->name('profile')->middleware('auth');
 
-Route::resource('/admin-panel/users', UserController::class);
+Route::resource('/admin-panel/users', UserController::class)->middleware('auth');
 //Route::get('/admin-panel/users', [UserController::class, 'index'])-> name('show.viewUsers');
 
-Route::get('/admin-panel/routes', function() {
-    return view('layouts/routes/index');
-})->name('routes')->middleware('auth');
-
-Route::get('/admin-panel/getUsers', [UserController::class, 'getUsers'])-> name('users.getList');
+Route::get('/admin-panel/getUsers', [UserController::class, 'getUsers'])->name('users.getList')->middleware('auth');
 //Route::post('/admin-panel/users/{user}', [UserController::class, 'store']) -> name('user.store');
+
+//Route::resource('/admin-panel/routes', RoutesController::class)->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('layouts/admin');

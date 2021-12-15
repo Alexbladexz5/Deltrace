@@ -50,19 +50,6 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-lg-12 form-group">
-                <div>
-                  <label for="password" class="form-fields">Contraseña</label>
-                  <label class="mandatory-field">*</label>
-                  <input type="password" class="form-control {{$errors->has('password') ? 'is-invalid' : ''}}" name="password" id="password-edit">
-                  @if($errors->has('password'))
-                    <span class="text-danger">{{$errors->first('password')}}</span>
-                  @endif
-                </div>
-              </div>
-            </div>
-
             <div class="buttons-form-submit d-flex justify-content-end">
               <button type="button" class="btn btn-danger mr-1" data-dismiss="modal">Cerrar</button>
               <button type="submit" href="#" class="btn btn-dark">

@@ -17,7 +17,7 @@
 
                     <div class="buttons-form-submit d-flex justify-content-end">
                         <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary btn-danger">
                             Eliminar
                             <i class="fas fa-trash-alt"></i>
                         </button>
