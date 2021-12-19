@@ -23,13 +23,26 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{asset('libs/datatables/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/admin-panel/main.css')}}">
 @endpush
 
 @push('scripts')
     <script src="{{asset('/libs/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{asset('js/admin-panel/routes_crud.js')}}"></script>
+
+    <script>
+        function editRoute(route){
+            $("#editRouteFrm").attr('action',`/admin-panel/routes/${route.id}`);
+            $("#editRouteFrm #name-edit").val(route.name);
+            $("#editRouteFrm #last-name-edit").val(route.last_name);
+            $("#editRouteFrm #email-edit").val(route.email);
+        }
+
+        function deleteRoute(route){
+            $("#deleteRouteFrm").attr('action',`/admin-panel/routes/${route.id}`);
+        }
+    </script>
 
     @if(!$errors->isEmpty())
         @if($errors->has('post'))

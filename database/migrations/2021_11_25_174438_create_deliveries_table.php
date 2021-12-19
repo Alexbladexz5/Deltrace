@@ -15,10 +15,10 @@ class CreateDeliveriesTable extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('estimated_time');
             $table->string('name');
             $table->string('address', 200);
             $table->string('coordinates', 200);
+            $table->timestamp('estimated_time');
             $table->unsignedBigInteger('route_id');
             $table->timestamps();
 

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('titulo')
-    <span>Usuarios</span>
+    <span>Entregas</span>
 
     <a href="" class="btn btn-dark btn-circle float-right" data-toggle="modal" data-target="#createMdl">
         <i class="fas fa-plus"></i>
@@ -10,12 +10,12 @@
 
 @section('contenido')
     
-    @include('layouts.users.modals.create')
-    @include('layouts.users.modals.update')
-    @include('layouts.users.modals.delete')
+    @include('layouts.deliveries.modals.create')
+    @include('layouts.deliveries.modals.update')
+    @include('layouts.deliveries.modals.delete')
 
     <i class="fas svg-inline--fa fa-spinner fa-w-16 fa-spin fa-lg loading"></i>
-    <div class="tabla-users">
+    <div class="tabla-deliveries">
 
     </div>  
     
@@ -29,18 +29,18 @@
 @push('scripts')
     <script src="{{asset('/libs/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('js/admin-panel/users_crud.js')}}"></script>
+    <script src="{{asset('js/admin-panel/deliveries_crud.js')}}"></script>
 
     <script>
-        function editUser(user){
-            $("#editUserFrm").attr('action',`/admin-panel/users/${user.id}`);
-            $("#editUserFrm #name-edit").val(user.name);
-            $("#editUserFrm #last-name-edit").val(user.last_name);
-            $("#editUserFrm #email-edit").val(user.email);
+        function editDelivery(delivery){
+            $("#editDeliveryFrm").attr('action',`/admin-panel/deliveries/${delivery.id}`);
+            $("#editDeliveryFrm #name-edit").val(delivery.name);
+            $("#editDeliveryFrm #last-name-edit").val(delivery.last_name);
+            $("#editDeliveryFrm #email-edit").val(delivery.email);
         }
 
-        function deleteUser(user){
-            $("#deleteUserFrm").attr('action',`/admin-panel/users/${user.id}`);
+        function deleteDelivery(delivery){
+            $("#deleteDeliveryFrm").attr('action',`/admin-panel/deliveries/${delivery.id}`);
         }
     </script>
 

@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RouteController;
+use App\Http\Controllers\DeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,11 @@ Route::resource('/admin-panel/users', UserController::class)->middleware('auth')
 Route::get('/admin-panel/getUsers', [UserController::class, 'getUsers'])->name('users.getList')->middleware('auth');
 //Route::post('/admin-panel/users/{user}', [UserController::class, 'store']) -> name('user.store');
 
-//Route::resource('/admin-panel/routes', RoutesController::class)->middleware('auth');
+Route::resource('/admin-panel/routes', RouteController::class)->middleware('auth');
+Route::get('/admin-panel/getRoutes', [RouteController::class, 'getRoutes'])->name('routes.getList')->middleware('auth');
+
+Route::resource('/admin-panel/deliveries', DeliveryController::class)->middleware('auth');
+Route::get('/admin-panel/getDeliveries', [DeliveryController::class, 'getDeliveries'])->name('deliveries.getList')->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('layouts/admin');
