@@ -42,6 +42,7 @@ Route::get('/admin-panel/getRoutes', [RouteController::class, 'getRoutes'])->nam
 
 Route::resource('/admin-panel/deliveries', DeliveryController::class)->middleware('auth');
 Route::get('/admin-panel/getDeliveries', [DeliveryController::class, 'getDeliveries'])->name('deliveries.getList')->middleware('auth');
+Route::get('/admin-panel/getDeliveries/{delivery}', [DeliveryController::class, 'getDeliveriesRoute'])->name('deliveries.getRoute')->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('layouts/admin');

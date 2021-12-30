@@ -51,7 +51,7 @@ function load() {
                     <td>${data.route_id}</td>
                     <td>${data.name}</td>
                     <td>${data.address}</td>
-                    <td><a href="https://google.es/maps/@${data.coordinates}" target="_blank">${data.coordinates}</a></td>
+                    <td><a href="https://google.es/maps/@${data.coordinates}z" target="_blank">${data.coordinates}</a></td>
                     <td>${data.estimated_time}</td>
                     <td>
                         <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editDelivery(${JSON.stringify(data).replace(/['"]+/g, '&quot;')})">

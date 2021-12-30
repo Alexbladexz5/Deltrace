@@ -16,3 +16,7 @@
 .edit-form-data{
     margin-right: 20%;
 }
+
+div.slider {
+    display: none;
+}

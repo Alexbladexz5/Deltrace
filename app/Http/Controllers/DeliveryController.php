@@ -20,6 +20,11 @@ class DeliveryController extends Controller
     public function getDeliveries(){
         $result = Delivery::getDeliveries();
         return response()->json($result);
+    }
+
+    public function getDeliveriesRoute($idRoute){
+        $result = Delivery::getDeliveriesRoute($idRoute);
+        return response()->json($result);
     } 
 
     public function show($id) {

@@ -25,4 +25,10 @@ class Delivery extends Model
         $result = DB::SELECT($sql);
         return $result;
     }
+
+    public static function getDeliveriesRoute($idRoute){
+        $sql = "SELECT * FROM deliveries WHERE route_id = '$idRoute'";
+        $result = DB::SELECT($sql);
+        return $result;
+    }
 }
