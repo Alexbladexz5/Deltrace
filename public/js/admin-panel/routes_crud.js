@@ -120,7 +120,7 @@ function load() {
                         
 
                         if($.fn.DataTable) {
-                            $tabla = `.dts-deliveries-${row.data()[1]}`;
+                            $tabla = `.dts-deliveries-${row.data()[1]}`;  // Clase personalizada a la tabla para poder iniciar Datatables despues de cargar
                             $($tabla).DataTable({
                                 language: {
                                     url: '/libs/datatables/spanish.json'
@@ -179,7 +179,7 @@ function load() {
                     <td>${data.estimated_time}</td>
                     <td>
                         Ver más
-                        <a href="admin-panel/getDeliveries/${data.route_id}">
+                        <a href="/admin-panel/deliveries/${data.route_id}">
                             <i class="fas fa-edit" style="color: rgb(90,92,105)"></i>
                         </a>
                     </td>

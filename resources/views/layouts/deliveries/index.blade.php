@@ -14,6 +14,16 @@
     @include('layouts.deliveries.modals.update')
     @include('layouts.deliveries.modals.delete')
 
+    @if(isset($idRoute))
+        @if(!empty($idRoute))
+            <p style="display: none" id="idRoute">{{$idRoute}}</p>
+        @else
+            <p style="display: none" id="idRoute"></p>
+        @endif
+    @else
+        <p style="display: none" id="idRoute">a</p>
+    @endif 
+
     <i class="fas svg-inline--fa fa-spinner fa-w-16 fa-spin fa-lg loading"></i>
     <div class="tabla-deliveries">
 

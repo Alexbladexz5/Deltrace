@@ -2,10 +2,19 @@
 $(document).ready(load);
 
 function load() {
+    var urlAjax = '/admin-panel/getDeliveries';
     var params = [];
+    var aux = $('#idRoute').text();
+    
+    // Se realiza un if para comprobar si hay que buscar las entregas de una ruta
+    if ($('#idRoute').text() != undefined && $('#idRoute').text() != '') {
+        
+        urlAjax = `/admin-panel/getDeliveries/${aux}`;
+    }
+
     $.ajax({
         data: params,
-        url: '/admin-panel/getDeliveries',
+        url: urlAjax,
         type: 'get',
 
         success: function (response) {

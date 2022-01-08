@@ -28,9 +28,8 @@ class DeliveryController extends Controller
     } 
 
     public function show($id) {
-        $p = Delivery::find($id);
-        $data['delivery'] = $p;
-        return view('deliveries.show', $data);
+        $data['idRoute'] = $id;
+        return view('layouts.deliveries.index', $data);
     }
 
     public function create() {
