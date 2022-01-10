@@ -82,12 +82,12 @@ function load() {
                         url: '/libs/datatables/spanish.json'
                     },
                     columns: [
+                        {"type" : "num"},
                         null,
                         null,
                         null,
-                        null,
-                        null,
-                        null,
+                        {"type" : "num"},
+                        {"type" : "date"},,
                         { orderable: false}
                     ]
 

@@ -26,10 +26,10 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'unique:users,name', 'max:75'],
-            'last_name' => ['required', 'string', 'unique:users,last_name', 'max:150'],
+            'name' => ['required', 'string', 'max:75'],
+            'last_name' => ['required', 'string', 'max:150'],
             'email' => ['required', 'email:rfc,dns', 'unique:users,email'],
-            'password' => ['required', 'string', 'unique:users,password', Password::min(8)
+            'password' => ['required', 'string', Password::min(8)
             ->letters()
             ->mixedCase()
             ->numbers()

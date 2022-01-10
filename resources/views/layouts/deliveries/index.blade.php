@@ -21,7 +21,7 @@
             <p style="display: none" id="idRoute"></p>
         @endif
     @else
-        <p style="display: none" id="idRoute">a</p>
+        <p style="display: none" id="idRoute"></p>
     @endif 
 
     <i class="fas svg-inline--fa fa-spinner fa-w-16 fa-spin fa-lg loading"></i>

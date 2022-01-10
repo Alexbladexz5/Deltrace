@@ -18,7 +18,7 @@ class Route extends Model
     ];
 
     public static function getRoutes(){
-        $sql = "SELECT routes.*, users.name FROM routes INNER JOIN users WHERE users.id = routes.user_id";
+        $sql = "SELECT routes.*, users.name, users.last_name FROM routes INNER JOIN users WHERE users.id = routes.user_id";
         $result = DB::SELECT($sql);
         return $result;
     }

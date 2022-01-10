@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Route;
 use Illuminate\Http\Request;
+use App\Http\Requests\RouteRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RouteController extends Controller

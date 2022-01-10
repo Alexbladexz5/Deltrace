@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar usuario</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Editar ruta</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -16,35 +16,25 @@
             <div class="row">
               <div class="col-lg-6 form-group">
                 <div>
-                  <label for="name" class="form-fields">Nombre</label>
+                  <label for="user_id" class="form-fields">Usuario</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" name="name" id="name-edit" placeholder="Tu nombre aquí" value="{{old('name')}}">
-                  @if($errors->has('name'))
-                  <span class="text-danger">{{$errors->first('name')}}</span>
-                  @endif
+                  {{-- <input type="text" class="form-control {{$errors->has('user_id') ? 'is-invalid' : ''}}" name="user_id" id="user-id-create" placeholder="Tu nombre aquí" value="{{old('user_id')}}">
+                  @if($errors->has('user_id'))
+                  <span class="text-danger">{{$errors->first('user_id')}}</span>
+                  @endif --}}
+                  <select class="form-control {{$errors->has('user_id') ? 'is-invalid' : ''}}" name="user_id" id="user-id-edit" data-live-search="true">
+                    
+                  </select>
                 </div>
               </div>
 
               <div class="col-lg-6 form-group">
                 <div>
-                  <label for="last_name" class="form-fields">Apellidos</label>
+                  <label for="date" class="form-fields">Fecha/Hora</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control {{$errors->has('last_name') ? 'is-invalid' : ''}}" name="last_name" id="last-name-edit" placeholder="Tus apellidos aquí" value="{{old('last_name')}}">
-                  @if($errors->has('last_name'))
-                    <span class="text-danger">{{$errors->first('last_name')}}</span>
-                  @endif
-                </div>
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-lg-12 form-group">
-                <div>
-                  <label for="email" class="form-fields">Email</label>
-                  <label class="mandatory-field">*</label>
-                  <input type="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" name="email" id="email-edit" placeholder="usuario@ejemplo.com" value="{{old('email')}}">
-                  @if($errors->has('email'))
-                    <span class="text-danger">{{$errors->first('email')}}</span>
+                  <input type="text" class="form-control {{$errors->has('date') ? 'is-invalid' : ''}}" name="date" id="last-name-edit" placeholder="Tus apellidos aquí" value="{{old('date')}}">
+                  @if($errors->has('date'))
+                    <span class="text-danger">{{$errors->first('date')}}</span>
                   @endif
                 </div>
               </div>

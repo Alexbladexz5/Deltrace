@@ -24,12 +24,15 @@
 @push('styles')
     <link rel="stylesheet" href="{{asset('libs/datatables/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/admin-panel/main.css')}}">
+    <link rel="stylesheet" href="{{asset('libs/bootstrap-select/bootstrap-select.min.css')}}">
 @endpush
 
 @push('scripts')
     <script src="{{asset('/libs/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('js/admin-panel/routes_crud.js')}}"></script>
+    <script src="{{asset('libs/bootstrap-select/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('libs/bootstrap-select/defaults-es_ES.min.js')}}"></script>
 
     <script>
         function editRoute(route){

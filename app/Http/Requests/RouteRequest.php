@@ -21,10 +21,20 @@ class RouteRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            //
+            'user_id' => ['required', 'string', 'unique:users,name', 'max:75'],
+            'date_time' => ['required', 'date', 'unique:users,last_name', 'max:150']
         ];
+    }
+
+    public function withValidator($validator) {
+        $validator->after(function($validator) {
+            if($validator->errors()->count()) {
+                if(!in_array($this->method(),['PUT', 'PATCH'])) {
+                    $validator->errors()->add('post', true);
+                }
+            }
+        });
     }
 }
