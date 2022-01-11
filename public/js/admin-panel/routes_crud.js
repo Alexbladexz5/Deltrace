@@ -65,7 +65,7 @@ function load() {
                 // Se añade a los formularios de añadir y editar los usuarios que hay disponibles
                 var option = "";
 
-                option = `<option value="${data.id}">${data.name} ${data.last_name}</option>`;
+                option = `<option value="${data.user_id}">${data.name} ${data.last_name}</option>`;
 
                 $("#user-id-create").append(option);
                 $("#user-id-edit").append(option);

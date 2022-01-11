@@ -83,11 +83,11 @@ function load() {
                     },
                     columns: [
                         {"type" : "num"},
-                        null,
-                        null,
-                        null,
                         {"type" : "num"},
-                        {"type" : "date"},,
+                        null,
+                        null,
+                        { orderable: false},
+                        {"type" : "date"},
                         { orderable: false}
                     ]
 

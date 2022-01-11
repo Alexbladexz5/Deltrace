@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
           <form action="{{route('routes.store')}}" role="form" method="POST" id="createRouteFrm">
-            {{csrf_field()}}
+            @csrf
 
             <div class="row">
               <div class="col-lg-6 form-group">

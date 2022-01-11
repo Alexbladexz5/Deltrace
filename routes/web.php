@@ -33,7 +33,6 @@ Route::get('/admin/profile', function() {
 
 Route::resource('/admin-panel/users', UserController::class)->middleware('auth');
 //Route::get('/admin-panel/users', [UserController::class, 'index'])-> name('show.viewUsers');
-
 Route::get('/admin-panel/getUsers', [UserController::class, 'getUsers'])->name('users.getList')->middleware('auth');
 //Route::post('/admin-panel/users/{user}', [UserController::class, 'store']) -> name('user.store');
 
