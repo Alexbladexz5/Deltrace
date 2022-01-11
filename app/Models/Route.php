@@ -12,7 +12,7 @@ class Route extends Model
 
     protected $table = 'routes';
 
-    protected $filliable = [
+    protected $fillable = [
         'date_time',
         'user_id'
     ];
