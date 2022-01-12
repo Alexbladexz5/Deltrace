@@ -57,7 +57,7 @@ class RouteController extends Controller
     public function destroy($id) {
         $route = Route::find($id);
         $route->delete();
-        Alert::success('Ruta borrado exitosamente');
+        Alert::success('Ruta borrada exitosamente');
         return redirect()->route('routes.index');
     }
 }

@@ -3,7 +3,7 @@
 @section('titulo')
     <span>Rutas</span>
 
-    <a href="" class="btn btn-dark btn-circle float-right" data-toggle="modal" data-target="#createMdl">
+    <a href="" class="btn btn-dark btn-circle float-right" data-toggle="modal" data-target="#createMdl" onclick="createRoute({{auth()->user()->id}})">
         <i class="fas fa-plus"></i>
     </a>
 @endsection
@@ -35,11 +35,16 @@
     <script src="{{asset('libs/bootstrap-select/defaults-es_ES.min.js')}}"></script>
 
     <script>
+        function createRoute(route) {
+            $('#user-id-create').val(route);
+            $('#user-id-create').selectpicker('render');
+        }
+
         function editRoute(route){
             $("#editRouteFrm").attr('action',`/admin-panel/routes/${route.id}`);
-            $("#editRouteFrm #name-edit").val(route.name);
-            $("#editRouteFrm #last-name-edit").val(route.last_name);
-            $("#editRouteFrm #email-edit").val(route.email);
+            $('#user-id-edit').val(`${route.user_id}`);
+            $('#user-id-edit').selectpicker('render');
+            $("#editRouteFrm #date-time-edit").val((route.date_time).replace(/ /g, "T"));
         }
 
         function deleteRoute(route){

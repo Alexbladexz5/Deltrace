@@ -13,7 +13,7 @@
             @csrf
 
             <div class="row">
-              <div class="col-lg-6 form-group">
+              <div class="col-lg-12 form-group">
                 <div>
                   <label for="user_id" class="form-fields">Usuario</label>
                   <label class="mandatory-field">*</label>
@@ -23,12 +23,14 @@
                   @endif
                 </div>
               </div>
+            </div>
 
-              <div class="col-lg-6 form-group">
+            <div class="row">
+              <div class="col-lg-12 form-group">
                 <div>
                   <label for="date_time" class="form-fields">Fecha/Hora</label>
                   <label class="mandatory-field">*</label>
-                  <input type="datetime-local" class="form-control {{$errors->has('date') ? 'is-invalid' : ''}}" name="date_time" id="date-time-create" placeholder="" value="{{old('date_time')}}">
+                  <input type="datetime-local" class="form-control {{$errors->has('date') ? 'is-invalid' : ''}}" name="date_time" id="date-time-create" placeholder="" value="{{old('date_time')}}" step="1">
                   @if($errors->has('date_time'))
                     <span class="text-danger">{{$errors->first('date_time')}}</span>
                   @endif

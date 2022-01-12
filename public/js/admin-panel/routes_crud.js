@@ -47,13 +47,13 @@ function load() {
                 <tr class="text-center">
                     <td class="dt-control"><i class="fas fa-plus" style="color: rgb(90,92,105)"></i></td>
                     <td>${data.id}</td>
-                    <td>${data.name}</td>
+                    <td>${data.name} ${data.last_name}</td>
                     <td>${data.date_time}</td>
                     <td>
-                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editRoute(${JSON.stringify(data).replace(/['"]+/g, '&quot;')})">
+                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editRoute(${JSON.stringify(data, ['id', 'user_id', 'date_time']).replace(/['"]+/g, '&quot;')})">
                             <i class="fas fa-edit" style="color: rgb(90,92,105)"></i>
                         </a>
-                        <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl" onclick="deleteRoute(${JSON.stringify(data).replace(/['"]+/g, '&quot;')})">
+                        <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl" onclick="deleteRoute(${JSON.stringify(data, ['id']).replace(/['"]+/g, '&quot;')})">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>
@@ -61,15 +61,6 @@ function load() {
                 `;
 
                 $(".data-tbody").append(tbody);
-
-                // Se añade a los formularios de añadir y editar los usuarios que hay disponibles
-                var option = "";
-
-                option = `<option value="${data.user_id}">${data.name} ${data.last_name}</option>`;
-
-                $("#user-id-create").append(option);
-                $("#user-id-edit").append(option);
-
             })
 
             if($.fn.DataTable) {
@@ -88,16 +79,43 @@ function load() {
                 });
             }
 
-            $('#user-id-create').selectpicker();
-            $('#user-id-edit').selectpicker();
-
-            // Llamada a la función childRows() para añadir un evento a los botones
-            childRows();
+            childRows();  // Llamada a la función childRows() para añadir un evento a los botones
+            addUsersForm();  // Llamada a la función addUsersForm() para añadir usuarios en un campo del formulario
         },
         error: function (response) {
             console.log("No funciona");
         }
     })
+
+    function addUsersForm() {
+        // Se realiza una petición AJAX para cargar todos los usuarios en un campo del formulario
+        var params = [];
+        $.ajax({
+            data: params,
+            url: '/admin-panel/getUsers',
+            type: 'get',
+
+            success: function (response) {
+                // Se añade a los formularios de añadir y editar los usuarios que hay disponibles
+                response.forEach(function (data) {
+                    var option = "";
+
+                    option = `<option value="${data.id}">${data.name} ${data.last_name}</option>`;
+
+                    $("#user-id-create").append(option);
+                    $("#user-id-edit").append(option);
+                })
+
+                // Inicializar bootstrap-select
+                $('#user-id-create').selectpicker();
+                $('#user-id-edit').selectpicker();
+            },
+
+            error: function (response) {
+                console.log('Error al solicitar los usuarios para el formulario.');
+            }
+        })
+    }
     
     function childRows() {
         // Se añade el evento click al icono para añadir una consulta personalizada a una fila de la tabla
@@ -137,7 +155,7 @@ function load() {
                                 language: {
                                     url: '/libs/datatables/spanish.json'
                                 },
-                                paging: false,
+                                paging: true,
                                 searching: false,
                                 columns: [
                                     {"type" : "num"},

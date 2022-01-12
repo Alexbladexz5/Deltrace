@@ -4,16 +4,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-inspinia text-primary" id="exampleModalLabel">Eliminar usuario</h5>
+                <h5 class="modal-title text-inspinia text-primary" id="exampleModalLabel">Eliminar ruta</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" role="form" method="POST" id="deleteUserFrm">
+                <form action="" role="form" method="POST" id="deleteRouteFrm">
                     @method('delete')
-                    {{csrf_field()}}
-                    <p>¿Está seguro de eliminar este usuario?</p>
+                    @csrf
+                    <p>¿Está seguro de eliminar esta ruta?</p>
 
                     <div class="buttons-form-submit d-flex justify-content-end">
                         <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Cerrar</button>

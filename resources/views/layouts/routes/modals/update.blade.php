@@ -9,32 +9,31 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="" role="form" method="POST" id="editUserFrm">
+          <form action="" role="form" method="POST" id="editRouteFrm">
             @method('PUT')
-            {{csrf_field()}}
+            @csrf
 
             <div class="row">
-              <div class="col-lg-6 form-group">
+              <div class="col-lg-12 form-group">
                 <div>
                   <label for="user_id" class="form-fields">Usuario</label>
                   <label class="mandatory-field">*</label>
-                  {{-- <input type="text" class="form-control {{$errors->has('user_id') ? 'is-invalid' : ''}}" name="user_id" id="user-id-create" placeholder="Tu nombre aquí" value="{{old('user_id')}}">
+                  <select class="form-control {{$errors->has('user_id') ? 'is-invalid' : ''}}" name="user_id" id="user-id-edit" data-live-search="true" ></select>
                   @if($errors->has('user_id'))
                   <span class="text-danger">{{$errors->first('user_id')}}</span>
-                  @endif --}}
-                  <select class="form-control {{$errors->has('user_id') ? 'is-invalid' : ''}}" name="user_id" id="user-id-edit" data-live-search="true">
-                    
-                  </select>
+                  @endif
                 </div>
               </div>
+            </div>
 
-              <div class="col-lg-6 form-group">
+            <div class="row">
+              <div class="col-lg-12 form-group">
                 <div>
-                  <label for="date" class="form-fields">Fecha/Hora</label>
+                  <label for="date_time" class="form-fields">Fecha/Hora</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control {{$errors->has('date') ? 'is-invalid' : ''}}" name="date" id="last-name-edit" placeholder="Tus apellidos aquí" value="{{old('date')}}">
-                  @if($errors->has('date'))
-                    <span class="text-danger">{{$errors->first('date')}}</span>
+                  <input type="datetime-local" class="form-control {{$errors->has('date') ? 'is-invalid' : ''}}" name="date_time" id="date-time-edit" placeholder="" value="{{old('date_time')}}" step="1">
+                  @if($errors->has('date_time'))
+                    <span class="text-danger">{{$errors->first('date_time')}}</span>
                   @endif
                 </div>
               </div>
