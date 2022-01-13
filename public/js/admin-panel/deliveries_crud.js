@@ -29,7 +29,7 @@ function load() {
                                     <th class="text-center">Nombre</th>
                                     <th class="text-center">Dirección</th>
                                     <th class="text-center">Coordenadas</th>
-                                    <th class="text-center">Tiempo estimado</th>
+                                    <th class="text-center">Fecha de entrega</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -63,10 +63,10 @@ function load() {
                     <td><a href="https://google.es/maps/@${data.coordinates}z" target="_blank">${data.coordinates}</a></td>
                     <td>${data.estimated_time}</td>
                     <td>
-                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editDelivery(${JSON.stringify(data).replace(/['"]+/g, '&quot;')})">
+                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editDelivery(${JSON.stringify(data, ['id', 'route_id', 'name', 'address', 'coordinates', 'estimated_time']).replace(/['"]+/g, '&quot;')})">
                             <i class="fas fa-edit" style="color: rgb(90,92,105)"></i>
                         </a>
-                        <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl" onclick="deleteDelivery(${JSON.stringify(data).replace(/['"]+/g, '&quot;')})">
+                        <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl" onclick="deleteDelivery(${JSON.stringify(data, ['id']).replace(/['"]+/g, '&quot;')})">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>
@@ -94,10 +94,43 @@ function load() {
                 });
             }
             
+            // Llamada al método addRoutesForm() para añadir las rutas existentes a un campo del formulario
+            addRoutesForm();
+
         },
         error: function (response) {
             console.log("No funciona");
         }
 
     })
+
+    function addRoutesForm() {
+        // Se realiza una petición AJAX para cargar todos los usuarios en un campo del formulario
+        var params = [];
+        $.ajax({
+            data: params,
+            url: '/admin-panel/getRoutes',
+            type: 'get',
+
+            success: function (response) {
+                // Se añade a los formularios de añadir y editar los usuarios que hay disponibles
+                response.forEach(function (data) {
+                    var option = "";
+
+                    option = `<option value="${data.id}">${data.id}</option>`;
+
+                    $("#route-id-create").append(option);
+                    $("#route-id-edit").append(option);
+                })
+
+                // Inicializar bootstrap-select
+                $('#route-id-create').selectpicker();
+                $('#route-id-edit').selectpicker();
+            },
+
+            error: function (response) {
+                console.log('Error al solicitar los usuarios para el formulario.');
+            }
+        })
+    }
 }

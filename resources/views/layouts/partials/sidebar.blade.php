@@ -38,7 +38,7 @@
                     <div class="bg-light py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{route('users.index')}}"><i class="fas fa-users" style="color:rgb(90, 92, 105)"></i> Usuarios</a></a>
                         <a class="collapse-item" href="{{route('routes.index')}}"><i class="fas fa-map-marked-alt" style="color:rgb(90, 92, 105)"></i></i> Rutas</a>
-                        <a class="collapse-item" href="{{route('deliveries.index')}}"><i class="fas fa-history" style="color:rgb(90, 92, 105)"></i> Histórico de Rutas</a>
+                        <a class="collapse-item" href="{{route('deliveries.index')}}"><i class="fas fa-history" style="color:rgb(90, 92, 105)"></i> Puntos de entrega</a>
                     </div>
                 </div>
             </li>

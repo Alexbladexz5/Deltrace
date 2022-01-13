@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Delivery;
 use Illuminate\Http\Request;
+use App\Http\Requests\DeliveryRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DeliveryController extends Controller

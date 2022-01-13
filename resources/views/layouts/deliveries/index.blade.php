@@ -33,20 +33,28 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{asset('libs/datatables/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/libs/leaflet/leaflet.css')}}">
+    <link rel="stylesheet" href="{{asset('libs/bootstrap-select/bootstrap-select.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/admin-panel/main.css')}}">
 @endpush
 
 @push('scripts')
     <script src="{{asset('/libs/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/libs/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('/libs/leaflet/leaflet.js')}}"></script>
+    <script src="{{asset('libs/bootstrap-select/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('libs/bootstrap-select/defaults-es_ES.min.js')}}"></script>
     <script src="{{asset('js/admin-panel/deliveries_crud.js')}}"></script>
 
     <script>
         function editDelivery(delivery){
             $("#editDeliveryFrm").attr('action',`/admin-panel/deliveries/${delivery.id}`);
+            $('#editDeliveryFrm #route_id-edit').val(delivery.route_id);
+            $('#editDeliveryFrm #route_id-edit').selectpicker('render');
             $("#editDeliveryFrm #name-edit").val(delivery.name);
-            $("#editDeliveryFrm #last-name-edit").val(delivery.last_name);
-            $("#editDeliveryFrm #email-edit").val(delivery.email);
+            $("#editDeliveryFrm #address-edit").val(delivery.address);
+            $("#editDeliveryFrm #coordinates-edit").val(delivery.coordinates);
+            $("#editDeliveryFrm #estimated-time-edit").val(delivery.estimated_time.replace(/ /g, "T"));
         }
 
         function deleteDelivery(delivery){

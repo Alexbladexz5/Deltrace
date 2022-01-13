@@ -12,7 +12,7 @@ class Delivery extends Model
 
     protected $table = 'deliveries';
 
-    protected $filliable = [
+    protected $fillable = [
         'name',
         'address',
         'coordinates',

@@ -12,7 +12,7 @@ function load() {
             $table = `
                 <div class="card">
                     <div class="card-body">
-                        <table id="dt-routes" class="table table-striped table-bordered table-responsive-md dts">
+                        <table id="dt-routes" class="table table-bordered table-responsive-md dts">
                             <thead>
                                 <tr>
                                     <th></th>

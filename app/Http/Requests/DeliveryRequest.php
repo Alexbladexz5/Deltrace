@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Validator;
 
-class RouteRequest extends FormRequest
+class DeliveryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +23,11 @@ class RouteRequest extends FormRequest
      */
     public function rules() {
         return [
-            'user_id' => ['required', 'string', 'exists:users,id'],
-            'date_time' => ['required', 'date']
+            'route_id' => ['required', 'string', 'exists:routes,id'],
+            'name' => ['required', 'string', 'max:100'],
+            'address' => ['required', 'string', 'max:200'],
+            'coordinates' => ['required', 'string', 'max:200'],
+            'estimated_time' => ['required', 'date', 'max:150']
         ];
     }
 
