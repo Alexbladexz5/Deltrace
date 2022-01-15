@@ -18,11 +18,16 @@ use App\Http\Controllers\DeliveryController;
 */
 
 /**
+ * Entrutador de la página web
+ */
+Route::get('/', function() {
+    return view('index');
+});
+
+
+/**
  * Enrutador del panel de adminitración
  *  */
-Route::get('/', function () {
-    return view('/auth/login');
-});
 Route::get('/logout', function () {
     return view('/auth/login');
 });
