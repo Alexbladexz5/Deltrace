@@ -15,19 +15,19 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        User::create([
             'name' => 'Alejandro',
             'last_name' => 'ADMIN',
             'email' => 'alejandro@deltrace.com',
             'password' => '$2y$10$jQ0EjR3x3s5R0OOdJjaA6O6x6.kS7a32WHWgRU7aZCtpKmmFSpdxu'
-        ]);
+        ])->assignRole('Admin');
 
-        DB::table('users')->insert([
+        User::create([
             'name' => 'EmilioADMIN',
             'last_name' => 'ADMIN',
             'email' => 'viserion1981@gmail.com',
             'password' => '$2y$10$jQ0EjR3x3s5R0OOdJjaA6O6x6.kS7a32WHWgRU7aZCtpKmmFSpdxu'
-        ]);
+        ])->assignRole('Admin');
 
         User::factory()->count(30)->create();
     }

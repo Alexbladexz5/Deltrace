@@ -1,9 +1,9 @@
 <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-      <h1>Welcome to Day</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      <h1>Bienvenido a Deltrace</h1>
+      <h2>Somos un equipo de jóvenes dessarrolladores, estudiantes del I.E.S Celia Viñas y este es el proyecto que hemos desarrollado.</h2>
+      <a href="#services" class="btn-get-started scrollto">Comenzar</a>
     </div>
   </section>
   <!-- End Hero -->

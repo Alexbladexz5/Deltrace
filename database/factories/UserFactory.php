@@ -29,7 +29,7 @@ class UserFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => '$2y$10$cqI20vkElnydBxCCoqCPBu/HKD5texW.W82CZzMma4Ax/P8i0FzIy', // contraseña
             'remember_token' => Str::random(10),
         ];
     }
