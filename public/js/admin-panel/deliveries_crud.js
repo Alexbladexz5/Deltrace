@@ -133,4 +133,11 @@ function load() {
             }
         })
     }
+
+    // JQuery para añadir un evento al botón
+    function addMaps() {
+        $('[data-toggle="popover"]').popover();
+    }
+    
+    addMaps();
 }

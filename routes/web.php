@@ -22,7 +22,7 @@ use App\Http\Controllers\DeliveryController;
  */
 Route::get('/', function() {
     return view('index');
-});
+})->name('index');
 
 
 /**

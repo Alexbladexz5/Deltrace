@@ -5,7 +5,7 @@
         <div class="text-center">
           <h3>Calculador de rutas</h3>
           <p> Presione el siguiente botón si desea acceder a nuestro calculador de rutas</p>
-          <a class="cta-btn" href="#">¡PÚLSAME!</a>
+          <a class="cta-btn" href="app">¡PÚLSAME!</a>
         </div>
 
       </div>

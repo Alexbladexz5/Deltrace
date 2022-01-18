@@ -51,13 +51,19 @@
             
             <div class="row">
               <div class="col-lg-12 form-group">
-                <div>
+                <div class="">
                   <label for="coordinates" class="form-fields">Coordenadas</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control {{$errors->has('coordinates') ? 'is-invalid' : ''}}" name="coordinates" id="coordinates-create" placeholder="" value="{{old('coordinates')}}">
-                  @if($errors->has('coordinates'))
-                    <span class="text-danger">{{$errors->first('coordinates')}}</span>
-                  @endif
+                  <div class="input-group">
+                    <input type="text" class="form-control {{$errors->has('coordinates') ? 'is-invalid' : ''}}" name="coordinates" id="coordinates-create" placeholder="" value="{{old('coordinates')}}" aria-describedby="maps-input">
+                    @if($errors->has('coordinates'))
+                      <span class="text-danger">{{$errors->first('coordinates')}}</span>
+                    @endif
+                      {{-- Ventana modal para añadir mapas --}}
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addCoordinates" >
+                      <i class="fas fa-map-marker-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,3 +95,25 @@
       </div>
     </div>
   </div>
+
+  
+<!-- Modal mapa -->
+<div class="modal fade" id="addCoordinates" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Añadir coordenadas</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
