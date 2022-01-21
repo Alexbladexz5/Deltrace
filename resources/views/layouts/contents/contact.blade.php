@@ -15,7 +15,7 @@
               <i class="bx bx-envelope"></i>
               <h3>Envíenos un correo
               </h3>
-              <p>contact@example.com</p>
+              <p>deltrace@protonmail.com</p>
             </div>
           </div>
 

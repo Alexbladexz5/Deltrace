@@ -136,7 +136,16 @@ function load() {
 
     // JQuery para añadir un evento al botón
     function addMaps() {
-        $('[data-toggle="popover"]').popover();
+        var map = L.map('map').setView([36.8478632,-2.4527225,18], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiZGVsdHJhY2UiLCJhIjoiY2t5bGs5Z2c4MDAwMjJ3cDh3enNyaTY3OSJ9.dArpzYKdEfpv96yiQksMgw'
+        }).addTo(map);
     }
     
     addMaps();

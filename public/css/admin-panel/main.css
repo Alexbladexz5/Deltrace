@@ -27,3 +27,9 @@ div.slider {
 .modal-backdrop.show:nth-of-type(even) {
     z-index: 1051 !important;
 }
+
+
+/* Leaflet */
+#map { 
+    height: 180px; 
+}
