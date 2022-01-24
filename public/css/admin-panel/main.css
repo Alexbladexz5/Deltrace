@@ -39,3 +39,7 @@ div.slider {
 #map {
     height: 320px;
 }
+/* Se arregla el z-index de la barra de busqueda */
+.pac-container {
+    z-index: 1051 !important;
+}

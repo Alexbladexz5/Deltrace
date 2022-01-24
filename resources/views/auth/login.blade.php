@@ -48,4 +48,5 @@
     </x-jet-authentication-card>
 </x-guest-layout>
 
+<script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

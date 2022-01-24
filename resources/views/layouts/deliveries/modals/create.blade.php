@@ -108,8 +108,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <div id="map"></div>
-        <div class='pointer'></div>
+        <div class="row">
+          <div class="form-group col-lg-12">
+            <input type="text" id="autocomplete" class="form-control"></input>
+            <div id="map"></div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
