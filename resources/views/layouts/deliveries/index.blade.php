@@ -45,7 +45,7 @@
     <script src="{{asset('libs/bootstrap-select/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('libs/bootstrap-select/defaults-es_ES.min.js')}}"></script>
     <script src="{{asset('js/admin-panel/deliveries_crud.js')}}"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0AUVJat2__UhZ8msExOQa5xYZpigP8Ew&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0AUVJat2__UhZ8msExOQa5xYZpigP8Ew&libraries=places"></script>
 
     <script>
         function editDelivery(delivery){

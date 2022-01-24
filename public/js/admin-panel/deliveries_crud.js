@@ -133,31 +133,31 @@ function load() {
             }
         })
     }
+
+    google.maps.event.addDomListener(window, 'load', function() {
+        const location = new Localizacion(()=>{
+            const myLatLng = {
+                lat: location.latitude,
+                lng: location.longitude
+            };
+
+            const options = {
+                center: myLatLng,
+                zoom: 12
+            }
+        
+            var map = document.getElementById('map');
+        
+            const mapa = new google.maps.Map(map, options);
+        
+            const marker = new google.maps.Marker({
+                position: myLatLng,
+                map: mapa,
+                title: 'Localización seleccionada'
+            });
+        });
+    });
 }
-
-google.maps.event.addDomListener(window, 'load', function() {
-    const location = new Location(()=>{
-        const myLatLng = {
-            lat: location.latitude,
-            lng: location.longitude
-        };
-    });
-
-    const options = {
-        center: myLatLng,
-        zoom: 12
-    }
-
-    var map = document.getElementById('map');
-
-    const mapa = new google.maps.Map(map, options);
-
-    const marker = new google.maps.Marker({
-        position: myLatLng,
-        map: mapa,
-        title: 'Localización seleccionada'
-    });
-});
     
 /* 
 var map = new google.maps.Map(document.getElementById("map"), {
