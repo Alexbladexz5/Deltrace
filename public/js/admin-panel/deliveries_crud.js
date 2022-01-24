@@ -133,20 +133,53 @@ function load() {
             }
         })
     }
-
-    // JQuery para añadir un evento al botón
-    function addMaps() {
-        var map = L.map('map').setView([36.8478632,-2.4527225,18], 13);
-
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1IjoiZGVsdHJhY2UiLCJhIjoiY2t5bGs5Z2c4MDAwMjJ3cDh3enNyaTY3OSJ9.dArpzYKdEfpv96yiQksMgw'
-        }).addTo(map);
-    }
-    
-    addMaps();
 }
+
+google.maps.event.addDomListener(window, 'load', function() {
+    const location = new Location(()=>{
+        const myLatLng = {
+            lat: location.latitude,
+            lng: location.longitude
+        };
+    });
+
+    const options = {
+        center: myLatLng,
+        zoom: 12
+    }
+
+    var map = document.getElementById('map');
+
+    const mapa = new google.maps.Map(map, options);
+
+    const marker = new google.maps.Marker({
+        position: myLatLng,
+        map: mapa,
+        title: 'Localización seleccionada'
+    });
+});
+    
+/* 
+var map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 36.8478632, lng: -2.4527225},
+        zoom: 13,
+    });
+*/
+    
+    
+
+// JQuery para añadir un evento al botón
+/*function addMaps() {
+    var map = L.map('map').setView([36.8478632,-2.4527225,18], 13);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiZGVsdHJhY2UiLCJhIjoiY2t5bGs5Z2c4MDAwMjJ3cDh3enNyaTY3OSJ9.dArpzYKdEfpv96yiQksMgw'
+    }).addTo(map);
+}
+
+addMaps();*/

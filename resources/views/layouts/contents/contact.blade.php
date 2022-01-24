@@ -36,7 +36,7 @@
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Escribe aquí tu mensaje..." required></textarea>
+                <textarea class="form-control" name="message" rows="5" placeholder="Escribe aquí tu mensaje..." required ></textarea>
               </div>
               <div class="my-3">
                 <div class="loading">Procesando</div>

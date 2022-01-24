@@ -33,8 +33,6 @@
 
   <main id="main">
 
-    @include('layouts.contents.about')
-
     @include('layouts.contents.services')
 
     @include('layouts.contents.pricing')

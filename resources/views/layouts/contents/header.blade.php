@@ -9,7 +9,6 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="#about">Sobre nosotros</a></li>
           <li><a class="nav-link scrollto" href="#services">Funciones</a></li>
           <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
           <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
