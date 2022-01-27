@@ -205,7 +205,7 @@ function load() {
                     <td>${data.id}</td>
                     <td>${data.name}</td>
                     <td>${data.address}</td>
-                    <td><a href="https://google.es/maps/@${data.coordinates}z" target="_blank">${data.coordinates}</a></td>
+                    <td><a href="https://www.google.com/maps/search/?api=1&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>
                     <td>${data.estimated_time}</td>
                     <td>
                         Ver más

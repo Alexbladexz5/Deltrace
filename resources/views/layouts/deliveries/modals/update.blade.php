@@ -55,10 +55,16 @@
                 <div>
                   <label for="coordinates" class="form-fields">Coordenadas</label>
                   <label class="mandatory-field">*</label>
-                  <input type="text" class="form-control {{$errors->has('coordinates') ? 'is-invalid' : ''}}" name="coordinates" id="coordinates-edit" placeholder="" value="{{old('coordinates')}}">
+                  <div class="input-group">
+                    <input type="text" class="form-control {{$errors->has('coordinates') ? 'is-invalid' : ''}}" name="coordinates" id="coordinates-edit" placeholder="" value="{{old('coordinates')}}">
                   @if($errors->has('coordinates'))
                     <span class="text-danger">{{$errors->first('coordinates')}}</span>
                   @endif
+                  {{-- Ventana modal para añadir mapas --}}
+                  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addCoordinates" onclick="modalCoordinates('edit')">
+                    <i class="fas fa-map-marker-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  </button>
+                  </div>
                 </div>
               </div>
             </div>

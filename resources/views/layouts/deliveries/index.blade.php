@@ -13,6 +13,7 @@
     @include('layouts.deliveries.modals.create')
     @include('layouts.deliveries.modals.update')
     @include('layouts.deliveries.modals.delete')
+    @include('layouts.deliveries.modals.map')
 
     @if(isset($idRoute))
         @if(!empty($idRoute))
@@ -61,6 +62,18 @@
 
         function deleteDelivery(delivery){
             $("#deleteDeliveryFrm").attr('action',`/admin-panel/deliveries/${delivery.id}`);
+        }
+
+        // Modificar clase del botón "Guardar" de la ventana modal mapa. Se utilizará para saber donde colocar las coordenadas (create o edit)
+        function modalCoordinates(typeModal) {
+            $('#save-marker').removeClass('create');
+            $('#save-marker').removeClass('edit');
+
+            if(typeModal == 'create'){
+                $('#save-marker').addClass('create');
+            } else if (typeModal == 'edit'){
+                $('#save-marker').addClass('edit');
+            }
         }
     </script>
 

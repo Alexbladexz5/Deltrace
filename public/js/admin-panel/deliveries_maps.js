@@ -73,13 +73,20 @@ function addMap() {
             }
         });
 
-        // Añadir el evento "click" en el caso de que se pulse "Guardar"
-        $('#saveMarker').mouseup(function() {
+        // Añadir el evento "click" en el caso de que se pulse "Guardar". La acción dependerá de si se está usando para la modal crear o modificar
+        $('#save-marker').mouseup(function() {
             $coordinates = [
                 (marker.getPosition().lat()),
                 (marker.getPosition().lng())
             ]
-            $('#createDeliveryFrm #coordinates-create').val($coordinates);
+            if($('#save-marker').hasClass('create')) {
+                $('#createDeliveryFrm #coordinates-create').val($coordinates);
+                $('#save-marker').removeClass('create');
+            } else if ($('#save-marker').hasClass('edit')) {
+                $('#editDeliveryFrm #coordinates-edit').val($coordinates);
+                $('#save-marker').removeClass('edit');
+            }
+            
             $('#addCoordinates').modal('hide');
         });
     });
