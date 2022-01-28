@@ -19,7 +19,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="150">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4><a href="app">Cálculo de rutas</a></h4>
+              <h4><a href="{{route('app')}}">Cálculo de rutas</a></h4>
               <p>Realiza tus cálculos de rutas para encontrar la más rápida incluyendo tantas paradas como necesites.</p>
             </div>
           </div>

@@ -163,6 +163,7 @@ function load() {
                                     null,
                                     null,
                                     null,
+                                    null,
                                     { orderable: false}
                                 ],
                                 "order": [[ 1, "asc" ]]
@@ -192,6 +193,7 @@ function load() {
                         <th class="text-center">Nombre</th>
                         <th class="text-center">Dirección</th>
                         <th class="text-center">Coordenadas</th>
+                        <th class="text-center">Lugar</th>
                         <th class="text-center">Tiempo estimado</th>
                         <th class="text-center">Acciones</th>
                     </tr>
@@ -206,6 +208,7 @@ function load() {
                     <td>${data.name}</td>
                     <td>${data.address}</td>
                     <td><a href="https://www.google.com/maps/search/?api=1&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>
+                    <td>${data.name_address}</td>
                     <td>${data.estimated_time}</td>
                     <td>
                         Ver más

@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <title>Deltrace</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link href="css\app\layout.css" rel="stylesheet" type="text/css" media="all">
-</head>
-
 <body id="top">
   <!-- Top Background Image Wrapper -->
-  <div class="bgded overlay" style="background-image:url('images/demo/backgrounds/01.png');">
+  <div class="bgded overlay" style="background-image:url({{asset('img/hero-bg.jpg')}});">
     <div class="wrapper row1">
 
     </div>
@@ -22,7 +12,7 @@
         <footer>
           <form class="group" method="post" action="#">
             <fieldset>
-              <input type="email" value="" placeholder="Email Here&hellip;">
+              <input type="email" value="" placeholder="">
               <button class="fas fa-sign-in-alt" type="submit" title="Submit"><em>Submit</em></button>
             </fieldset>
           </form>
@@ -39,9 +29,7 @@
     </main>
   </div>
   <!-- JAVASCRIPTS -->
-  <script src="js/app/jquery.min.js"></script>
-  <script src="js/app/jquery.backtotop.js"></script>
-  <script src="js/app/jquery.mobilemenu.js"></script>
+  <script src="{{asset('js/app/jquery.min.js')}}"></script>
+  <script src="{{asset('js/app/jquery.backtotop.js')}}"></script>
+  <script src="{{asset('js/app/jquery.mobilemenu.js')}}"></script>
 </body>
-
-</html>

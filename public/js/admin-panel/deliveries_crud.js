@@ -29,6 +29,7 @@ function load() {
                                     <th class="text-center">Nombre</th>
                                     <th class="text-center">Dirección</th>
                                     <th class="text-center">Coordenadas</th>
+                                    <th class="text-center">Lugar</th>
                                     <th class="text-center">Fecha de entrega</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
@@ -53,6 +54,9 @@ function load() {
                 if (data.created_at == null) {
                     data.created_at = "No disponible";
                 }
+                if (data.name_address == null || data.name_address == "") {
+                    data.name_address = "No disponible";
+                }
 
                 tbody = `
                 <tr class="text-center">
@@ -60,7 +64,8 @@ function load() {
                     <td>${data.route_id}</td>
                     <td>${data.name}</td>
                     <td>${data.address}</td>
-                    <td><a href="https://www.google.com/maps/search/?api=1&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>
+                    <td><a href="https://www.google.com/maps/search/?api=1&query=${data.name_address}&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>
+                    <td>${data.name_address}</td>
                     <td>${data.estimated_time}</td>
                     <td>
                         <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editDelivery(${JSON.stringify(data, ['id', 'route_id', 'name', 'address', 'coordinates', 'estimated_time']).replace(/['"]+/g, '&quot;')})">
@@ -86,6 +91,7 @@ function load() {
                         {"type" : "num"},
                         null,
                         null,
+                        { orderable: false},
                         { orderable: false},
                         {"type" : "date"},
                         { orderable: false}

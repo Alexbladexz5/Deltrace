@@ -24,6 +24,10 @@ Route::get('/', function() {
     return view('index');
 })->name('index');
 
+Route::get('/app', function() {
+    return view('layouts.app.index');
+})->name('app');
+
 
 /**
  * Enrutador del panel de adminitración
