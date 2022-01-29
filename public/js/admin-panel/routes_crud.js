@@ -206,8 +206,15 @@ function load() {
                 <tr class="text-center">
                     <td>${data.id}</td>
                     <td>${data.name}</td>
-                    <td>${data.address}</td>
-                    <td><a href="https://www.google.com/maps/search/?api=1&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>
+                    <td>${data.address}</td>`;
+
+                    if (data.address == "No disponible") {
+                        tbody += `<td><a href="https://www.google.com/maps/search/?api=1&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>`;
+                    } else {
+                        tbody += `<td><a href="https://www.google.com/maps/search/?api=1&query=${data.name_address}&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>`;
+                    }
+
+                tbody += `
                     <td>${data.name_address}</td>
                     <td>${data.estimated_time}</td>
                     <td>

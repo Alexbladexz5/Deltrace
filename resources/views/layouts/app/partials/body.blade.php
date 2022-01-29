@@ -28,8 +28,6 @@
       <div class="clear"></div>
     </main>
   </div>
-  <!-- JAVASCRIPTS -->
+  <!-- JAVASCRIPT -->
   <script src="{{asset('js/app/jquery.min.js')}}"></script>
-  <script src="{{asset('js/app/jquery.backtotop.js')}}"></script>
-  <script src="{{asset('js/app/jquery.mobilemenu.js')}}"></script>
 </body>
