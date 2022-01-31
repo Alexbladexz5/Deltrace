@@ -18,7 +18,7 @@ p {
 .headerWave {
   position:relative;
   text-align:center;
-  background: rgb(25, 25, 25);
+  background: #454545;
   color:white;
 }
 .logo {

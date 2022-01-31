@@ -24,9 +24,13 @@ Route::get('/', function() {
     return view('index');
 })->name('index');
 
-Route::get('/app', function() {
-    return view('layouts.app.index');
-})->name('app');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/app', function() {
+        return view('layouts.app.index');
+    })->name('app');
+});
+
+
 
 
 /**

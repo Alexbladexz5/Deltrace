@@ -13,7 +13,19 @@
           <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
           <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
-          <li><a class="nav-link" href="login">Login</a></li>
+          @if(Auth::user())
+          <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span><i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{{route('profile')}}">Perfil</a></li>
+              <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
+            </ul>
+          </li>
+          @else
+          <li><a class="nav-link scrollto" href="login">Login</a></li>
+          @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>

@@ -72,9 +72,6 @@
                             Cerrar sesión
                         </a>
                     </div>
-                    </li>
-
-                    </ul>
 
                 </nav>
                 <!-- End of Topbar -->
