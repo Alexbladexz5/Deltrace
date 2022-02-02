@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     })->name('app');
 
     Route::get('/app/profile', function() {
-        return view('layouts.app.partials.profile');
+        return view('layouts.contents.profile');
     })->name('app.profile');
 });
 

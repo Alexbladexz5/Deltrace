@@ -1,10 +1,10 @@
 <!-- ======= Header ======= -->
+
+<link src="{{ asset('css/index/header.css')}}" rel="stylesheet">
   <header id="header" class="d-flex align-items-center">
     <div id="nav-header" class="container d-flex align-items-center justify-content-between">
     
       <h1 class="logo"><a href="{{route('index')}}">Deltrace</a></h1>
-      <!-- Descomentar para poner logo -->
-      <!-- <a href="index.html" class="logo"><img src="img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul>
