@@ -4,14 +4,24 @@
 @include('layouts.app.partials.head')
 
 <body>
+    @include('layouts.contents.header')
     <div class="headerWave">
         <!--Content before waves-->
-        <div class="inner-headerWave flex">
-            <h1>Calculador de rutas</h1>
+        <div class="inner-headerWave">
+            <h1 class="pt-3">Calculador de rutas</h1>
             <div class="container">
                 <div class="row">
-                    <input type="text" id="autocomplete-app" class="form-control"></input>
-                    <button></button>
+                    <div class="col-lg-12">
+                        <div class="input-group">
+                            <input type="text" id="autocomplete-app" class="form-control"></input>
+                            <button class="btn btn-danger">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="dt-app"></div>
                 </div>
             </div>
             
@@ -34,10 +44,22 @@
         </div>
    </div> 
     <!--Waves end-->
+
     <script src="{{asset('/libs/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('/vendor/index/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    {{-- <script src="{{asset('/vendor/index/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0AUVJat2__UhZ8msExOQa5xYZpigP8Ew&libraries=places"></script>
     <script src="{{asset('/js/app/app.js')}}"></script>
+
+    <!-- Vendor JS Files -->
+    <script src="vendor/index/aos/aos.js"></script>
+    <script src="vendor/index/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/index/glightbox/js/glightbox.min.js"></script>
+    <script src="vendor/index/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="vendor/index/swiper/swiper-bundle.min.js"></script>
+    <script src="vendor/index/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+  <script src="js/index/main.js"></script>
 
 </body>
 

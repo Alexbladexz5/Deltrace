@@ -1005,6 +1005,7 @@ section {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
+  resize: none;
 }
 .contact .php-email-form input::focus, .contact .php-email-form textarea::focus {
   background-color: #cc1616;

@@ -61,9 +61,9 @@
                     <span class="text-danger">{{$errors->first('coordinates')}}</span>
                   @endif
                   {{-- Ventana modal para añadir mapas --}}
-                  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addCoordinates" onclick="modalCoordinates('edit')">
-                    <i class="fas fa-map-marker-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  </button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addCoordinates" onclick="modalCoordinates('edit')">
+                      <i class="fas fa-map-marker-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    </button>
                   </div>
                 </div>
               </div>
