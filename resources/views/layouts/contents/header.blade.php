@@ -8,11 +8,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="#services">Funciones</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-          <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
+          <li><a class="nav-link scrollto active" href="{{route('index')}}#hero">Inicio</a></li>
+          <li><a class="nav-link scrollto" href="{{route('index')}}#services">Funciones</a></li>
+          <li><a class="nav-link scrollto" href="{{route('index')}}#pricing">Pricing</a></li>
+          <li><a class="nav-link scrollto" href="{{route('index')}}#team">Equipo</a></li>
+          <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contacto</a></li>
           @if(Auth::user())
           <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span><i class="bi bi-chevron-down"></i></a>
             <ul>
