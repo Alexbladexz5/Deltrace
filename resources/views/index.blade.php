@@ -39,7 +39,7 @@
 
     @include('layouts.contents.team')
 
-    @include('layouts.contents.contact')
+    @include('layouts.contents.ajax-contact-form')
 
   </main>
 
@@ -54,7 +54,7 @@
   <script src="vendor/index/glightbox/js/glightbox.min.js"></script>
   <script src="vendor/index/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="vendor/index/swiper/swiper-bundle.min.js"></script>
-  <script src="vendor/index/php-email-form/validate.js"></script>
+  <script src="js/index/contactForm.js"></script>
 
   <!-- Template Main JS File -->
   <script src="js/index/main.js"></script>

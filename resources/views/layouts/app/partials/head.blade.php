@@ -16,5 +16,6 @@
 
     <!-- Template Main CSS File -->
     <link href="css/index/style.css" rel="stylesheet">
+    <link href="css/app/styles.css" rel="stylesheet">
     
 </head>

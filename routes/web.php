@@ -35,7 +35,8 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 
-
+Route::get('ajax-contact-form', [AjaxContactController::class, 'index']);
+Route::post('save', [AjaxContactController::class, 'store']);
 
 /**
  * Enrutador del panel de adminitración

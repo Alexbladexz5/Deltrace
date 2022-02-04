@@ -10,19 +10,22 @@
         <div class="inner-headerWave">
             <h1 class="pt-3">Calculador de rutas</h1>
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="input-group">
-                            <input type="text" id="autocomplete-app" class="form-control"></input>
-                            <button class="btn btn-danger">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
+                <form action="" role="form" method="POST" id="new-delivery">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <input type="text" id="autocomplete-app" class="form-control"></input>
+                                <button class="btn btn-danger">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="dt-app"></div>
-                </div>
+                    <div class="col-lg-12">
+                        <div class="dt-app"></div>
+                    </div>
+                </form>
             </div>
             
         </div>
@@ -56,10 +59,10 @@
     <script src="vendor/index/glightbox/js/glightbox.min.js"></script>
     <script src="vendor/index/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="vendor/index/swiper/swiper-bundle.min.js"></script>
-    <script src="vendor/index/php-email-form/validate.js"></script>
+    <script src="{{asset('/libs/datatables/jquery.dataTables.min.js')}}"></script>
 
     <!-- Template Main JS File -->
-  <script src="js/index/main.js"></script>
+    <script src="js/index/main.js"></script>
 
 </body>
 

@@ -23,7 +23,7 @@
 
         <div class="row d-flex justify-content-center" data-aos="fade-up">
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form name="ajax-contact-form" id="ajax-contact-form" action="javascript:validateForm()" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Tu nombre" required>
