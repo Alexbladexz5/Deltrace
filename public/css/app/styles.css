@@ -1,4 +1,7 @@
+/* Quitar barra de Google en el autocompletado */
 .pac-container:after {
     background-image: none !important;
     height: 0px;
 }
+
+/*  */

@@ -3,7 +3,7 @@
       <div class="container">
 
         <div class="section-title">
-          <span>Equipo</span>
+          <span class="no_selection">Equipo</span>
           <h2>Equipo</h2>
           <p>Este es nuestro equipo de desarrollo</p>
         </div>

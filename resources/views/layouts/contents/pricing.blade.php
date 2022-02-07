@@ -3,7 +3,7 @@
       <div class="container">
 
         <div class="section-title">
-          <span>Pricing</span>
+          <span class="no_selection">Pricing</span>
           <h2>Pricing</h2>
           <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
         </div>

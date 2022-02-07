@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +36,7 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 
-Route::get('ajax-contact-form', [AjaxContactController::class, 'index']);
-Route::post('save', [AjaxContactController::class, 'store']);
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 /**
  * Enrutador del panel de adminitración

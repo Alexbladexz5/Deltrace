@@ -16,7 +16,7 @@
                         <div class="col-lg-12">
                             <div class="input-group">
                                 <input type="text" id="autocomplete-app" class="form-control"></input>
-                                <button class="btn btn-danger">
+                                <button class="btn btn-danger" id="btn-add-delivery">
                                     <i class="fas fa-arrow-right"></i>
                                 </button>
                             </div>

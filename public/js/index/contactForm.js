@@ -49,7 +49,7 @@ function validateForm() {
                 $('#submit').html('Por favor espere...');
                 $("#submit").attr("disabled", true);
                 $.ajax({
-                    url: "{{url('save')}}",
+                    url: "/contact",
                     type: "POST",
                     data: $('#ajax-contact-form').serialize(),
                     success: function(response) {

@@ -39,7 +39,7 @@
 
     @include('layouts.contents.team')
 
-    @include('layouts.contents.ajax-contact-form')
+    @include('layouts.contents.contact-form')
 
   </main>
 

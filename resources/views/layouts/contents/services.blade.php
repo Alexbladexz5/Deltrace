@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="section-title">
-            <span>Funciones</span>
+            <span class="no_selection">Funciones</span>
             <h2>Funciones</h2>
             <p>Aquí encontrareís un resumen de las funciones de nuestro proyecto</p>
         </div>
