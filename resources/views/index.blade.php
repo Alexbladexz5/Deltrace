@@ -58,6 +58,7 @@
 
   <!-- Template Main JS File -->
   <script src="js/index/main.js"></script>
+  <script src="libs/jquery/jquery.min.js"></script>
 
 </body>
 

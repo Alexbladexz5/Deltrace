@@ -17,7 +17,19 @@ function autocompleteApp() {
 
     $('#btn-add-delivery').click(function(event) {
         event.preventDefault();
-        console.log(search.getPlace());
+
+        var place = search.getPlace();
+
+        var delivery = {
+            'name': place.name,
+            'coordinates': {
+                'lat': place.geometry.location.lat(),
+                'lng': place.geometry.location.lng()
+            }
+        };
+
+        console.log(delivery);
+
     });
 }
 

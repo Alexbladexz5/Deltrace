@@ -48,18 +48,34 @@ function validateForm() {
                 });
                 $('#submit').html('Por favor espere...');
                 $("#submit").attr("disabled", true);
-                $.ajax({
+                
+            }
+        })
+    }
+}
+
+const button = document.getElementById("submitButton")
+button.addEventListener('click', elemento => {
+    elemento.preventDefault()
+    let dato = {
+        name:$("#name").val(),
+        email:$("#email").val(),
+        msg:$("#msg").val()
+    }
+    $.ajax({
                     url: "/contact",
                     type: "POST",
-                    data: $('#ajax-contact-form').serialize(),
+                    data: dato,
+                    contentType: "application/json",
                     success: function(response) {
                         $('#submit').html('Submit');
                         $("#submit").attr("disabled", false);
                         alert('El formulario ha sido enviado correctamente');
                         document.getElementById("ajax-contact-form").reset();
+                    },
+                    error: function(response){
+                        alert("Error a chuparla")
                     }
                 });
-            }
-        })
-    }
-}
+
+})
