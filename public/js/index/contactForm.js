@@ -1,7 +1,7 @@
 function validateForm() {
 
-    if ($("#ajax-contact-form").length > 0) {
-        $("#ajax-contact-form").validate({
+    if ($("#php-contact-form").length > 0) {
+        $("#php-contact-form").validate({
             rules: {
                 name: {
                     required: true,
@@ -60,21 +60,25 @@ button.addEventListener('click', elemento => {
     let dato = {
         name:$("#name").val(),
         email:$("#email").val(),
-        msg:$("#msg").val()
+        msg:$("#msg").val(),
     }
     $.ajax({
                     url: "/contact",
                     type: "POST",
                     data: dato,
+                    headers: { 
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
                     contentType: "application/json",
                     success: function(response) {
                         $('#submit').html('Submit');
                         $("#submit").attr("disabled", false);
                         alert('El formulario ha sido enviado correctamente');
-                        document.getElementById("ajax-contact-form").reset();
+                        document.getElementById("php-contact-form").reset();
                     },
                     error: function(response){
-                        alert("Error a chuparla")
+                        console.log(response)
+                        alert("Error al enviar el correo")
                     }
                 });
 

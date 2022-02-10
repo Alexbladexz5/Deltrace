@@ -6,7 +6,7 @@
             <h2>Contacto</h2>
         </div>
       <div class="col-lg-6 mx-auto">
-        <form role="form" class="php-email-form">
+        <form role="form" class="php-email-form" id="php-email-form">
           @csrf
           <div id="res"></div>
           <div class="row">
@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Introduce tu mensaje" required></textarea>
+            <textarea class="form-control" id="msg" name="msg" rows="5" placeholder="Introduce tu mensaje" required></textarea>
           </div>
           <div class="my-3">
             <div class="loading">Procesando
@@ -26,7 +26,7 @@
             <div class="error-message"></div>
             <div class="sent-message">Tu mensaje ha sido enviado. ¡Muchas gracias!</div>
           </div>
-          <div class="text-center"><button id="submitButton">Enviar mensaje</button></div>
+          <div class="text-center"><button class="contactformButton" id="submitButton">Enviar mensaje</button></div>
         </form>
       </div>
     </div>

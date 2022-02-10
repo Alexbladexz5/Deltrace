@@ -7,12 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator; // Temporal para validar
 use App\Models\ContactForm;
 
-class ContactController extends Controller
-{
-    public function index()
-    {
-        return view('contact-form');
-    }
+class ContactController extends Controller {
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
@@ -29,14 +24,14 @@ class ContactController extends Controller
         $email = $request->email;
         $msg = $request->message;
 
-        $msg = "
+        $mail = "
         Name: $name \n
         Email: $email \n
         Message: $msg
         ";
 
-        $receiver = "deltrace@deltrace.com";
-        Mail::to($receiver)->send(new ContactMail($msg));
+        $receiver = env('MAIL_USERNAME');
+        Mail::to($receiver)->send(new ContactMail($mail));
         return response()->json(['code' => 200, 'msg' => 'Muchas gracias por contactar con nosotros, le responderemos pronto.']);
     }
 }

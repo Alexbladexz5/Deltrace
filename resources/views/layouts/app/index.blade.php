@@ -12,19 +12,41 @@
             <div class="container">
                 <form action="" role="form" method="POST" id="new-delivery">
                     @csrf
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="input-group">
-                                <input type="text" id="autocomplete-app" class="form-control"></input>
-                                <button class="btn btn-danger" id="btn-add-delivery">
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
-                            </div>
+
+                    <div class="row text-start">
+                        <div class="col-lg-12 mb-3">
+                            <label for="autocomplete-app" class="form-fields">Dirección</label>
+                            <label class="mandatory-field">*</label>
+                            <input type="text" name="autocomplete-app" id="autocomplete-app" class="form-control py-3"></input>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="dt-app"></div>
+
+                    <div class="row text-start">
+                        <div class="col-lg-12 mb-3">
+                            <label for="name-app" class="form-fields">Nombre</label>
+                            <label class="mandatory-field">*</label>
+                            <input type="text" name="name-app" id="name-app" class="form-control py-3" placeholder="Nombre"></input>
+                        </div>
                     </div>
+
+                    <div class="row text-start">
+                        <div class="col-lg-12 mb-3">
+                            <label for="tracking-number-app" class="form-fields">Número de seguimiento</label>
+                            <input type="text" name="tracking-number-app" id="tracking-number-app" class="form-control py-3" placeholder="Número de seguimiento"></input>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 mb-3 position-absolute bottom-0 start-0">
+                            <button class="btn btn-danger container" id="btn-add-delivery">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    {{-- <div class="col-lg-12">
+                        <div class="dt-app"></div>
+                    </div> --}}
                 </form>
             </div>
             
