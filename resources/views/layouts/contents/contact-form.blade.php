@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" id="msg" name="msg" rows="5" placeholder="Introduce tu mensaje" required></textarea>
+            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Introduce tu mensaje" required></textarea>
           </div>
           <div class="my-3">
             <div class="loading">Procesando

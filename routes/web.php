@@ -6,7 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ContactController;
-
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,8 +65,6 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/admin-panel/getDeliveries', [DeliveryController::class, 'getDeliveries'])->name('deliveries.getList')->middleware('auth');
     Route::get('/admin-panel/getDeliveries/{delivery}', [DeliveryController::class, 'getDeliveriesRoute'])->name('deliveries.getRoute')->middleware('auth');
 });
-
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('layouts/admin');

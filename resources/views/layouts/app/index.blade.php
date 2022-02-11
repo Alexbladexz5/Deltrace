@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-12 mb-3 position-absolute bottom-0 start-0">
+                        <div class="col-lg-12 mb-3">
                             <button class="btn btn-danger container" id="btn-add-delivery">
                                 <i class="fas fa-plus"></i>
                             </button>

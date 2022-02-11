@@ -20,21 +20,26 @@ function autocompleteApp() {
 
         var place = search.getPlace();
 
-        var delivery = {
-            'name': place.name,
-            'coordinates': {
-                'lat': place.geometry.location.lat(),
-                'lng': place.geometry.location.lng()
-            }
-        };
-
-        console.log(delivery);
-
+        createDelivery(place);
     });
 }
 
-function createDelivery() {
-    
+function createDelivery(place) {
+    var delivery = {
+        'name': $('#name-app').val() || '',
+        'tracking-number': $('#tracking-number-app').val() || '',
+        'coordinates': {
+            'lat': place.geometry.location.lat(),
+            'lng': place.geometry.location.lng()
+        },
+        'place': place.formatted_address
+    };
+
+    console.log(delivery);
+
+    deliveries.push(delivery);
+
+    console.log(deliveries);
 }
 
 // Recordatorio: crear una tabla con DataTables más adelante

@@ -12,10 +12,6 @@ function validateForm() {
                     maxlength: 50,
                     email: true,
                 },
-                subject: {
-                    required: true,
-                    maxlength: 100
-                },
                 description: {
                     required: true,
                     maxlength: 300
@@ -30,10 +26,6 @@ function validateForm() {
                     required: "Introduce un correo por favor.",
                     email: "Introduce un correo válido por favor.",
                     maxlength: "La longitud máxima del correo son 50 caracteres.",
-                },
-                subject: {
-                    required: "Introduce un asunto por favor.",
-                    maxlength: "La longitud máxima del asunto son 100 caracteres."
                 },
                 description: {
                     required: "Introduce una descripción por favor.",
@@ -57,15 +49,18 @@ function validateForm() {
 const button = document.getElementById("submitButton")
 button.addEventListener('click', elemento => {
     elemento.preventDefault()
-    let dato = {
+    let datos = {
         name:$("#name").val(),
         email:$("#email").val(),
-        msg:$("#msg").val(),
+        message:$("#message").val(),
     }
+
+    var info = JSON.stringify(datos);
+    
     $.ajax({
                     url: "/contact",
-                    type: "POST",
-                    data: dato,
+                    type: "post",
+                    data: info,
                     headers: { 
                         'X-CSRF-TOKEN': $('input[name="_token"]').val()
                     },
@@ -74,7 +69,7 @@ button.addEventListener('click', elemento => {
                         $('#submit').html('Submit');
                         $("#submit").attr("disabled", false);
                         alert('El formulario ha sido enviado correctamente');
-                        document.getElementById("php-contact-form").reset();
+                        // $('#php-email-form').trigger("reset");
                     },
                     error: function(response){
                         console.log(response)

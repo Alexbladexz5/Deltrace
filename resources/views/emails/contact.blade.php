@@ -1,12 +1,8 @@
-@component('mail::message')
-# Introduction
-
-The body of your message.
-
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
-@endcomponent
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Deltrace</title>
+</head>
+<body>
+    <h1>Formulario de contacto Deltrace</h1>
+    <p>{{$mail}}</p>
+</body>

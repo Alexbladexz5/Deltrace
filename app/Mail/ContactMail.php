@@ -11,14 +11,16 @@ class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $mail;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mail)
     {
-        $this->msg = $msg;
+        $this->mail = $mail;
     }
 
     /**
@@ -28,7 +30,6 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        $msg = $this->msg;
-        return $this->markdown('emails.contact', compact('msg'));
+        return $this->subject("Formulario de Deltrace")->view('emails.contact');
     }
 }
