@@ -69,7 +69,7 @@ button.addEventListener('click', elemento => {
                         $('#submit').html('Submit');
                         $("#submit").attr("disabled", false);
                         alert('El formulario ha sido enviado correctamente');
-                        // $('#php-email-form').trigger("reset");
+                        $('#php-email-form').trigger("reset");
                     },
                     error: function(response){
                         console.log(response)

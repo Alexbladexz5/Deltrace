@@ -1,6 +1,7 @@
 $(document).ready(autocompleteApp);
 
-var deliveries = [];
+let deliveries = [];
+let idRoute = 1;
 
 function autocompleteApp() {
     // Se crea una barra de búsqueda para localizar una ubicación en el mapa
@@ -40,6 +41,24 @@ function createDelivery(place) {
     deliveries.push(delivery);
 
     console.log(deliveries);
+
+    // Crear llamada AJAX para almacenar la entrega en una ruta en la DB. Si funciona se almacena de forma local la entrega creada
+    $.ajax({
+        url: "app/createDelivery",
+        type: "post",
+        data: JSON.stringify(delivery),
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+        },
+        contentType: "application/json",
+        success: function(response) {
+            
+        },
+        error: function(response) {
+
+        }
+    });
+
 }
 
 // Recordatorio: crear una tabla con DataTables más adelante

@@ -3,5 +3,19 @@
     background-image: none !important;
     height: 0px;
 }
+.pac-item {
+  font-size: 4vh;
+}
 
+.pac-item-query {
+  font-size: 4vh;
+}
+input::-webkit-input-placeholder {
+    font-size: 3vh;
+    height:6px;
+    padding: 35px 0px;
+}
+input.autocomplete-app{
+  font-size: 2rem !important;
+}
 /*  */
