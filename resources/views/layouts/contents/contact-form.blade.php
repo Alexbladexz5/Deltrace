@@ -12,13 +12,16 @@
           <div class="row">
             <div class="col-md-6 form-group">
               <input type="text" name="name" class="form-control" id="name" placeholder="Introduce tu nombre" required>
+              <span class="text-danger error-text name_error"></span>
             </div>
             <div class="col-md-6 form-group mt-3 mt-md-0">
               <input type="email" class="form-control" name="email" id="email" placeholder="Introduce tu email" required>
+              <span class="text-danger error-text email_error"></span>
             </div>
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Introduce tu mensaje" required></textarea>
+            <textarea class="form-control" pattern="{255}" id="message" name="message" rows="5" placeholder="Introduce tu mensaje" required></textarea>
+            <span class="text-danger error-text message_error"></span>
           </div>
           <div class="my-3">
             <div class="loading">Procesando

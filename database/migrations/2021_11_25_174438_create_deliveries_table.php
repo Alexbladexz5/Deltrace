@@ -19,7 +19,7 @@ class CreateDeliveriesTable extends Migration
             $table->string('address', 200);
             $table->string('coordinates', 200);
             $table->string('name_address', 200);
-            $table->timestamp('estimated_time');
+            $table->timestamp('estimated_time')->nullable();
             $table->unsignedBigInteger('route_id');
             $table->timestamps();
 

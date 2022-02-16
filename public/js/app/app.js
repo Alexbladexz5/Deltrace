@@ -52,10 +52,10 @@ function createDelivery(place) {
         },
         contentType: "application/json",
         success: function(response) {
-            
+            alert('Funciona');
         },
         error: function(response) {
-
+            alert('No funciona');
         }
     });
 

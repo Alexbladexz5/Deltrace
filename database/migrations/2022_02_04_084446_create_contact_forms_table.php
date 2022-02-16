@@ -18,7 +18,6 @@ class CreateContactFormsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('subject');
-            $table->text('description');
             $table->timestamps();
         });
     }

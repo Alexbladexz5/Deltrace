@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AppController;
 use App\Mail\ContactMail;
 use Illuminate\Support\Facades\Mail;
 /*
@@ -34,6 +35,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/app/profile', function() {
         return view('layouts.contents.profile');
     })->name('app.profile');
+
+    Route::post('/app/createDelivery', [AppController::class, 'saveDelivery']);
 });
 
 

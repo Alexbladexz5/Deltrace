@@ -27,7 +27,7 @@ class DeliveryRequest extends FormRequest
             'name' => ['required', 'string', 'max:100'],
             'address' => ['required', 'string', 'max:200'],
             'coordinates' => ['required', 'string', 'max:200'],
-            'estimated_time' => ['required', 'date', 'max:150']
+            'estimated_time' => ['nullable', 'date', 'max:150']
         ];
     }
 

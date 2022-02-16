@@ -65,15 +65,31 @@ button.addEventListener('click', elemento => {
                         'X-CSRF-TOKEN': $('input[name="_token"]').val()
                     },
                     contentType: "application/json",
-                    success: function(response) {
-                        $('#submit').html('Submit');
-                        $("#submit").attr("disabled", false);
-                        alert('El formulario ha sido enviado correctamente');
-                        $('#php-email-form').trigger("reset");
+                    beforeSend:function(){
+                        $(document).find('span.error-text').text('');
+                    },
+                    success:function(response){
+                        if(response.status == 0){
+                            $.each(response.error, function(prefix, val){
+                                $('span.' + prefix + '_error').text(val[0]);
+                            })
+                        } else {
+                            $('#submit').html('Submit');
+                            $("#submit").attr("disabled", false);
+                            $('#php-email-form').trigger("reset");
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Correo enviado correctamente',
+                                text: 'Le responderemos lo antes posible.',
+                            })
+                        }
                     },
                     error: function(response){
-                        console.log(response)
-                        alert("Error al enviar el correo")
+                        Swal.fire({
+                                icon: 'error',
+                                title: 'Ups...',
+                                text: 'Ha ocurrido un error al enviar el correo, intenténtelo más tarde.',
+                            })
                     }
                 });
 

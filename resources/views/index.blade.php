@@ -54,6 +54,7 @@
   <script src="vendor/index/glightbox/js/glightbox.min.js"></script>
   <script src="vendor/index/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="vendor/index/swiper/swiper-bundle.min.js"></script>
+  <script src="vendor/sweetalert/sweetalert2.all.min.js"></script>
   <script src="js/index/contactForm.js"></script>
 
   <!-- Template Main JS File -->
