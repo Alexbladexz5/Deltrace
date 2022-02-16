@@ -31,4 +31,8 @@ class Delivery extends Model
         $result = DB::SELECT($sql);
         return $result;
     }
+
+    public static function saveDelivery($data) {
+        DB;
+    }
 }

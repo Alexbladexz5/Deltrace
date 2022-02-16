@@ -28,7 +28,7 @@ function autocompleteApp() {
 function createDelivery(place) {
     var delivery = {
         'name': $('#name-app').val() || '',
-        'tracking-number': $('#tracking-number-app').val() || '',
+        'tracking_number': $('#tracking-number-app').val() || '',
         'coordinates': {
             'lat': place.geometry.location.lat(),
             'lng': place.geometry.location.lng()
