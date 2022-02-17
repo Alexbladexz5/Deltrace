@@ -134,7 +134,7 @@
   transition: 0.5s;
 }
 .mobile-nav-toggle.bi-x {
-  color: #cc1616;
+  color: #fff;
 }
 
 @media (max-width: 991px) {

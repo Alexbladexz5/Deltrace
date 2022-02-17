@@ -27,6 +27,7 @@ function autocompleteApp() {
 
 function createDelivery(place) {
     var delivery = {
+        'id_route': idRoute,
         'name': $('#name-app').val() || '',
         'tracking_number': $('#tracking-number-app').val() || '',
         'coordinates': {
@@ -37,6 +38,7 @@ function createDelivery(place) {
     };
 
     console.log(delivery);
+    console.log(place);
 
     deliveries.push(delivery);
 

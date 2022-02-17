@@ -19,7 +19,7 @@ a {
 }
 
 a:hover {
-  color: #e82d2d;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -194,6 +194,7 @@ span.no_selection {
   line-height: 0;
   margin-left: 5px;
 }
+
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
   background: #cc1616;
 }
@@ -261,7 +262,7 @@ span.no_selection {
   transition: 0.5s;
 }
 .mobile-nav-toggle.bi-x {
-  color: #cc1616;
+  color: #fff;
 }
 
 @media (max-width: 991px) {
@@ -304,7 +305,7 @@ span.no_selection {
 .navbar-mobile a, .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
-  color: #191919;
+  color: #191919 !important;
 }
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
   color: #cc1616;

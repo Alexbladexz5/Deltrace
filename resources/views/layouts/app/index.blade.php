@@ -9,7 +9,7 @@
         <!--Content before waves-->
         <div class="inner-headerWave">
             <h1 class="pt-3">Calculador de rutas</h1>
-            <div class="container">
+            <div class="container autocomplete-div">
                 <form action="" role="form" method="POST" id="new-delivery">
                     @csrf
 
