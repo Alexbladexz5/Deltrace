@@ -80,10 +80,12 @@ function addMap() {
                 (marker.getPosition().lng())
             ]
             if($('#save-marker').hasClass('create')) {
-                $('#createDeliveryFrm #coordinates-create').val($coordinates);
+                $('#createDeliveryFrm #latitude-create').val($coordinates[0]);
+                $('#createDeliveryFrm #longitude-create').val($coordinates[1]);
                 $('#save-marker').removeClass('create');
             } else if ($('#save-marker').hasClass('edit')) {
-                $('#editDeliveryFrm #coordinates-edit').val($coordinates);
+                $('#editDeliveryFrm #latitude-edit').val($coordinates[0]);
+                $('#editDeliveryFrm #longitude-edit').val($coordinates[1]);
                 $('#save-marker').removeClass('edit');
             }
             

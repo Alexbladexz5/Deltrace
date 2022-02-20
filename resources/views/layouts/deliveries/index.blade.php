@@ -51,12 +51,31 @@
 
     <script>
         function editDelivery(delivery){
+            if (delivery.update_at == "No disponible") {
+                delivery.update_at = "";
+                }
+            if (delivery.created_at == "No disponible") {
+                delivery.created_at = "";
+            }
+            if (delivery.name_address == "No disponible") {
+                delivery.name_address = "";
+            }
+            if (delivery.estimated_time == "No disponible") {
+                delivery.estimated_time = "";
+            }
+            if (delivery.tracking_number == "No disponible") {
+                delivery.tracking_number = "";
+            }
+
             $("#editDeliveryFrm").attr('action',`/admin-panel/deliveries/${delivery.id}`);
             $('#editDeliveryFrm #route_id-edit').val(delivery.route_id);
             $('#editDeliveryFrm #route_id-edit').selectpicker('render');
             $("#editDeliveryFrm #name-edit").val(delivery.name);
             $("#editDeliveryFrm #address-edit").val(delivery.address);
-            $("#editDeliveryFrm #coordinates-edit").val(delivery.coordinates);
+            $("#editDeliveryFrm #name-address-edit").val(delivery.name_address);
+            $("#editDeliveryFrm #tracking-number-edit").val(delivery.tracking_number);
+            $("#editDeliveryFrm #latitude-edit").val(delivery.latitude);
+            $("#editDeliveryFrm #longitude-edit").val(delivery.longitude);
             $("#editDeliveryFrm #estimated-time-edit").val(delivery.estimated_time.replace(/ /g, "T"));
         }
 

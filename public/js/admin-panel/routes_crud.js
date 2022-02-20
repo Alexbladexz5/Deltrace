@@ -161,7 +161,8 @@ function load() {
                                     {"type" : "num"},
                                     null,
                                     null,
-                                    null,
+                                    { orderable: false},
+                                    { orderable: false},
                                     null,
                                     null,
                                     { orderable: false}
@@ -192,7 +193,8 @@ function load() {
                         <th class="text-center">ID</th>
                         <th class="text-center">Nombre</th>
                         <th class="text-center">Dirección</th>
-                        <th class="text-center">Coordenadas</th>
+                        <th class="text-center">Latitud</th>
+                        <th class="text-center">Longitud</th>
                         <th class="text-center">Lugar</th>
                         <th class="text-center">Tiempo estimado</th>
                         <th class="text-center">Acciones</th>
@@ -202,24 +204,36 @@ function load() {
             `;
 
             response.forEach(function (data) {
+                if (data.name_address == null || data.name_address == "") {
+                    data.name_address = "No disponible";
+                }
+                if (data.estimated_time == null || data.estimated_time == "") {
+                    data.estimated_time = "No disponible";
+                }
+
                 tbody += `
                 <tr class="text-center">
                     <td>${data.id}</td>
                     <td>${data.name}</td>
-                    <td>${data.address}</td>`;
-
-                    if (data.address == "No disponible") {
-                        tbody += `<td><a href="https://www.google.com/maps/search/?api=1&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>`;
-                    } else {
-                        tbody += `<td><a href="https://www.google.com/maps/search/?api=1&query=${data.name_address}&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>`;
-                    }
-
-                tbody += `
+                    <td>${data.address}</td>
+                    <td>${data.latitude}</td>
+                    <td>${data.longitude}</td>
                     <td>${data.name_address}</td>
                     <td>${data.estimated_time}</td>
-                    <td>
+                    <td>`;
+
+                    if (data.address == "No disponible") {
+                        tbody += `<a href="https://www.google.com/maps/search/?api=1&query=${data.latitude},${data.longitude}" target="_blank">
+                                    <i class="fas fa-map-pin" style="color: rgb(90,92,105)"></i>
+                                </a>`;
+                    } else {
+                        tbody += `<a href="https://www.google.com/maps/search/?api=1&query=${data.name_address}&query=${data.latitude},${data.longitude}" target="_blank">
+                                    <i class="fas fa-map-pin" style="color: rgb(90,92,105)"></i>
+                                </a>`;
+                    }
+                        
+                tbody += `<a href="/admin-panel/deliveries/${data.route_id}">
                         Ver más
-                        <a href="/admin-panel/deliveries/${data.route_id}">
                             <i class="fas fa-edit" style="color: rgb(90,92,105)"></i>
                         </a>
                     </td>

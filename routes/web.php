@@ -36,6 +36,10 @@ Route::group(['middleware' => ['auth']], function() {
         return view('layouts.contents.profile');
     })->name('app.profile');
 
+    Route::get('/app/history', function() {
+        return view('layouts.contents.history');
+    })->name('app.history');
+
     Route::post('/app/createDelivery', [AppController::class, 'saveDelivery']);
 });
 

@@ -28,7 +28,9 @@ function load() {
                                     <th class="text-center">ID Ruta</th>
                                     <th class="text-center">Nombre</th>
                                     <th class="text-center">Dirección</th>
-                                    <th class="text-center">Coordenadas</th>
+                                    <th class="text-center">Número de seguimiento</th>
+                                    <th class="text-center">Latitud</th>
+                                    <th class="text-center">Longitud</th>
                                     <th class="text-center">Lugar</th>
                                     <th class="text-center">Fecha de entrega</th>
                                     <th class="text-center">Acciones</th>
@@ -57,25 +59,38 @@ function load() {
                 if (data.name_address == null || data.name_address == "") {
                     data.name_address = "No disponible";
                 }
+                if (data.estimated_time == null || data.estimated_time == "") {
+                    data.estimated_time = "No disponible";
+                }
+                if (data.tracking_number == null || data.tracking_number == "") {
+                    data.tracking_number = "No disponible";
+                }
 
                 tbody = `
                 <tr class="text-center">
                     <td>${data.id}</td>
                     <td>${data.route_id}</td>
                     <td>${data.name}</td>
-                    <td>${data.address}</td>`;
-
-                if (data.address == "No disponible") {
-                    tbody += `<td><a href="https://www.google.com/maps/search/?api=1&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>`;
-                } else {
-                    tbody += `<td><a href="https://www.google.com/maps/search/?api=1&query=${data.name_address}&query=${data.coordinates}" target="_blank">${data.coordinates}</a></td>`;
-                }
-                    
-                tbody += `
+                    <td>${data.address}</td>
+                    <td>${data.tracking_number}</td>
+                    <td>${data.latitude}</td>
+                    <td>${data.longitude}</td>
                     <td>${data.name_address}</td>
                     <td>${data.estimated_time}</td>
-                    <td>
-                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editDelivery(${JSON.stringify(data, ['id', 'route_id', 'name', 'address', 'coordinates', 'estimated_time']).replace(/['"]+/g, '&quot;')})">
+                    <td>`;
+                    
+                    if (data.address == "No disponible") {
+                        tbody += `<a href="https://www.google.com/maps/search/?api=1&query=${data.latitude},${data.longitude}" target="_blank">
+                                    <i class="fas fa-map-pin" style="color: rgb(90,92,105)"></i>
+                                </a>`;
+                    } else {
+                        tbody += `<a href="https://www.google.com/maps/search/?api=1&query=${data.name_address}&query=${data.latitude},${data.longitude}" target="_blank">
+                                    <i class="fas fa-map-pin" style="color: rgb(90,92,105)"></i>
+                                </a>`;
+                    }
+
+                tbody += `
+                        <a href="" class="edit-form-data" data-toggle="modal" data-target="#editMdl" onclick="editDelivery(${JSON.stringify(data, ['id', 'route_id', 'name', 'address', 'latitude', 'longitude', 'estimated_time', 'name_address', 'tracking_number']).replace(/['"]+/g, '&quot;')})">
                             <i class="fas fa-edit" style="color: rgb(90,92,105)"></i>
                         </a>
                         <a href="" class="delete-form-data" data-toggle="modal" data-target="#deleteMdl" onclick="deleteDelivery(${JSON.stringify(data, ['id']).replace(/['"]+/g, '&quot;')})">
@@ -98,6 +113,8 @@ function load() {
                         {"type" : "num"},
                         null,
                         null,
+                        { orderable: false},
+                        { orderable: false},
                         { orderable: false},
                         { orderable: false},
                         {"type" : "date"},

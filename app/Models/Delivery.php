@@ -15,9 +15,12 @@ class Delivery extends Model
     protected $fillable = [
         'name',
         'address',
-        'coordinates',
+        'latitude',
+        'longitude',
         'estimated_time',
-        'route_id'
+        'route_id',
+        'name_address',
+        'tracking_number'
     ];
 
     public static function getDeliveries(){

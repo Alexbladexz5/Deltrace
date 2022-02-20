@@ -17,8 +17,9 @@ class CreateDeliveriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address', 200);
-            $table->string('coordinates', 200);
-            $table->string('name_address', 200);
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 11, 8);
+            $table->string('name_address', 200)->nullable();
             $table->string('tracking_number')->nullable();
             $table->timestamp('estimated_time')->nullable();
             $table->unsignedBigInteger('route_id');

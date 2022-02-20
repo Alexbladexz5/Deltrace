@@ -26,8 +26,11 @@ class DeliveryRequest extends FormRequest
             'route_id' => ['required', 'string', 'exists:routes,id'],
             'name' => ['required', 'string', 'max:100'],
             'address' => ['required', 'string', 'max:200'],
-            'coordinates' => ['required', 'string', 'max:200'],
-            'estimated_time' => ['nullable', 'date', 'max:150']
+            'latitude' => ['required', 'numeric'],
+            'longitude' => ['required', 'numeric'],
+            'name_address' => ['nullable', 'string', 'max:100'],
+            'estimated_time' => ['nullable', 'date', 'max:150'],
+            'tracking_number' => ['nullable', 'string', 'max:100']
         ];
     }
 

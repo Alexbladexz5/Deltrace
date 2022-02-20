@@ -48,22 +48,52 @@
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-lg-12 form-group">
+                <div>
+                  <label for="name_address" class="form-fields">Lugar</label>
+                  <input type="text" class="form-control {{$errors->has('name_address') ? 'is-invalid' : ''}}" name="name_address" id="name-address-create" placeholder="" value="{{old('name_address')}}">
+                  @if($errors->has('name_address'))
+                  <span class="text-danger">{{$errors->first('name_address')}}</span>
+                  @endif
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12 form-group">
+                <div>
+                  <label for="tracking_number" class="form-fields">Número de seguimiento</label>
+                  <input type="text" class="form-control {{$errors->has('tracking_number') ? 'is-invalid' : ''}}" name="tracking_number" id="tracking-number-create" placeholder="" value="{{old('tracking_number')}}">
+                  @if($errors->has('tracking_number'))
+                  <span class="text-danger">{{$errors->first('tracking_number')}}</span>
+                  @endif
+                </div>
+              </div>
+            </div>
             
             <div class="row">
               <div class="col-lg-12 form-group">
                 <div class="">
-                  <label for="coordinates" class="form-fields">Coordenadas</label>
+                  <label for="coordinates" class="form-fields">Latitud/Longitud</label>
                   <label class="mandatory-field">*</label>
                   <div class="input-group">
-                    <input type="text" class="form-control {{$errors->has('coordinates') ? 'is-invalid' : ''}}" name="coordinates" id="coordinates-create" placeholder="" value="{{old('coordinates')}}" aria-describedby="maps-input">
-                    @if($errors->has('coordinates'))
-                      <span class="text-danger">{{$errors->first('coordinates')}}</span>
-                    @endif
+                    <input type="text" class="form-control {{$errors->has('latitude') ? 'is-invalid' : ''}}" name="latitude" id="latitude-create" placeholder="Latitud" value="{{old('latitude')}}" aria-describedby="maps-input">
+                    <input type="text" class="form-control {{$errors->has('longitude') ? 'is-invalid' : ''}}" name="longitude" id="longitude-create" placeholder="Longitud" value="{{old('longitude')}}" aria-describedby="maps-input">
+                    
                       {{-- Ventana modal para añadir mapas --}}
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addCoordinates" onclick="modalCoordinates('create')">
                       <i class="fas fa-map-marker-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     </button>
                   </div>
+
+                  @if($errors->has('latitude'))
+                    <span class="text-danger">{{$errors->first('latitude')}}</span>
+                  @endif
+                  @if($errors->has('longitude'))
+                    <span class="text-danger">{{$errors->first('longitude')}}</span>
+                  @endif
                 </div>
               </div>
             </div>
@@ -72,7 +102,6 @@
               <div class="col-lg-12 form-group">
                 <div>
                   <label for="estimated_time" class="form-fields">Fecha de entrega</label>
-                  <label class="mandatory-field">*</label>
                   <input type="datetime-local" class="form-control {{$errors->has('estimated_time') ? 'is-invalid' : ''}}" name="estimated_time" id="estimated-time-create" step="1">
                   @if($errors->has('estimated_time'))
                     <span class="text-danger">{{$errors->first('estimated_time')}}</span>
