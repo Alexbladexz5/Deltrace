@@ -12,10 +12,13 @@ class AppController extends Controller {
     public function saveDelivery(Request $r) {
         // Se validan los datos recibidos
         $validator = Validator::make($r->all(), [
-            'route_id' => ['required', 'string', 'exists:routes,id'],
-            'coordinates' => ['required', 'string', 'max:200'],
+            'route_id' => ['required', 'numeric', 'exists:routes,id'],
             'name' => ['nullable', 'string', 'max:100'],
-            'tracking_number' => ['nullable', 'string', 'max:100']
+            'address' => ['required', 'string', 'max:200'],
+            'tracking_number' => ['nullable', 'string', 'max:100'],
+            'latitude' => ['required', 'numeric'],
+            'longitude' => ['required', 'numeric'],
+            'name_address' => ['nullable', 'string', 'max:100']
         ]);
 
         if (!$validator->passes()) {

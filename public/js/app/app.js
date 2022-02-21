@@ -27,14 +27,13 @@ function autocompleteApp() {
 
 function createDelivery(place) {
     var delivery = {
-        'id_route': idRoute,
+        'route_id': idRoute,
         'name': $('#name-app').val() || '',
+        'address': place.formatted_address,
         'tracking_number': $('#tracking-number-app').val() || '',
-        'coordinates': {
-            'lat': place.geometry.location.lat(),
-            'lng': place.geometry.location.lng()
-        },
-        'place': place.formatted_address
+        'latitude': place.geometry.location.lat(),
+        'longitude': place.geometry.location.lng(),
+        'name_address': place.name
     };
 
     console.log(delivery);
