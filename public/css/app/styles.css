@@ -4,19 +4,64 @@
     height: 0px;
 }
 .pac-item {
-  font-size: 4vh;
+    font-size: 4vh;
 }
 
 .pac-item-query {
-  font-size: 4vh;
+    font-size: 4vh;
 }
 input::-webkit-input-placeholder {
     font-size: 3vh;
-    height:6px;
+    height: 6px;
     padding: 35px 0px;
 }
-input.autocomplete-app{
-  font-size: 2rem !important;
+input.autocomplete-app {
+    font-size: 2rem !important;
 }
 
-/*  */
+/* Mapa */
+#map {
+    height: 480px;
+}
+
+
+/* Animacion loading */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+}
+#loading:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #cc1616;
+    border-top-color: #efefef;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+}
+@-webkit-keyframes animate-loading {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes animate-loading {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
