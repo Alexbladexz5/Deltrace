@@ -1,3 +1,7 @@
+body {
+    background: #454545;
+}
+
 /* Quitar barra de Google en el autocompletado */
 .pac-container:after {
     background-image: none !important;
@@ -22,6 +26,14 @@ input.autocomplete-app {
 /* Mapa */
 #map {
     height: 480px;
+    margin-top: 90px;
+}
+
+/* Body */
+.autocomplete-app {
+    position:relative;
+    text-align:center;
+    color:white;
 }
 
 

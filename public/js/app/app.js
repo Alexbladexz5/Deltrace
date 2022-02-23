@@ -1,6 +1,7 @@
 $(document).ready(function () {
     autocompleteApp();
     $('#loading').fadeOut('slow');
+    $('#map-section').toggle();
 });
 
 // Atributos
@@ -33,13 +34,24 @@ function autocompleteApp() {
         event.preventDefault();
 
         $('#loading').fadeToggle('slow', function() {
-            $('.add-deliveries-div').toggle();
+            $('.autocomplete-app').toggle();
             calculateRoute();
+            $('#map-section').toggle();
+            
+
+
+            //Llamada a la función que muestra la lista
+            
+            
+
+            // Si todo ha funcionado
             $('#loading').fadeToggle('slow');
         });
     });
 }
-
+function arraytoList() {
+    var DirectionsService = new google.maps.DirectionsService();
+}
 function createDelivery(place) {
     var delivery = {
         'route_id': idRoute,
@@ -143,6 +155,8 @@ function calculateRoute() {
         // Send request
         service.route(service_options, service_callback);
     }
+
+    
 
     return true;
 }
