@@ -126,17 +126,21 @@ function calculateRoute() {
 
     // Service callback to process service results
     var service_callback = function(response, status) {
-        if (status != 'OK') {
-            console.log('Directions request failed due to ' + status);
-            return;
-        }
-        var renderer = new google.maps.DirectionsRenderer;
-        if (!window.gRenderers)
+        if (status == 'OK') {
+            var renderer = new google.maps.DirectionsRenderer;
+            if (!window.gRenderers) {
                 window.gRenderers = [];
-        window.gRenderers.push(renderer);
-        renderer.setMap(map);
-        renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
-        renderer.setDirections(response);
+            }
+
+            window.gRenderers.push(renderer);
+            renderer.setMap(map);
+            renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
+            renderer.setDirections(response);
+
+            console.log(response);
+        } else {
+            console.log('Directions request failed due to ' + status);
+        }
     };
 
     // Send requests to service to get route (for stations count <= 25 only one request will be sent)
@@ -144,13 +148,18 @@ function calculateRoute() {
         // Waypoints does not include first station (origin) and last station (destination)
         var waypoints = [];
         for (var j = 1; j < parts[i].length - 1; j++)
-            waypoints.push({location: parts[i][j], stopover: false});
+            waypoints.push({
+                location: parts[i][j], 
+                stopover: true
+            });
+            
         // Service options
         var service_options = {
             origin: parts[i][0],
             destination: parts[i][parts[i].length - 1],
             waypoints: waypoints,
-            travelMode: 'DRIVING'
+            travelMode: 'DRIVING',
+            optimizeWaypoints: true
         };
         // Send request
         service.route(service_options, service_callback);
