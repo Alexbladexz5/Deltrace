@@ -16,7 +16,6 @@
           @if(Auth::user())
           <li class="dropdown"><a href="#"><span>{{Auth::user()->name}}</span><i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{{route('app.history')}}">Historial</a></li>
               <li><a href="{{route('app.profile')}}">Perfil</a></li>
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

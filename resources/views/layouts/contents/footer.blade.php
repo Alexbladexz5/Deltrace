@@ -3,25 +3,25 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-              <div class="col-lg-2 col-md-6 footer-links">
+              <div class="col-lg-6 col-md-6 footer-links">
                     <h4>Enlaces de utilidad</h4>
                     <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Sobre nosotros</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Servicio</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Términos de servicio</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Política de privacidad</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#team">Sobre nosotros</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#services">Servicio</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{route('terms')}}">Términos de servicio</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{route('privacyPolicy')}}">Política de privacidad</a></li>
                     </ul>
                 </div>
 
-                <div class="col-lg-2 col-md-6 footer-links">
-                    <h4>Our Services</h4>
+                <div class="col-lg-6 col-md-6 footer-links">
+                    <h4>Otras webs de interés</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="https://qrcelia.iescelia.org">QRCelia</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="https://iescelia.org/celia360-nuevo/public/">Celia Tour</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Falta por rellenar</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Falta por rellenar</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Falta por rellenar</a></li>
                     </ul>
                 </div>
             </div>

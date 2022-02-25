@@ -36,12 +36,16 @@ Route::group(['middleware' => ['auth']], function() {
         return view('layouts.contents.profile');
     })->name('app.profile');
 
-    Route::get('/app/history', function() {
-        return view('layouts.contents.history');
-    })->name('app.history');
-
     Route::post('/app/createDelivery', [AppController::class, 'saveDelivery']);
 });
+
+Route::get('/terms', function() {
+        return view('layouts.contents.useTerms');
+    })->name('terms');
+
+Route::get('/PrivacyPolicy', function() {
+        return view('layouts.contents.privacyPolicy');
+    })->name('privacyPolicy');
 
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
