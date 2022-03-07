@@ -22,6 +22,7 @@
         "tailwindcss": "^2.2.19"
     },
     "dependencies": {
+        "sort-by-distance": "^1.1.0",
         "sweetalert2": "^11.3.0"
     }
 }
