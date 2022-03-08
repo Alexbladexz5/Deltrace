@@ -95,14 +95,14 @@ function calculateRoute() {
 
     // list of points manual
     var stations = [
-        {lat: 36.8379879, lng: -2.4535333, name: 'Bombolone'},
-        {lat: 36.8503006, lng: -2.4489192, name: 'Pastelería del Águila - La Tonta Mona'},
-        {lat: 36.8393821, lng: -2.4603316, name: 'Don Croissant'},
-        {lat: 36.8398026, lng: -2.4678233, name: 'Confitería Capri'},
-        {lat: 36.8595825, lng: -2.4450309, name: 'Pastelería Mónica'},
-        {lat: 36.8551013, lng: -2.4449536, name: 'Taberna El Andaluz'},
-        {lat: 36.851846, lng: -2.4497583, name: 'La Piedra Resto-Bar'},
-        {lat: 36.8543321, lng: -2.4447895, name: 'Tango Bar & Restaurante'}/*,
+        {lat: 36.8380937415769, lng: -2.451354164303034, name: 'Bombolone'},
+        {lat: 36.85009476292969, lng: -2.4467457663224828, name: 'Pastelería del Águila - La Tonta Mona'},
+        {lat: 36.83933976659666, lng: -2.4601826277867804, name: 'Don Croissant'},
+        {lat: 36.83979410289659, lng: -2.4616328805261736, name: 'Confitería Capri'},
+        {lat: 36.86025637738461, lng: -2.4447880016370553, name: 'Pastelería Mónica'}, 
+        {lat: 36.85519907724516, lng: -2.444838815654999, name: 'Taberna El Andaluz'},
+        {lat: 36.85105648587925, lng: -2.450457498328358, name: 'La Piedra Resto-Bar'},
+        {lat: 36.854688563504176, lng: -2.444906487615583, name: 'Tango Bar & Restaurante'}/*,
         {lat: 36.8410649, lng: -2.4531394, name: 'Bar Hammurabi'},
         {lat: 36.826342, lng: -2.4471747, name: 'Kebab El Rachid'},
         {lat: 36.8221608, lng: -2.4435294, name: 'La Dulce Alianza - Zapillo'},
