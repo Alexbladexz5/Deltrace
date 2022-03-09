@@ -85,6 +85,7 @@ function createDelivery(place) {
 
 // Función calculateRoute() para calcular la ruta de todos los puntos indicados anteriormente
 function calculateRoute() {
+    let labelIndex = 0;
     var service = new google.maps.DirectionsService;
 
     var map = new google.maps.Map(document.getElementById('map'));
@@ -123,7 +124,7 @@ function calculateRoute() {
         {lat: 36.8381317, lng: -2.4652535, name: 'Bar La Lupe'},
         {lat: 36.8410466, lng: -2.4643361, name: 'La Dulce Alianza - Paseo'},
         {lat: 36.847436, lng: -2.4472742, name: 'El Rincón de Basi'},
-        {lat: 36.8379769, lng: -2.4597346, name: 'La Dulce Alianza - Rambla'},*/
+        {lat: 36.8379769, lng: -2.4597346, name: 'La Dulce Alianza - Rambla'}*/
     ];
 
     // Zoom and center map automatically by stations (each station will be in visible map area)
@@ -140,6 +141,7 @@ function calculateRoute() {
     for (var i = 0; i < stations.length; i++) {
         new google.maps.Marker({
             position: stations[i],
+            label: labelIndex++ + '',
             map: map,
             title: stations[i].name
         });
@@ -189,8 +191,6 @@ function calculateRoute() {
         // Send request
         service.route(service_options, service_callback);
     }
-
-    
 
     return true;
 }
