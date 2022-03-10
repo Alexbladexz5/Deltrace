@@ -9,62 +9,6 @@ function calcularRuta(stations) {
     lng: -2.4497194,
   };
 
-  // Puntos de entrega
-  var stations = [
-    { lat: 36.8380937415769, lng: -2.451354164303034, name: 'Bombolone' },
-    {
-      lat: 36.85009476292969,
-      lng: -2.4467457663224828,
-      name: 'Pastelería del Águila - La Tonta Mona',
-    },
-    { lat: 36.83933976659666, lng: -2.4601826277867804, name: 'Don Croissant' },
-    {
-      lat: 36.83979410289659,
-      lng: -2.4616328805261736,
-      name: 'Confitería Capri',
-    },
-    {
-      lat: 36.86025637738461,
-      lng: -2.4447880016370553,
-      name: 'Pastelería Mónica',
-    },
-    {
-      lat: 36.85519907724516,
-      lng: -2.444838815654999,
-      name: 'Taberna El Andaluz',
-    },
-    {
-      lat: 36.85105648587925,
-      lng: -2.450457498328358,
-      name: 'La Piedra Resto-Bar',
-    },
-    {
-      lat: 36.854688563504176,
-      lng: -2.444906487615583,
-      name: 'Tango Bar & Restaurante',
-    }/*,
-    { lat: 36.8410649, lng: -2.4531394, name: 'Bar Hammurabi' },
-    { lat: 36.826342, lng: -2.4471747, name: 'Kebab El Rachid' },
-    { lat: 36.8221608, lng: -2.4435294, name: 'La Dulce Alianza - Zapillo' },
-    { lat: 36.8321486, lng: -2.4465911, name: 'Karbon' },
-    { lat: 36.8320403, lng: -2.4464829, name: 'Restaurante La Pérgola' },
-    { lat: 36.8416245, lng: -2.4576246, name: 'Heladería Punto Italia' },
-    { lat: 36.851193, lng: -2.4509368, name: 'La Flor de Valencia' },
-    { lat: 36.8457148, lng: -2.4430354, name: 'Indalpizza Almería' },
-    { lat: 36.8390533, lng: -2.4522264, name: 'Scondite Bar' },
-    { lat: 36.8386163, lng: -2.4602112, name: 'RAPA NUII' },
-    { lat: 36.8393025, lng: -2.4563474, name: 'Pub La Luna' },
-    { lat: 36.8501602, lng: -2.4456281, name: 'El Goloso de Almería' },
-    { lat: 36.8394445, lng: -2.4499834, name: 'Hamburgueseria Milo' },
-    { lat: 36.8404658, lng: -2.4661491, name: 'Milestone Restaurant & Bar' },
-    { lat: 36.8392094, lng: -2.4601044, name: 'Fosters Hollywood' },
-    { lat: 36.8459134, lng: -2.461032, name: 'Dogar Dogar Kebab - Ramblo' },
-    { lat: 36.8420515, lng: -2.4631646, name: 'Goiko' },
-    { lat: 36.8381317, lng: -2.4652535, name: 'Bar La Lupe' },
-    { lat: 36.8410466, lng: -2.4643361, name: 'La Dulce Alianza - Paseo' },
-    { lat: 36.847436, lng: -2.4472742, name: 'El Rincón de Basi' },
-    { lat: 36.8379769, lng: -2.4597346, name: 'La Dulce Alianza - Rambla' },*/
-  ];
   /*
   stations = calcularDistancia(stations, ubicacionCercana);
   console.log(stations);*/
@@ -83,8 +27,9 @@ function calcularRuta(stations) {
   }
   
   stationsSorted.push(stations.shift());
-  
   console.log(stationsSorted);
+  
+  return stationsSorted;
 
 }
 
@@ -127,5 +72,3 @@ function calcularDistancia(stations, ubicacionCercana) {
   
   return stations;
 }
-
-calcularRuta();

@@ -75,6 +75,7 @@
     {{-- <script src="{{asset('/vendor/index/bootstrap/js/bootstrap.bundle.min.js')}}"></script> --}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0AUVJat2__UhZ8msExOQa5xYZpigP8Ew&libraries=places"></script>
     <script src="{{asset('/js/app/app.js')}}"></script>
+    <script src="{{asset('/js/app/calculate.js')}}"></script>
 
     <!-- Vendor JS Files -->
      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
