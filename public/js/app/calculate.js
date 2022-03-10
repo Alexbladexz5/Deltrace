@@ -1,29 +1,23 @@
-function calcularRuta(stations) {
+// Como parámetros se indica los puntos y el origen
+function calcularRuta(stations, origin) {
   // Variable para guardar los puntos ordenados
   let stationsSorted = [];
 
-  // Variable para almacenar la posición como referencia. Primero será la ubicación actual, después será un punto ordenado
-  const ubicacionCercana = {
-    name: 'Mi casa',
-    lat: 36.839922,
-    lng: -2.4497194,
-  };
-
   /*
-  stations = calcularDistancia(stations, ubicacionCercana);
+  stations = calcularDistancia(stations, origin);
   console.log(stations);*/
   
   while (stations.length > 1) {  
-    stations = calcularDistancia(stations, ubicacionCercana);
+    stations = calcularDistancia(stations, origin);
   
   	stationsSorted.push(stations.shift());
   	// stations.splice(0, 1)
     /* stations = stations.filter(function(station) {
       return station.name !== stations[0].name;
     });*/
-    ubicacionCercana.lat = stationsSorted[stationsSorted.length - 1].lat;
-    ubicacionCercana.lng = stationsSorted[stationsSorted.length - 1].lng;
-    ubicacionCercana.name = stationsSorted[stationsSorted.length - 1].name;
+    origin.lat = stationsSorted[stationsSorted.length - 1].lat;
+    origin.lng = stationsSorted[stationsSorted.length - 1].lng;
+    origin.name = stationsSorted[stationsSorted.length - 1].name;
   }
   
   stationsSorted.push(stations.shift());
@@ -53,11 +47,11 @@ function deg2rad(deg) {
   return deg * (Math.PI / 180);
 }
 
-function calcularDistancia(stations, ubicacionCercana) {
+function calcularDistancia(stations, origin) {
   for (let i = 0; i < stations.length; i++) {
     let distance = getDistanceFromLatLonInKm(
-      ubicacionCercana.lat,
-      ubicacionCercana.lng,
+      origin.lat,
+      origin.lng,
       stations[i].lat,
       stations[i].lng
     );

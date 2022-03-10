@@ -101,39 +101,41 @@ function calculateRoute() {
 
     // list of points manual
     var stations = [
-        {lat: 36.8380937415769, lng: -2.451354164303034, name: 'Bombolone'},
-        {lat: 36.85009476292969, lng: -2.4467457663224828, name: 'Pastelería del Águila - La Tonta Mona'},
-        {lat: 36.83933976659666, lng: -2.4601826277867804, name: 'Don Croissant'},
-        {lat: 36.83979410289659, lng: -2.4616328805261736, name: 'Confitería Capri'},
-        {lat: 36.86025637738461, lng: -2.4447880016370553, name: 'Pastelería Mónica'}, 
-        {lat: 36.85519907724516, lng: -2.444838815654999, name: 'Taberna El Andaluz'},
-        {lat: 36.85105648587925, lng: -2.450457498328358, name: 'La Piedra Resto-Bar'},
-        {lat: 36.854688563504176, lng: -2.444906487615583, name: 'Tango Bar & Restaurante'},
-        {lat: 36.84098232762707, lng: -2.4535272120963287, name: 'Bar Hammurabi'},
-        {lat: 36.82638638945402, lng: -2.4471941763006795, name: 'Kebab El Rachid'},
-        {lat: 36.82201880272507,lng: -2.4426187458168376, name: 'La Dulce Alianza - Zapillo'},
-        {lat: 36.83185478617966,lng: -2.44675024114165, name: 'Karbon'},
-        {lat: 36.83166140311982,lng: -2.445737773978449,name: 'Restaurante La Pérgola'},
-        {lat: 36.84162060120711, lng: -2.457755945142126,  name: 'Heladería Punto Italia'},
-        {lat: 36.84337183412822, lng: -2.4586786672090652,  name: 'La Flor de Valencia'},
-        {lat: 36.84841480912949,lng: -2.4423285961074237, name: 'Indalpizza Almería'},
-        {lat: 36.83925066994724, lng: -2.451207104666186, name: 'Scondite Bar'},
-        {lat: 36.83875256513556, lng: -2.4596532739782115, name: 'RAPA NUII'},
-        {lat: 36.839754228080245, lng: -2.45643154514218,  name: 'Pub La Luna'},
-        {lat: 36.85051994939973, lng: -2.445555073977835,  name: 'El Goloso de Almería'},
-        {lat: 36.83963328246964,lng: -2.448931818158191,  name: 'Hamburgueseria Milo'},
-        {lat: 36.84030302157826, lng: -2.4643425604861604,  name: 'Milestone Restaurant & Bar'},
-        {lat: 36.838635939705334, lng: -2.459428930299256,  name: 'Fosters Hollywood'},
-        {lat: 36.846042652037596, lng: -2.459480402813959,  name: 'Dogar Dogar Kebab - Ramblo'},
-        {lat: 36.841334850864236, lng: -2.4628358181581365,  name: 'Goiko'},
-        {lat: 36.83821013939788, lng: -2.4652348874702383,  name: 'Bar La Lupe'},
-        {lat: 36.84140327196071, lng: -2.463793631479271,  name: 'La Dulce Alianza - Paseo'},
-        {lat: 36.84809446536914, lng: -2.4457497499293153,  name: 'El Rincón de Basi'},
-        {lat: 36.838385184340495, lng: -2.4597879346382214,  name: 'La Dulce Alianza - Rambla'}
+        {lat: 36.83807977014031,lng: -2.4513575764744995, name: 'Bombolone'},
+        {lat: 36.850063097911566,lng: -2.446748891908438, name: 'Pastelería del Águila - La Tonta Mona'},
+        {lat: 36.83932083278515,lng: -2.460195018366268, name: 'Don Croissant'},
+        {lat: 36.83980156802376,lng: -2.4616330984981434, name: 'Confitería Capri'},
+        {lat: 36.86026923300328,lng: -2.4447831054105635, name: 'Pastelería Mónica'}, 
+        {lat: 36.85520617735452,lng: -2.4448249560187247, name: 'Taberna El Andaluz'},
+        {lat: 36.85105353558606,lng: -2.4504598755250147, name: 'La Piedra Resto-Bar'},
+        {lat: 36.85467973086508,lng: -2.4449001033221247, name: 'Tango Bar & Restaurante'},
+        {lat: 36.84084402648873,lng: -2.4534771406459663, name: 'Bar Hammurabi'},
+        {lat: 36.826350198321194,lng: -2.447190440017425, name: 'Kebab El Rachid'},
+        {lat: 36.8219404016487,lng: -2.4427647026738697, name: 'La Dulce Alianza - Zapillo'},
+        {lat: 36.83184327430669,lng: -2.4467639167849713, name: 'Karbon'},
+        {lat: 36.83153729856263,lng: -2.4457477538289103,name: 'Restaurante La Pérgola'},
+        {lat: 36.841507762141184,lng: -2.457778090185381,  name: 'Heladería Punto Italia'},
+        {lat: 36.842704796761595,lng: -2.45879935653369,  name: 'La Flor de Valencia'},
+        {lat: 36.84595650383804,lng: -2.4423874153025142, name: 'Indalpizza Almería'},
+        {lat: 36.839051810566154,lng: -2.4511331365664764, name: 'Scondite Bar'},
+        {lat: 36.838622096107784,lng: -2.4596820881548753, name: 'RAPA NUII'},
+        {lat: 36.83953112080378,lng: -2.456453669243235,  name: 'Pub La Luna'},
+        {lat: 36.850209338530235,lng: -2.445565869589346,  name: 'El Goloso de Almería'},
+        {lat: 36.8394429800073,lng: -2.4488900844062567,  name: 'Hamburgueseria Milo'},
+        {lat: 36.840138445331455,lng: -2.4643217586027077,  name: 'Milestone Restaurant & Bar'},
+        {lat: 36.83773269159629,lng: -2.459436474207283,  name: 'Fosters Hollywood'},
+        {lat: 36.845913068920325,lng: -2.4594845797654457,  name: 'Dogar Dogar Kebab - Rambla'},
+        {lat: 36.841125378524524,lng: -2.4627964576667165,  name: 'Goiko'},
+        {lat: 36.83806215288895,lng: -2.465276061388477,  name: 'Bar La Lupe'},
+        {lat: 36.84114501215068,lng: -2.463968635641255,  name: 'La Dulce Alianza - Paseo'},
+        {lat: 36.847570034048,lng: -2.445885267033654,  name: 'El Rincón de Basi'},
+        {lat: 36.83818513701664,lng: -2.459917355972683,  name: 'La Dulce Alianza - Rambla'}
     ];
 
-    var stations = calcularRuta(stations);
+    var stations = calcularRuta(stations, ubicacionCercana);
 
+    console.log(stations);
+    
     // Zoom and center map automatically by stations (each station will be in visible map area)
     var lngs = stations.map(function(station) { return station.lng; });
     var lats = stations.map(function(station) { return station.lat; });
@@ -162,10 +164,12 @@ function calculateRoute() {
     }
 
     // Divide route to several parts because max stations limit is 8 (6 waypoints + 1 origin + 1 destination)
-    for (var i = 0, parts = [], max = 24 - 1; i < stations.length; i = i + max) {
-        parts.push(stations.slice(i, i + max + 1));
+    for (var i = 0, parts = [], max = 25 - 1; i < stations.length; i = i + max) {
+        parts.push(stations.slice(i, i + max));
     }
-        
+
+    console.log(parts);
+    
 
     // Service callback to process service results
     var service_callback = function(response, status) {
@@ -185,7 +189,7 @@ function calculateRoute() {
             console.log('Directions request failed due to ' + status);
         }
     };
-
+    
     // Send requests to service to get route (for stations count <= 25 only one request will be sent)
     for (var i = 0, 
         originWaypoint = ubicacionCercana,
@@ -213,14 +217,14 @@ function calculateRoute() {
             origin: originWaypoint,
             destination: destinationWaypoint,
             waypoints: waypoints,
-            travelMode: 'WALKING',
+            travelMode: 'DRIVING',
             optimizeWaypoints: true
         };
         
         // Send request
         service.route(service_options, service_callback);
     }
-
+    
     return true;
 }
 
