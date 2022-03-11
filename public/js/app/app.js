@@ -6,7 +6,12 @@ $(document).ready(function () {
 
 // Atributos
 let deliveries = [];
+let waypointsOrders = [];
 let idRoute = 1;
+var parts = [];
+
+// Variables Google Maps API
+var service = new google.maps.DirectionsService;
 
 function autocompleteApp() {
     // Se crea una barra de búsqueda para localizar una ubicación en el mapa
@@ -84,7 +89,6 @@ function createDelivery(place) {
 // Función calculateRoute() para calcular la ruta de todos los puntos indicados anteriormente
 function calculateRoute() {
     let labelIndex = 1;
-    var service = new google.maps.DirectionsService;
 
     var map = new google.maps.Map(document.getElementById('map'));
     window.gMap = map;
@@ -94,7 +98,7 @@ function calculateRoute() {
         name: 'Mi casa',
         lat: 36.839922,
         lng: -2.4497194,
-      };
+    };
 
     // list of points
     // var stations = updateStations();
@@ -132,6 +136,7 @@ function calculateRoute() {
         {lat: 36.83818513701664,lng: -2.459917355972683,  name: 'La Dulce Alianza - Rambla'}
     ];
 
+    // Ordenar los puntos desde la ubicación actual. Sirve para poder optimizar mejor la ruta si hay más de 24 puntos. 
     var stations = calcularRuta(stations, ubicacionCercana);
 
     console.log(stations);
@@ -164,31 +169,12 @@ function calculateRoute() {
     }
 
     // Divide route to several parts because max stations limit is 8 (6 waypoints + 1 origin + 1 destination)
-    for (var i = 0, parts = [], max = 25 - 1; i < stations.length; i = i + max) {
+    for (var i = 0, max = 25 - 1; i < stations.length; i = i + max) {
         parts.push(stations.slice(i, i + max));
     }
 
     console.log(parts);
-    
 
-    // Service callback to process service results
-    var service_callback = function(response, status) {
-        if (status == 'OK') {
-            var renderer = new google.maps.DirectionsRenderer;
-            if (!window.gRenderers) {
-                window.gRenderers = [];
-            }
-
-            window.gRenderers.push(renderer);
-            renderer.setMap(map);
-            renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
-            renderer.setDirections(response);
-
-            console.log(response);
-        } else {
-            console.log('Directions request failed due to ' + status);
-        }
-    };
     
     // Send requests to service to get route (for stations count <= 25 only one request will be sent)
     for (var i = 0, 
@@ -221,12 +207,49 @@ function calculateRoute() {
             optimizeWaypoints: true
         };
         
-        // Send request
-        service.route(service_options, service_callback);
+        // Posición del bucle (en este caso la posición del array parts)
+        positionPart = i;
+
+        // Se envian los parámetros y la posición del array parts que se está calculando
+        sendRoute(service_options, map, positionPart);
     }
+    
+    console.log(parts);
     
     return true;
 }
+
+
+// Función sendRoute() para mandar la ruta
+function sendRoute(service_options, map, part) {
+    service.route(service_options, function(response, status) {
+        if (status == 'OK') {
+            var renderer = new google.maps.DirectionsRenderer;
+            if (!window.gRenderers) {
+                window.gRenderers = [];
+            }
+    
+            window.gRenderers.push(renderer);
+            renderer.setMap(map);
+            renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
+            renderer.setDirections(response);
+            
+            var orders = response.routes[0].waypoint_order;
+            waypointsOrders.push(orders);
+            console.log(orders);
+    
+            // Se almacenan el orden de los puntos en cada ruta
+            for (var j = 0; j < parts[part].length; j++) {
+                parts[part][j].waypoint_order = orders[j];
+            }
+            console.log(response);
+            console.log(parts[part]);
+        } else {
+            console.log('Directions request failed due to ' + status);
+        }
+    });
+}
+
 
 // Función updateStations() para preparar un array de objetos con los datos necesarios del calculo de rutas
 function updateStations() {
