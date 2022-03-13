@@ -1,7 +1,9 @@
 $(document).ready(function () {
     autocompleteApp();
-    $('#loading').fadeOut('slow');
     $('.map-section').toggle();
+    // $('.points-section').toggle();
+    $('.autocomplete-app').toggle();
+    $('#loading').fadeOut('slow');
 });
 
 // Atributos
@@ -188,9 +190,6 @@ function calculateRoute() {
         // Waypoints does not include last station (destination)
         var waypoints = [];
         for (var j = 0; j < parts[i].length - 1; j++) {
-            if (i == 0 && j == 0) {
-                j = 1;
-            }
 
             waypoints.push({
                 location: parts[i][j], 
@@ -242,12 +241,24 @@ function sendRoute(service_options, map, part) {
             for (var j = 0; j < parts[part].length; j++) {
                 parts[part][j].waypoint_order = orders[j];
             }
+
+            // Se guarda el último orden del último punto, ya que es el destino
+            parts[part][parts[part].length - 1].waypoint_order = orders.length;
+
+            // Sabiendo las posiciones se ordena
+            parts[part].sort((a,b) => (a.waypoint_order > b.waypoint_order) ? 1 : ((b.waypoint_order > a.waypoint_order) ? -1 : 0))
+
             console.log(response);
             console.log(parts[part]);
         } else {
             console.log('Directions request failed due to ' + status);
         }
     });
+}
+
+// Función showTableRoutes() para mostrar una tabla con los enlaces a Google Maps
+function showTableRoutes() {
+    
 }
 
 
