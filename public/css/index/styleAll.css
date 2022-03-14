@@ -1,10 +1,3 @@
-/**
-* Template Name: Day - v4.7.0
-* Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -19,8 +12,11 @@ a {
 }
 
 a:hover {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
+}
+.nav-link:focus, .nav-link:hover{
+  color: #fff !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -910,6 +906,7 @@ section {
   max-width: 60%;
   border-radius: 50%;
   margin: 0 0 30px 0;
+  width: 600px;
 }
 .team .member h4 {
   font-weight: 700;

@@ -68,39 +68,8 @@
         </div>
 
         <div class="points-section container d-flex justify-content-center">
-            <ul class="list-group mt-5 text-white">
-                <li class="list-group-item d-flex justify-content-between align-content-center">
-                    <div class="d-flex flex-row"> 
-                        <i class="fas fa-arrow-right"></i>
-                        <div class="ml-2">
-                            <h6 class="mb-0">Entrega 01</h6>
-                            <div class="about"> <span>0.5 km</span> <span>5 min</span> </div>
-                        </div>
-                    </div>
-                    <div class="url-route">
-                        <a href="https://www.google.com/maps/search/?api=1&query=36.85520617735452,-2.4448249560187247" target="_blank">
-                            <i class="fas fa-map-pin" style="color: rgb(90,92,105)"></i>
-                        </a>
-                    </div>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-content-center">
-                    <div class="d-flex flex-row"> 
-                        <i class="fas fa-arrow-right"></i>
-                        <div class="ml-2">
-                            <h6 class="mb-0">Entrega 02</h6>
-                            <div class="about"> <span>1.2 km</span> <span>8 min</span> </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-content-center">
-                    <div class="d-flex flex-row"> 
-                        <i class="fas fa-arrow-right"></i>
-                        <div class="ml-2">
-                            <h6 class="mb-0">Entrega 03</h6>
-                            <div class="about"> <span>0.3 km</span> <span>2 min</span> </div>
-                        </div>
-                    </div>
-                </li>
+            <ul class="list-group mt-5 text-white" id="list-routes">
+                
             </ul>
         </div>
 

@@ -1,8 +1,10 @@
 $(document).ready(function () {
     autocompleteApp();
     $('.map-section').toggle();
-    // $('.points-section').toggle();
-    $('.autocomplete-app').toggle();
+    $('.points-section').toggle(function() {
+        $('.points-section')[0].style.setProperty('display', 'none', 'important');
+    });
+    //$('.autocomplete-app').toggle();
     $('#loading').fadeOut('slow');
 });
 
@@ -11,6 +13,7 @@ let deliveries = [];
 let waypointsOrders = [];
 let idRoute = 1;
 var parts = [];
+var partsGoogle = [];  // Se almacenan las respuestas que se mandan a Google Maps Directions
 
 // Variables Google Maps API
 var service = new google.maps.DirectionsService;
@@ -43,12 +46,7 @@ function autocompleteApp() {
         $('#loading').fadeToggle('slow', function() {
             $('.autocomplete-app').toggle();
             calculateRoute();
-            $('.map-section').toggle();
-            
-
-            //Llamada a la función que muestra la lista
-            
-            
+            $('.map-section').toggle();            
 
             // Si todo ha funcionado
             $('#loading').fadeToggle('slow');
@@ -212,6 +210,20 @@ function calculateRoute() {
         // Se envian los parámetros y la posición del array parts que se está calculando
         sendRoute(service_options, map, positionPart);
     }
+
+    // Evento para mostrar las rutas
+    $('#btn-show-routes').click(function(event) {
+        event.preventDefault();
+
+        $('#loading').fadeToggle('slow', function() {
+            $('.map-section').toggle();
+            showListRoutes();
+            $('.points-section').toggle();            
+
+            // Si todo ha funcionado
+            $('#loading').fadeToggle('slow');
+        });
+    });
     
     console.log(parts);
     
@@ -234,31 +246,69 @@ function sendRoute(service_options, map, part) {
             renderer.setDirections(response);
             
             var orders = response.routes[0].waypoint_order;
+            var legs = response.routes[0].legs;
             waypointsOrders.push(orders);
             console.log(orders);
     
-            // Se almacenan el orden de los puntos en cada ruta
+            // Se almacenan el orden de los puntos, el tiempo de llegada y la distancia en cada ruta
             for (var j = 0; j < parts[part].length; j++) {
                 parts[part][j].waypoint_order = orders[j];
+                parts[part][j].estimated_time = '' + legs[j].duration.text;
+                parts[part][j].distance = '' + legs[j].distance.text;
             }
 
+            // Se guardará lo siguiente:
             // Se guarda el último orden del último punto, ya que es el destino
             parts[part][parts[part].length - 1].waypoint_order = orders.length;
+
+            // Se guarda el tiempo de llegada y los kilómetros de la ruta
+            parts[part][parts[part].length - 1].estimated_time = '' + legs[legs.length - 1].duration.text;
+            parts[part][parts[part].length - 1].distance = '' + legs[legs.length - 1].distance.text;
 
             // Sabiendo las posiciones se ordena
             parts[part].sort((a,b) => (a.waypoint_order > b.waypoint_order) ? 1 : ((b.waypoint_order > a.waypoint_order) ? -1 : 0))
 
+            // Almacenar las respuestas
+            partsGoogle[part] = response.routes[0];
+
             console.log(response);
             console.log(parts[part]);
+            console.log(legs[0].distance.text);
+            console.log(response.routes[0]);
         } else {
             console.log('Directions request failed due to ' + status);
         }
     });
 }
 
-// Función showTableRoutes() para mostrar una tabla con los enlaces a Google Maps
-function showTableRoutes() {
-    
+// Función showTableRoutes() para mostrar una lista con los enlaces a Google Maps
+function showListRoutes() {
+    // Listar todas las rutas
+    var cont = 1;
+    $list = ``;
+
+    for (var i = 0; i < parts.length; i++) {
+        parts[i].forEach(data => {
+
+            $list += `
+            <li class="list-group-item d-flex justify-content-between align-content-center">
+                <div class="d-flex flex-row">
+                    <i class="fas fa-arrow-right arrow-position"></i>
+                    <div class="ml-2">
+                        <h6 class="mb-0">Entrega ${cont++}</h6>
+                        <div class="about"> <span>${data.distance}</span> <span>${data.estimated_time}</span> </div>
+                    </div>
+                </div>
+                <div class="url-route">
+                    <a href="https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination=${data.lat},${data.lng}" target="_blank" class="btn btn-circle float-right route-btn">
+                        <i class="fas fa-map map-icon"></i>
+                    </a>
+                </div>
+            </li>`;
+        });
+    }
+
+    $("#list-routes").append($list);
 }
 
 

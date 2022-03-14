@@ -104,3 +104,24 @@ input.autocomplete-app {
     font-size: 12px;
     margin-right: 10px
 }
+
+.arrow-position {
+    margin-top: 12px;
+    margin-right: 15px;
+}
+
+.route-btn {
+    padding: 0 3.2rem;
+}
+
+.route-btn:hover {
+    color: #454545!important;
+}
+
+.route-btn:focus {
+    box-shadow: none!important;
+}
+
+.map-icon {
+    font-size: 2.4em;
+}

@@ -10,7 +10,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="{{route('index')}}#hero">Inicio</a></li>
           <li><a class="nav-link scrollto" href="{{route('index')}}#services">Funciones</a></li>
-          <li><a class="nav-link scrollto" href="{{route('index')}}#pricing">Pricing</a></li>
+          <li><a class="nav-link scrollto" href="{{route('index')}}#pricing">Tarifas</a></li>
           <li><a class="nav-link scrollto" href="{{route('index')}}#team">Equipo</a></li>
           <li><a class="nav-link scrollto" href="{{route('index')}}#contact">Contacto</a></li>
           @if(Auth::user())

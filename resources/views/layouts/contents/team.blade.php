@@ -28,8 +28,8 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
             <div class="member">
-              <img src="https://media-exp1.licdn.com/dms/image/C5603AQEjesSVnxt55A/profile-displayphoto-shrink_200_200/0/1644532006274?e=1651104000&v=beta&t=y6vZcq3ZOhttpuXN9nkhRAlu-MPNEq0isXXwjN0C7Z0" alt="">
-              <h4>Alejandro Berenguel bustos</h4>
+              <img class="img-team" src="https://media-exp1.licdn.com/dms/image/C5603AQEjesSVnxt55A/profile-displayphoto-shrink_200_200/0/1644532006274?e=1651104000&v=beta&t=y6vZcq3ZOhttpuXN9nkhRAlu-MPNEq0isXXwjN0C7Z0" alt="">
+              <h4>Alejandro Berenguel Bustos</h4>
               <span>Estudiante de 2ºDAW</span>
               <p>
 
