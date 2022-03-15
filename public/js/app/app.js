@@ -1,3 +1,4 @@
+// Cuando el DOM esté cargado se iniciará la función del autocompletado, se oculta el efecto de carga, la vista del mapa y la vista de los puntos
 $(document).ready(function () {
     autocompleteApp();
     $('.map-section').toggle();
@@ -9,19 +10,18 @@ $(document).ready(function () {
 });
 
 // Atributos
-let deliveries = [];
-let waypointsOrders = [];
-let idRoute = 1;
-var parts = [];
-var partsGoogle = [];  // Se almacenan las respuestas que se mandan a Google Maps Directions
+let deliveries = [];    // Variable que almacena los puntos que introduce el usuario
+let idRoute = 1;        // ID de la ruta que se utiliza. Es necesario para almacenar los datos en la DB
+var parts = [];         // Cuando se ejecute la función calculateRoute() se almacenará los puntos indicados anteriormente en un array bidimensional
+var partsGoogle = [];   // Se almacenan las respuestas que se mandan a Google Maps Directions. No se usa de momento, ya que se utiliza para debuggear
 
 // Variables Google Maps API
-var service = new google.maps.DirectionsService;
+var service = new google.maps.DirectionsService;  // Se invoca el servicio de direcciones de la API de Google Maps
 
+// 
 function autocompleteApp() {
     // Se crea una barra de búsqueda para localizar una ubicación en el mapa
     var autocomplete = document.getElementById('autocomplete-app');
-
     const search = new google.maps.places.Autocomplete(autocomplete);
 
     // Crear evento para el botón de añadir entrega
@@ -247,7 +247,6 @@ function sendRoute(service_options, map, part) {
             
             var orders = response.routes[0].waypoint_order;
             var legs = response.routes[0].legs;
-            waypointsOrders.push(orders);
             console.log(orders);
     
             // Se almacenan el orden de los puntos, el tiempo de llegada y la distancia en cada ruta
