@@ -2,26 +2,36 @@ body {
     background: #454545;
 }
 
+/* Autocomplete de la ventana modal */
+
+
 /* Quitar barra de Google en el autocompletado */
+.pac-container {
+    z-index: 2000;
+}
+
 .pac-container:after {
     background-image: none !important;
     height: 0px;
 }
-.pac-item {
-    font-size: 4vh;
+@media (max-width: 600px) {
+    .pac-item {
+        font-size: 4vh;
+    }
+    
+    .pac-item-query {
+        font-size: 4vh;
+    }
+    input::-webkit-input-placeholder {
+        font-size: 3vh;
+        height: 6px;
+        padding: 35px 0px;
+    }
+    input.autocomplete-app {
+        font-size: 2rem !important;
+    }
 }
 
-.pac-item-query {
-    font-size: 4vh;
-}
-input::-webkit-input-placeholder {
-    font-size: 3vh;
-    height: 6px;
-    padding: 35px 0px;
-}
-input.autocomplete-app {
-    font-size: 2rem !important;
-}
 
 /* Mapa */
 #map {

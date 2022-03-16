@@ -1,11 +1,11 @@
 // Cuando el DOM esté cargado se iniciará la función del autocompletado, se oculta el efecto de carga, la vista del mapa y la vista de los puntos
 $(document).ready(function () {
     autocompleteApp();
+    initLocation();
     $('.map-section').toggle();
     $('.points-section').toggle(function() {
         $('.points-section')[0].style.setProperty('display', 'none', 'important');
     });
-    //$('.autocomplete-app').toggle();
     $('#loading').fadeOut('slow');
 });
 
@@ -15,10 +15,51 @@ let idRoute = 1;        // ID de la ruta que se utiliza. Es necesario para almac
 var parts = [];         // Cuando se ejecute la función calculateRoute() se almacenará los puntos indicados anteriormente en un array bidimensional
 var partsGoogle = [];   // Se almacenan las respuestas que se mandan a Google Maps Directions. No se usa de momento, ya que se utiliza para debuggear
 
+ // Ubicación actual. En caso de no activar la geolocalización tendrá una ubicación por defecto para realizar la prueba
+var ubicacionCercana = {
+    lat: 36.839922,
+    lng: -2.4497194,
+    name: 'Ubicación actual',
+};
+
 // Variables Google Maps API
 var service = new google.maps.DirectionsService;  // Se invoca el servicio de direcciones de la API de Google Maps
 
-// 
+// Función initLocation() para seleccionar la ubicación actual que se utilizará en la app
+function initLocation() {
+    // Opciones para la ventana modal
+    var options = {
+        backdrop: 'static',
+        keyboard: false
+    }
+
+    // Se abre la ventana modal del autocompletado
+    var modalAutocomplete = new bootstrap.Modal(document.getElementById('modal-autocomplete'), options);
+    modalAutocomplete.show();
+
+    // Se utiliza una barra de búsqueda para indicar la ubicación actual
+    var autocomplete = document.getElementById('autocomplete-location');
+    const searchLocation = new google.maps.places.Autocomplete(autocomplete);
+
+    // Se desactiva el botón
+    $('#btn-save-location').prop('disabled', true);
+
+    // Si se selecciona una ubicación se activa el botón
+    google.maps.event.addListener(searchLocation, 'place_changed', function() {
+        $('#btn-save-location').prop('disabled', false);
+    });
+
+    // Si se pulsa el botón se recoge la ubicación y se guarda la latitud y la longitud en la variable ubicacionCercana
+    $('#btn-save-location').click(function(event) {
+        event.preventDefault();
+        var placeLocation = searchLocation.getPlace();
+        ubicacionCercana.lat = placeLocation.geometry.location.lat();
+        ubicacionCercana.lng = placeLocation.geometry.location.lng();
+        console.log(ubicacionCercana);
+        modalAutocomplete.hide();
+    });
+}
+
 function autocompleteApp() {
     // Se crea una barra de búsqueda para localizar una ubicación en el mapa
     var autocomplete = document.getElementById('autocomplete-app');
@@ -33,6 +74,24 @@ function autocompleteApp() {
 
     $('#btn-add-delivery').click(function(event) {
         event.preventDefault();
+        if ($('#autocomplete-app').val() == '' || $('#autocomplete-app').val() == null) {
+            $('#autocomplete-app').focus();
+            $('#autocomplete-app').css({transform: 'scaleX(1.05)', border: '3.5px dashed #CA0B00'});
+            setTimeout(function() {
+                $('#autocomplete-app').css({transform: '', border: ''});
+            }, 2000);
+            return;
+        }
+
+        if ($('#name-app').val() == '' || $('#name-app').val() == null) {
+            $('#name-app').focus();
+            $('#name-app').css({transform: 'scaleX(1.05)', border: '3.5px dashed #CA0B00'});
+            setTimeout(function() {
+                $('#name-app').css({transform: '', border: ''});
+            }, 2000);
+            return;
+        }
+
         var place = search.getPlace();
         createDelivery(place);
     });
@@ -40,17 +99,10 @@ function autocompleteApp() {
     // Evento para el botón de calcular
     $('#btn-calculate-route').click(function(event) {
         event.preventDefault();
-
         $('#loading').fadeToggle('slow', function() {
             $('.autocomplete-app').toggle();
-            //$geo = getGeolocation();
-            if (checkGeolocation()) {
-                calculateRoute();
-                $('.map-section').toggle(); 
-            } else {
-                $('.autocomplete-app').toggle();
-                alert('Active la geolocalización');
-            }           
+            calculateRoute();
+            $('.map-section').toggle(); 
 
             // Quitar loading
             $('#loading').fadeToggle('slow');
@@ -92,61 +144,40 @@ function createDelivery(place) {
 
 // Función calculateRoute() para calcular la ruta de todos los puntos indicados anteriormente
 function calculateRoute() {
-    let labelIndex = 1;
+    // let labelIndex = 1; Se utiliza para enumerar los puntos
+    // SVG del icono de la ubicación actual
+    const svgMarker = {
+        path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+        fillColor: "blue",
+        fillOpacity: 0.6,
+        strokeWeight: 0,
+        rotation: 0,
+        scale: 2,
+        anchor: new google.maps.Point(15, 30),
+    };
 
     var map = new google.maps.Map(document.getElementById('map'));
     window.gMap = map;
 
-    // Ubicación actual
-    /*const ubicacionCercana = {
-        name: 'Ubicación actual',
-        lat: 36.839922,
-        lng: -2.4497194,
-    };*/
-    var ubicacionCercana = geolocationRequest();
     console.log(ubicacionCercana);
 
     // list of points
-    // var stations = updateStations();
-
-    // list of points manual
-    var stations = [
-        {lat: 36.83807977014031,lng: -2.4513575764744995, name: 'Bombolone'},
-        {lat: 36.850063097911566,lng: -2.446748891908438, name: 'Pastelería del Águila - La Tonta Mona'},
-        {lat: 36.83932083278515,lng: -2.460195018366268, name: 'Don Croissant'},
-        {lat: 36.83980156802376,lng: -2.4616330984981434, name: 'Confitería Capri'},
-        {lat: 36.86026923300328,lng: -2.4447831054105635, name: 'Pastelería Mónica'}, 
-        {lat: 36.85520617735452,lng: -2.4448249560187247, name: 'Taberna El Andaluz'},
-        {lat: 36.85105353558606,lng: -2.4504598755250147, name: 'La Piedra Resto-Bar'},
-        {lat: 36.85467973086508,lng: -2.4449001033221247, name: 'Tango Bar & Restaurante'},
-        {lat: 36.84084402648873,lng: -2.4534771406459663, name: 'Bar Hammurabi'},
-        {lat: 36.826350198321194,lng: -2.447190440017425, name: 'Kebab El Rachid'},
-        {lat: 36.8219404016487,lng: -2.4427647026738697, name: 'La Dulce Alianza - Zapillo'},
-        {lat: 36.83184327430669,lng: -2.4467639167849713, name: 'Karbon'},
-        {lat: 36.83153729856263,lng: -2.4457477538289103,name: 'Restaurante La Pérgola'},
-        {lat: 36.841507762141184,lng: -2.457778090185381,  name: 'Heladería Punto Italia'},
-        {lat: 36.842704796761595,lng: -2.45879935653369,  name: 'La Flor de Valencia'},
-        {lat: 36.84595650383804,lng: -2.4423874153025142, name: 'Indalpizza Almería'},
-        {lat: 36.839051810566154,lng: -2.4511331365664764, name: 'Scondite Bar'},
-        {lat: 36.838622096107784,lng: -2.4596820881548753, name: 'RAPA NUII'},
-        {lat: 36.83953112080378,lng: -2.456453669243235,  name: 'Pub La Luna'},
-        {lat: 36.850209338530235,lng: -2.445565869589346,  name: 'El Goloso de Almería'},
-        {lat: 36.8394429800073,lng: -2.4488900844062567,  name: 'Hamburgueseria Milo'},
-        {lat: 36.840138445331455,lng: -2.4643217586027077,  name: 'Milestone Restaurant & Bar'},
-        {lat: 36.83773269159629,lng: -2.459436474207283,  name: 'Fosters Hollywood'},
-        {lat: 36.845913068920325,lng: -2.4594845797654457,  name: 'Dogar Dogar Kebab - Rambla'},
-        {lat: 36.841125378524524,lng: -2.4627964576667165,  name: 'Goiko'},
-        {lat: 36.83806215288895,lng: -2.465276061388477,  name: 'Bar La Lupe'},
-        {lat: 36.84114501215068,lng: -2.463968635641255,  name: 'La Dulce Alianza - Paseo'},
-        {lat: 36.847570034048,lng: -2.445885267033654,  name: 'El Rincón de Basi'},
-        {lat: 36.83818513701664,lng: -2.459917355972683,  name: 'La Dulce Alianza - Rambla'}
-    ];
+    var stations = updateStations();
 
     // Ordenar los puntos desde la ubicación actual. Sirve para poder optimizar mejor la ruta si hay más de 24 puntos. 
     var stations = calcularRuta(stations, ubicacionCercana);
 
+    console.log(ubicacionCercana);
     console.log(stations);
     
+    // Se crea un marcador con la ubicación actual
+    new google.maps.Marker({
+        position: ubicacionCercana,
+        icon: svgMarker,
+        map: map,
+        title: ubicacionCercana.name
+    });
+
     // Zoom y mapa centrado automáticamente por cada punto
     var lngs = stations.map(function(station) { return station.lng; });
     var lats = stations.map(function(station) { return station.lat; });
@@ -157,18 +188,11 @@ function calculateRoute() {
         south: Math.max.apply(null, lats),
     });
 
-    // Se crea un marcador con la ubicación actual
-    new google.maps.Marker({
-        position: ubicacionCercana,
-        map: map,
-        title: ubicacionCercana.name
-    });
-
     // Show stations on the map as markers
     for (var i = 0; i < stations.length; i++) {
         new google.maps.Marker({
             position: stations[i],
-            label: labelIndex++ + '',
+            //label: labelIndex++ + '',
             map: map,
             title: stations[i].name
         });
@@ -316,34 +340,63 @@ function showListRoutes() {
     $("#list-routes").append($list);
 }
 
-
 // Función updateStations() para preparar un array de objetos con los datos necesarios del calculo de rutas
 function updateStations() {
     var stations = [];
 
-    deliveries.forEach(delivery => {
-        var station = {
-            'lat': delivery['latitude'],
-            'lng': delivery['longitude'],
-            'name': delivery['name']
-        };
-        
-        stations.push(station);
-    });
+     // Lista de puntos de prueba si no se indica nada en el autocompletado de puntos
+    var stationsTest = [
+        {lat: 36.83807977014031,lng: -2.4513575764744995, name: 'Bombolone'},
+        {lat: 36.850063097911566,lng: -2.446748891908438, name: 'Pastelería del Águila - La Tonta Mona'},
+        {lat: 36.83932083278515,lng: -2.460195018366268, name: 'Don Croissant'},
+        {lat: 36.83980156802376,lng: -2.4616330984981434, name: 'Confitería Capri'},
+        {lat: 36.86026923300328,lng: -2.4447831054105635, name: 'Pastelería Mónica'}, 
+        {lat: 36.85520617735452,lng: -2.4448249560187247, name: 'Taberna El Andaluz'},
+        {lat: 36.85105353558606,lng: -2.4504598755250147, name: 'La Piedra Resto-Bar'},
+        {lat: 36.85467973086508,lng: -2.4449001033221247, name: 'Tango Bar & Restaurante'},
+        {lat: 36.84084402648873,lng: -2.4534771406459663, name: 'Bar Hammurabi'},
+        {lat: 36.826350198321194,lng: -2.447190440017425, name: 'Kebab El Rachid'},
+        {lat: 36.8219404016487,lng: -2.4427647026738697, name: 'La Dulce Alianza - Zapillo'},
+        {lat: 36.83184327430669,lng: -2.4467639167849713, name: 'Karbon'},
+        {lat: 36.83153729856263,lng: -2.4457477538289103,name: 'Restaurante La Pérgola'},
+        {lat: 36.841507762141184,lng: -2.457778090185381,  name: 'Heladería Punto Italia'},
+        {lat: 36.842704796761595,lng: -2.45879935653369,  name: 'La Flor de Valencia'},
+        {lat: 36.84595650383804,lng: -2.4423874153025142, name: 'Indalpizza Almería'},
+        {lat: 36.839051810566154,lng: -2.4511331365664764, name: 'Scondite Bar'},
+        {lat: 36.838622096107784,lng: -2.4596820881548753, name: 'RAPA NUII'},
+        {lat: 36.83953112080378,lng: -2.456453669243235,  name: 'Pub La Luna'},
+        {lat: 36.850209338530235,lng: -2.445565869589346,  name: 'El Goloso de Almería'},
+        {lat: 36.8394429800073,lng: -2.4488900844062567,  name: 'Hamburgueseria Milo'},
+        {lat: 36.840138445331455,lng: -2.4643217586027077,  name: 'Milestone Restaurant & Bar'},
+        {lat: 36.83773269159629,lng: -2.459436474207283,  name: 'Fosters Hollywood'},
+        {lat: 36.845913068920325,lng: -2.4594845797654457,  name: 'Dogar Dogar Kebab - Rambla'},
+        {lat: 36.841125378524524,lng: -2.4627964576667165,  name: 'Goiko'},
+        {lat: 36.83806215288895,lng: -2.465276061388477,  name: 'Bar La Lupe'},
+        {lat: 36.84114501215068,lng: -2.463968635641255,  name: 'La Dulce Alianza - Paseo'},
+        {lat: 36.847570034048,lng: -2.445885267033654,  name: 'El Rincón de Basi'},
+        {lat: 36.83818513701664,lng: -2.459917355972683,  name: 'La Dulce Alianza - Rambla'}
+    ];
+
+    if (deliveries.length > 0){
+        deliveries.forEach(delivery => {
+            var station = {
+                'lat': delivery['latitude'],
+                'lng': delivery['longitude'],
+                'name': delivery['name']
+            };
+            
+            stations.push(station);
+        });
+    } else {
+        return stationsTest;
+    }
+    
 
     return stations;
 }
 
-// Recordatorio: crear una tabla con DataTables más adelante
-function addDataTable() {
-    if($.fn.DataTable) {
-        $('.dt-app').DataTable({
-            language: {
-                url: '/libs/datatables/spanish.json'
-            }
-        });
-    }
-}
+/*
+Código en pruebas para la geolocalización
 
 function checkGeolocation() {
     if (navigator.geolocation) {
@@ -354,23 +407,16 @@ function checkGeolocation() {
     }
 }
 
-function geolocationRequest() {
+function activateGeolocation(callback) {
     // Comprobar si tiene la geolocalización activada
     if (navigator.geolocation) {
-        var location = {
-            lat: 0, 
-            lng: 0, 
-            name: 'Ubicación actual'
-        };
-
         // Si se activa la geolocalización se recoge las coordenadas actuales
         navigator.geolocation.getCurrentPosition((position) => {
-            location.lat = position.coords.latitude;
-            location.lng = position.coords.longitude;
+            ubicacionCercana.lat = position.coords.latitude;
+            ubicacionCercana.lng = position.coords.longitude;
+            callback();
         });
-        
-        return location;
     } else {
-        alert("El navegador no soporta geolocalización");
+        alert("El navegador no soporta o no ha activado la geolocalización");
     }
-}
+}*/

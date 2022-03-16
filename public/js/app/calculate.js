@@ -1,30 +1,31 @@
 // Como parámetros se indica los puntos y el origen
-function calcularRuta(stations, origin) {
+function calcularRuta(stations, locationOrigin) {
+  // Variable del punto inicial
+  var originPoint = JSON.parse(JSON.stringify(locationOrigin));;
   // Variable para guardar los puntos ordenados
   let stationsSorted = [];
 
   /*
-  stations = calcularDistancia(stations, origin);
+  stations = calcularDistancia(stations, originPoint);
   console.log(stations);*/
-  
+
   while (stations.length > 1) {  
-    stations = calcularDistancia(stations, origin);
-  
-  	stationsSorted.push(stations.shift());
-  	// stations.splice(0, 1)
+    stations = calcularDistancia(stations, originPoint);
+
+    stationsSorted.push(stations.shift());
+    // stations.splice(0, 1)
     /* stations = stations.filter(function(station) {
       return station.name !== stations[0].name;
     });*/
-    origin.lat = stationsSorted[stationsSorted.length - 1].lat;
-    origin.lng = stationsSorted[stationsSorted.length - 1].lng;
-    origin.name = stationsSorted[stationsSorted.length - 1].name;
+    originPoint.lat = stationsSorted[stationsSorted.length - 1].lat;
+    originPoint.lng = stationsSorted[stationsSorted.length - 1].lng;
+    originPoint.name = stationsSorted[stationsSorted.length - 1].name;
   }
-  
+
   stationsSorted.push(stations.shift());
   console.log(stationsSorted);
-  
-  return stationsSorted;
 
+  return stationsSorted;
 }
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -47,11 +48,11 @@ function deg2rad(deg) {
   return deg * (Math.PI / 180);
 }
 
-function calcularDistancia(stations, origin) {
+function calcularDistancia(stations, originPoint) {
   for (let i = 0; i < stations.length; i++) {
     let distance = getDistanceFromLatLonInKm(
-      origin.lat,
-      origin.lng,
+      originPoint.lat,
+      originPoint.lng,
       stations[i].lat,
       stations[i].lng
     );
