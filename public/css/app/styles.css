@@ -10,7 +10,7 @@ body {
 .pac-item {
     font-size: 4vh;
 }
-/*
+
 .pac-item-query {
     font-size: 4vh;
 }
@@ -21,7 +21,7 @@ input::-webkit-input-placeholder {
 }
 input.autocomplete-app {
     font-size: 2rem !important;
-}*/
+}
 
 /* Mapa */
 #map {

@@ -33,9 +33,7 @@ function autocompleteApp() {
 
     $('#btn-add-delivery').click(function(event) {
         event.preventDefault();
-
         var place = search.getPlace();
-
         createDelivery(place);
     });
 
@@ -45,10 +43,16 @@ function autocompleteApp() {
 
         $('#loading').fadeToggle('slow', function() {
             $('.autocomplete-app').toggle();
-            calculateRoute();
-            $('.map-section').toggle();            
+            //$geo = getGeolocation();
+            if (checkGeolocation()) {
+                calculateRoute();
+                $('.map-section').toggle(); 
+            } else {
+                $('.autocomplete-app').toggle();
+                alert('Active la geolocalización');
+            }           
 
-            // Si todo ha funcionado
+            // Quitar loading
             $('#loading').fadeToggle('slow');
         });
     });
@@ -94,11 +98,13 @@ function calculateRoute() {
     window.gMap = map;
 
     // Ubicación actual
-    const ubicacionCercana = {
-        name: 'Mi casa',
+    /*const ubicacionCercana = {
+        name: 'Ubicación actual',
         lat: 36.839922,
         lng: -2.4497194,
-    };
+    };*/
+    var ubicacionCercana = geolocationRequest();
+    console.log(ubicacionCercana);
 
     // list of points
     // var stations = updateStations();
@@ -141,7 +147,7 @@ function calculateRoute() {
 
     console.log(stations);
     
-    // Zoom and center map automatically by stations (each station will be in visible map area)
+    // Zoom y mapa centrado automáticamente por cada punto
     var lngs = stations.map(function(station) { return station.lng; });
     var lats = stations.map(function(station) { return station.lat; });
     map.fitBounds({
@@ -151,7 +157,7 @@ function calculateRoute() {
         south: Math.max.apply(null, lats),
     });
 
-    // Indicar ubicación actual
+    // Se crea un marcador con la ubicación actual
     new google.maps.Marker({
         position: ubicacionCercana,
         map: map,
@@ -336,5 +342,35 @@ function addDataTable() {
                 url: '/libs/datatables/spanish.json'
             }
         });
+    }
+}
+
+function checkGeolocation() {
+    if (navigator.geolocation) {
+        return true;
+    } else {
+        alert('Active la geolocalización para que funcione el cálculo de rutas');
+        return false;
+    }
+}
+
+function geolocationRequest() {
+    // Comprobar si tiene la geolocalización activada
+    if (navigator.geolocation) {
+        var location = {
+            lat: 0, 
+            lng: 0, 
+            name: 'Ubicación actual'
+        };
+
+        // Si se activa la geolocalización se recoge las coordenadas actuales
+        navigator.geolocation.getCurrentPosition((position) => {
+            location.lat = position.coords.latitude;
+            location.lng = position.coords.longitude;
+        });
+        
+        return location;
+    } else {
+        alert("El navegador no soporta geolocalización");
     }
 }

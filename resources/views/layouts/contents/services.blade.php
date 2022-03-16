@@ -28,8 +28,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
               <h4><a>Velocidad</a></h4>
-              <p>El tiempo de resolución para encontrar la ruta más rápida es inferior a "INTRODUCIR TIEMPO PROMEDIO
-              DE CÁLCULO DE RUTA" segundos</p>
+              <p>Tiempo ínfimo de respuesta para encontrar la ruta más rápida.</p>
             </div>
           </div>
         </div>

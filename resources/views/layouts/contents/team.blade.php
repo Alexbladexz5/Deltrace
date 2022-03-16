@@ -11,7 +11,7 @@
         <div class="row d-flex justify-content-evenly">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
             <div class="member">
-              <img src="img/team/team-1.jpg" alt="">
+              <img src="https://media-exp1.licdn.com/dms/image/C5603AQH8qr94fxtcaw/profile-displayphoto-shrink_200_200/0/1557430333357?e=1652918400&v=beta&t=aW40M84T-He5hNcksA766Z3WooKxICwzw4v0JBTz4E4" alt="">
               <h4>Emilio García Iglesias</h4>
               <span>Estudiante de 2ºDAW</span>
               <p>
@@ -21,7 +21,7 @@
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
                 <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/emilio-garcia-iglesias/"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
                 <a href=""><i class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/alejandro-berenguel-bustos-914767171/"><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/alejandro-berenguel-bustos/"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
           </div>
