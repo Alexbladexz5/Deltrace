@@ -18,6 +18,7 @@ function load() {
         type: 'get',
 
         success: function (response) {
+            // Si funciona se crea una tabla con todas las entregas
             $table = `
                 <div class="card">
                     <div class="card-body">
@@ -49,7 +50,7 @@ function load() {
 
             response.forEach(function (data) {
                 var tbody = "";
-
+                // Si son null se le indica no disponible
                 if (data.update_at == null) {
                     data.update_at = "No disponible";
                 }

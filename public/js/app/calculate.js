@@ -1,6 +1,6 @@
 // Como parámetros se indica los puntos y el origen
 function calcularRuta(stations, locationOrigin) {
-  // Variable del punto inicial
+  // Variable del punto inicial. Se duplica el objeto
   var originPoint = JSON.parse(JSON.stringify(locationOrigin));;
   // Variable para guardar los puntos ordenados
   let stationsSorted = [];
@@ -25,6 +25,7 @@ function calcularRuta(stations, locationOrigin) {
   stationsSorted.push(stations.shift());
   console.log(stationsSorted);
 
+  // Se devuelve los puntos ordenados
   return stationsSorted;
 }
 
@@ -57,7 +58,7 @@ function calcularDistancia(stations, originPoint) {
       stations[i].lng
     );
 
-    //Attaching returned distance from function to array elements
+    // Adjuntar la distancia devuelta de la función a los elementos de la matriz
     stations[i].distance = distance;
   }
 

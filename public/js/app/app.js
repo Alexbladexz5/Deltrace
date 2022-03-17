@@ -55,7 +55,6 @@ function initLocation() {
         var placeLocation = searchLocation.getPlace();
         ubicacionCercana.lat = placeLocation.geometry.location.lat();
         ubicacionCercana.lng = placeLocation.geometry.location.lng();
-        console.log(ubicacionCercana);
         modalAutocomplete.hide();
     });
 }
@@ -65,15 +64,17 @@ function autocompleteApp() {
     var autocomplete = document.getElementById('autocomplete-app');
     const search = new google.maps.places.Autocomplete(autocomplete);
 
-    // Crear evento para el botón de añadir entrega
+    // Crear evento para el botón de añadir entrega. No se puede pulsar hasta que no se seleccione un punto en el autocompletado
     $('#btn-add-delivery').prop('disabled', true);
 
     google.maps.event.addListener(search, 'place_changed', function() {
         $('#btn-add-delivery').prop('disabled', false);
     });
 
+    // Evento en el botón añadir punto
     $('#btn-add-delivery').click(function(event) {
         event.preventDefault();
+        // Se comprueba que no esté vacio en los dos primeros campos del formulario. Si alguno está vacío se cancela la secuencia y se indica, con css, el input vacio
         if ($('#autocomplete-app').val() == '' || $('#autocomplete-app').val() == null) {
             $('#autocomplete-app').focus();
             $('#autocomplete-app').css({transform: 'scaleX(1.05)', border: '3.5px dashed #CA0B00'});
@@ -92,6 +93,7 @@ function autocompleteApp() {
             return;
         }
 
+        // Se manda los datos del autocompletado
         var place = search.getPlace();
         createDelivery(place);
     });
@@ -110,6 +112,7 @@ function autocompleteApp() {
     });
 }
 
+// Función createDelivery(place) para guardar de forma local y en la BD los datos de la entrega/punto
 function createDelivery(place) {
     var delivery = {
         'route_id': idRoute,
@@ -121,8 +124,6 @@ function createDelivery(place) {
         'name_address': place.name
     };
 
-    deliveries.push(delivery);
-
     // Crear llamada AJAX para almacenar la entrega en una ruta en la DB. Si funciona se almacena de forma local la entrega creada
     $.ajax({
         url: "app/createDelivery",
@@ -133,8 +134,8 @@ function createDelivery(place) {
         },
         contentType: "application/json",
         success: function(response) {
-            console.log('Funciona');
-            $('#new-delivery').trigger("reset");
+            $('#new-delivery').trigger("reset");    // Se reinicia el formulario
+            deliveries.push(delivery);              // Se almacena en el array local que está como atributo
         },
         error: function(response) {
             alert('No funciona');
@@ -144,7 +145,7 @@ function createDelivery(place) {
 
 // Función calculateRoute() para calcular la ruta de todos los puntos indicados anteriormente
 function calculateRoute() {
-    // let labelIndex = 1; Se utiliza para enumerar los puntos
+    // let labelIndex = 1; Se utiliza para enumerar los puntos (testeo)
     // SVG del icono de la ubicación actual
     const svgMarker = {
         path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
@@ -159,16 +160,14 @@ function calculateRoute() {
     var map = new google.maps.Map(document.getElementById('map'));
     window.gMap = map;
 
-    console.log(ubicacionCercana);
-
-    // list of points
+    // Se guardan los puntos locales en la variable stations con los datos necesarios
     var stations = updateStations();
 
     // Ordenar los puntos desde la ubicación actual. Sirve para poder optimizar mejor la ruta si hay más de 24 puntos. 
     var stations = calcularRuta(stations, ubicacionCercana);
 
-    console.log(ubicacionCercana);
-    console.log(stations);
+    //console.log(ubicacionCercana);
+    //console.log(stations);
     
     // Se crea un marcador con la ubicación actual
     new google.maps.Marker({
@@ -178,9 +177,12 @@ function calculateRoute() {
         title: ubicacionCercana.name
     });
 
-    // Zoom y mapa centrado automáticamente por cada punto
+    // Zoom y mapa centrado automáticamente por cada punto (incluido origen)
     var lngs = stations.map(function(station) { return station.lng; });
     var lats = stations.map(function(station) { return station.lat; });
+    lngs.push(ubicacionCercana.lng);
+    lats.push(ubicacionCercana.lat);
+
     map.fitBounds({
         west: Math.min.apply(null, lngs),
         east: Math.max.apply(null, lngs),
@@ -188,25 +190,23 @@ function calculateRoute() {
         south: Math.max.apply(null, lats),
     });
 
-    // Show stations on the map as markers
+    // Se crean marcadores de cada punto
     for (var i = 0; i < stations.length; i++) {
         new google.maps.Marker({
             position: stations[i],
-            //label: labelIndex++ + '',
+            //label: labelIndex++ + '', (testeo)
             map: map,
             title: stations[i].name
         });
     }
 
-    // Divide route to several parts because max stations limit is 8 (6 waypoints + 1 origin + 1 destination)
+    // Se divide la ruta completa en partes debido al número máximo de waypoints que se pueden enviar a la API de Google Maps. El límite es 25 8 (23 waypoints + 1 origen + 1 destino)
     for (var i = 0, max = 25 - 1; i < stations.length; i = i + max) {
         parts.push(stations.slice(i, i + max));
     }
-
-    console.log(parts);
-
+    //console.log(parts);
     
-    // Send requests to service to get route (for stations count <= 25 only one request will be sent)
+    // Enviar solicitudes al servicio para obtener la ruta (para waypoints <= 25 solo se enviará una solicitud)
     for (var i = 0, 
         originWaypoint = ubicacionCercana,
         destinationWaypoint = parts[0][parts[0].length - 1]; i < parts.length; i++) {
@@ -215,7 +215,7 @@ function calculateRoute() {
             destinationWaypoint = parts[i][parts[i].length - 1];
         }
 
-        // Waypoints does not include last station (destination)
+        // En waypoints no se incluye la última estación (destino)
         var waypoints = [];
         for (var j = 0; j < parts[i].length - 1; j++) {
 
@@ -225,7 +225,7 @@ function calculateRoute() {
             });
         }
             
-        // Service options
+        // Opciones del servicio
         var service_options = {
             origin: originWaypoint,
             destination: destinationWaypoint,
@@ -255,7 +255,7 @@ function calculateRoute() {
         });
     });
     
-    console.log(parts);
+    //console.log(parts);
     
     return true;
 }
@@ -265,6 +265,7 @@ function calculateRoute() {
 function sendRoute(service_options, map, part) {
     service.route(service_options, function(response, status) {
         if (status == 'OK') {
+            // Si funciona se renderiza el mapa con las rutas
             var renderer = new google.maps.DirectionsRenderer;
             if (!window.gRenderers) {
                 window.gRenderers = [];
@@ -277,7 +278,7 @@ function sendRoute(service_options, map, part) {
             
             var orders = response.routes[0].waypoint_order;
             var legs = response.routes[0].legs;
-            console.log(orders);
+            //console.log(orders);
     
             // Se almacenan el orden de los puntos, el tiempo de llegada y la distancia en cada ruta
             for (var j = 0; j < parts[part].length; j++) {
@@ -300,10 +301,10 @@ function sendRoute(service_options, map, part) {
             // Almacenar las respuestas
             partsGoogle[part] = response.routes[0];
 
-            console.log(response);
-            console.log(parts[part]);
-            console.log(legs[0].distance.text);
-            console.log(response.routes[0]);
+            //console.log(response);
+            //console.log(parts[part]);
+            //console.log(legs[0].distance.text);
+            //console.log(response.routes[0]);
         } else {
             console.log('Directions request failed due to ' + status);
         }
@@ -318,7 +319,6 @@ function showListRoutes() {
 
     for (var i = 0; i < parts.length; i++) {
         parts[i].forEach(data => {
-
             $list += `
             <li class="list-group-item d-flex justify-content-between align-content-center">
                 <div class="d-flex flex-row">
@@ -336,7 +336,7 @@ function showListRoutes() {
             </li>`;
         });
     }
-
+    // Se añade el html
     $("#list-routes").append($list);
 }
 
@@ -377,6 +377,7 @@ function updateStations() {
         {lat: 36.83818513701664,lng: -2.459917355972683,  name: 'La Dulce Alianza - Rambla'}
     ];
 
+    // Si hay puntos añadidos por el usuario se guardan los datos necesarios para la API de Google Maps
     if (deliveries.length > 0){
         deliveries.forEach(delivery => {
             var station = {
@@ -391,7 +392,6 @@ function updateStations() {
         return stationsTest;
     }
     
-
     return stations;
 }
 

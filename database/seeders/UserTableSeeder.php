@@ -17,14 +17,14 @@ class UserTableSeeder extends Seeder
     {
         User::create([
             'name' => 'Alejandro',
-            'last_name' => 'ADMIN',
+            'last_name' => 'Berenguel Bustos',
             'email' => 'alejandro@deltrace.com',
             'password' => '$2y$10$jQ0EjR3x3s5R0OOdJjaA6O6x6.kS7a32WHWgRU7aZCtpKmmFSpdxu'
         ])->assignRole('Admin');
 
         User::create([
-            'name' => 'EmilioADMIN',
-            'last_name' => 'ADMIN',
+            'name' => 'Emilio',
+            'last_name' => 'Garcia Iglesias',
             'email' => 'viserion1981@gmail.com',
             'password' => '$2y$10$jQ0EjR3x3s5R0OOdJjaA6O6x6.kS7a32WHWgRU7aZCtpKmmFSpdxu'
         ])->assignRole('Admin');
