@@ -1,0 +1,98 @@
+.panelCookies{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+
+.cookies{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    z-index: 999999;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.cookies img{
+    width: 22%;
+    margin: 0 auto;
+}
+
+.tituloCookies{
+    font-weight: bolder;
+    color: var(--colorSecundario);
+    font-size: 2em;
+    margin: 0.5em 0;
+}
+
+.textoCookies{
+    text-align: justify;
+    margin-bottom: 1em;
+}
+
+.textoCookies a{
+    color: var(--colorSecundario);
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.botonesCookies{
+    display: flex;
+    gap: 1.5em;
+}
+
+.btn-AceptarCookies{
+    background-color: green;
+    color: white;
+    padding: 1em;
+    border: none;
+    transition: ease-in-out 200ms;
+}
+
+.btn-editarCookies{
+    background-color: var(--colorSecundario);
+    border: none;
+    padding: 1em;
+}
+
+.btn-editarCookies i{
+    color: white;
+}
+
+.btn-AceptarCookies:hover, .btn-editarCookies:hover{
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.2); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.2);
+}
+
+.cookiesActivadas{
+    display: flex !important;
+}
+
+/*  PANEL DE EDITAR COOKIES  */
+
+.editarCookies{
+    align-items: center;
+    width: 50%;
+    z-index: 999999;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2em;
+}
+
+.tab-pane{
+    color:black;
+}
