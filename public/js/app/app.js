@@ -110,6 +110,18 @@ function autocompleteApp() {
             $('#loading').fadeToggle('slow');
         });
     });
+    // Evento para el botón de escanear código de barras
+    $('#btn-scan-barcode').click(function(event) {
+        event.preventDefault();
+        $('#loading').fadeToggle('slow', function() {
+            $('.autocomplete-app').toggle();
+            calculateRoute();
+            $('.map-section').toggle(); 
+
+            // Quitar loading
+            $('#loading').fadeToggle('slow');
+        });
+    });
 }
 
 // Función createDelivery(place) para guardar de forma local y en la BD los datos de la entrega/punto

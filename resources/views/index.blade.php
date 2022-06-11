@@ -22,10 +22,13 @@
 
   <!-- Template Main CSS File -->
   <link href="css/index/style.css" rel="stylesheet">
+  
+  @include('layouts.cookies.head')
 
 </head>
 
 <body>
+  @include('layouts.cookies.body')
 
   @include('layouts.contents.header')
 

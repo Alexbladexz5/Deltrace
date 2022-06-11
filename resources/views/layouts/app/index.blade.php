@@ -35,7 +35,13 @@
                             <input type="text" name="tracking-number-app" id="tracking-number-app" class="form-control py-3" placeholder="Número de seguimiento"></input>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-lg-12 mb-3">
+                            <button class="btn btn-danger container" id="btn-scan-barcode">
+                                <i class="fas fa-barcode"></i>
+                            </button>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12 mb-3">
                             <button class="btn btn-danger container" id="btn-add-delivery">
