@@ -4,6 +4,8 @@
 @include('layouts.app.partials.head')
 
 <body>
+    @include('layouts.cookies.body')
+
     @include('layouts.contents.header')
     
     <main id="main">

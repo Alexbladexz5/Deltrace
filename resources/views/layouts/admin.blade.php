@@ -25,6 +25,8 @@
 </head>
 
 <body id="page-top">
+    
+    @include('layouts.cookies.body')
 
     <!-- Page Wrapper -->
     <div id="wrapper">
