@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Delivery;
+use App\Models\Barcode;
 
 class AppController extends Controller {
     // Guardar entrega en la db
@@ -22,11 +23,26 @@ class AppController extends Controller {
         ]);
 
         if (!$validator->passes()) {
-            return response()->json(['status'=>0, 'error'=>$validator->errors()->toArray()]);
+            return response()->json(['status'=> 0, 'error'=>$validator->errors()->toArray()]);
         } else {
             Delivery::create($r->all());
             return response()->json(['status' => 1]);
         }
         
+    }
+
+    // Función checkBarcode() para mandar datos en el caso de que exista los dígitos recibidos del Request
+    public function checkBarcode(Request $r) {
+        //create a sql query that will validate if $r['code'] exists in the db as the field named code
+        $barcode = Barcode::where('code', $r->code)->first();
+        // if the query returns a value, then the barcode exists in the db
+        if ($barcode) {
+            // return the data of the barcode
+            $result = Barcode::getInfoBarcode($r->input('digits'));
+            return response()->json(['status' => 1, 'data' => $barcode]);
+        } else {
+            // if the query returns null, then the barcode does not exist in the db
+            return response()->json(['status' => 2]);
+        }
     }
 }

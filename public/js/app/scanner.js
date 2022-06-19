@@ -93,20 +93,31 @@ function initScanner() {
         Quagga.stop();
         var code = result.codeResult.code;
         $.ajax({
-            url: "scanner.php",
+            url: "app/checkBarcode",
             type: "POST",
             data: {
                 code: code,
             },
-            success: function (data) {
-                if (data == "success") {
+            headers: {
+                "X-CSRF-TOKEN": $('input[name="_token"').val()
+            },
+            success: function (response) {
+                if (response.status == '1') {
+                    document.getElementById("autocomplete-app").value = response.data.address;
+                    document.getElementById("name-app").value = response.data.name;
+                    document.getElementById("tracking-number-app").value = response.data.code;
+                    document.getElementById("btn-add-delivery").disabled = false;
+                } else if (response.status == '0') {
+                    alert('No es un código de barras válido');
                 } else {
-                    alert(data);
+                    document.getElementById("tracking-number-app").value = response.data.code;
                 }
+            },
+            error: function (response) {
+                alert("No funciona");
             },
         });
         sound.play();
-        document.getElementById("autocomplete-app").value = code;
         document.getElementById("closeScannerButton").click();
     });
 }

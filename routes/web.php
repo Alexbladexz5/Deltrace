@@ -37,6 +37,9 @@ Route::group(['middleware' => ['auth']], function() {
     })->name('app.profile');
 
     Route::post('/app/createDelivery', [AppController::class, 'saveDelivery']);
+    
+    // Barcodes
+    Route::post('/app/checkBarcode', [AppController::class, 'checkBarcode']);
 });
 
 Route::get('/terms', function() {

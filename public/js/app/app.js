@@ -83,11 +83,13 @@ function scannerModal() {
     // Evento en el botón para abrir la ventana modal
     $("#btn-scan-barcode").click(function (event) {
         event.preventDefault();
+        // Iniciar scanner
+        initScanner();
         modalScanner.show();
+        
     });
 
-    // Iniciar scanner
-    initScanner();
+    
 }
 
 function autocompleteApp() {
@@ -135,6 +137,14 @@ function autocompleteApp() {
 
         // Se manda los datos del autocompletado
         var place = search.getPlace();
+        //console.log(search);
+        //if place is not defined, then launch a placed_changed event to force google to search for the place
+        //if (place == undefined) {
+        ///    google.maps.event.trigger(search, "place_changed");
+        //    place = search.getPlace();
+        //    console.log(place);
+        //}
+        //console.log(place);
         createDelivery(place);
     });
 
