@@ -13,7 +13,6 @@
  dataLayer = []
  
  const mensajeCookies = `<section class='cookies d-none' id='panelAvisoCookies'>
-     <img src='/img/cookie.svg' alt='cookie'>
      <p class='tituloCookies'>Cookies</p>
      <p class='textoCookies'>
          Utilizamos cookies propias y de terceros para obtener datos estadísticos de la navegación de nuestros usuarios y

@@ -29,7 +29,17 @@ class BarcodeTableSeeder extends Seeder
                 'code' => '2456725468546',
                 'name' => 'Scondite Bar',
                 'address' => 'C. Gil Vicente, 10, 04006 Almería'
-            ]
+            ],
+            [
+                'code' => '5151585448826',
+                'name' => 'IES Celia Viñas',
+                'address' => 'IES Celia Viñas, Calle Javier Sanz, Almería'
+            ],
+            [
+                'code' => '5111213214698',
+                'name' => 'La Luna',
+                'address' => 'Café, Pub "La Luna", Calle Doctor Giménez Canga Argüelles, Almería'
+            ],
         ]);
     }
 }

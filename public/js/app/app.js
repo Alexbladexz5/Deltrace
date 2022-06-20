@@ -86,16 +86,46 @@ function scannerModal() {
         // Iniciar scanner
         initScanner();
         modalScanner.show();
-        
     });
-
-    
 }
 
 function autocompleteApp() {
     // Se crea una barra de búsqueda para localizar una ubicación en el mapa
     var autocomplete = document.getElementById("autocomplete-app");
-    const search = new google.maps.places.Autocomplete(autocomplete);
+    var search;    // = new google.maps.places.Autocomplete(autocomplete);
+    // Evento autocomplete para que se seleccione la primera opción si no se elije
+    (function pacSelectFirst(input) {
+        // store the original event binding function
+        var _addEventListener = (input.addEventListener) ? input.addEventListener : input.attachEvent;
+
+        function addEventListenerWrapper(type, listener) {
+            // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
+            // and then trigger the original listener.
+            if (type == "keydown" || type == "focus") {
+                var orig_listener = listener;
+                listener = function(event) {
+                    var suggestion_selected = $(".pac-item-selected").length > 0;
+                    if (event.which == 13 && !suggestion_selected) {
+                        var simulated_downarrow = $.Event("keydown", {
+                            keyCode: 40,
+                            which: 40
+                        });
+                        orig_listener.apply(input, [simulated_downarrow]);
+                    }
+
+                    orig_listener.apply(input, [event]);
+                };
+            }
+
+            _addEventListener.apply(input, [type, listener]);
+        }
+
+        input.addEventListener = addEventListenerWrapper;
+        input.attachEvent = addEventListenerWrapper;
+
+        search = new google.maps.places.Autocomplete(input);
+
+    })(autocomplete);
 
     // Crear evento para el botón de añadir entrega. No se puede pulsar hasta que no se seleccione un punto en el autocompletado
     $("#btn-add-delivery").prop("disabled", true);
@@ -134,17 +164,14 @@ function autocompleteApp() {
             }, 2000);
             return;
         }
-
         // Se manda los datos del autocompletado
-        var place = search.getPlace();
-        //console.log(search);
-        //if place is not defined, then launch a placed_changed event to force google to search for the place
-        //if (place == undefined) {
-        ///    google.maps.event.trigger(search, "place_changed");
-        //    place = search.getPlace();
-        //    console.log(place);
-        //}
-        //console.log(place);
+        var place = search.getPlace(); 
+        /*if (place == undefined || place == null) {
+            var e = jQuery.Event("keypress");
+            e.keyCode = 13;
+            $("#autocomplete-app").trigger(e);
+        }*/
+        
         createDelivery(place);
     });
 
@@ -160,7 +187,6 @@ function autocompleteApp() {
             $("#loading").fadeToggle("slow");
         });
     });
-    
 }
 
 // Función createDelivery(place) para guardar de forma local y en la BD los datos de la entrega/punto

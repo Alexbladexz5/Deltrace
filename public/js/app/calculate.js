@@ -23,7 +23,7 @@ function calcularRuta(stations, locationOrigin) {
   }
 
   stationsSorted.push(stations.shift());
-  console.log(stationsSorted);
+  //console.log(stationsSorted);
 
   // Se devuelve los puntos ordenados
   return stationsSorted;
